@@ -56,3 +56,21 @@
 #popular-tags {
 	max-height: 42vh;
 }
+
+.bilboard {
+	max-height: calc(100vh - 58px - 2 * 1rem);
+	padding: 12px;
+
+	.btn-bilboard {
+		background-color: transparent;
+
+		&:hover {
+			background-color: rgba(59, 73, 233, 0.1);
+			color: rgb(47, 58, 178);
+		}
+	}
+}
+
+.fs-6 {
+	font-size: 14px !important;
+}

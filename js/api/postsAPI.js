@@ -82,8 +82,8 @@ const getLastPosts = async () => {
 		return new Date(b.fechaCreacion) - new Date(a.fechaCreacion);
 	});
 
-	//Obtener los ultimos 5 posts
-	let lastPosts = postsArray.slice(0, 5);
+	//Obtener los ultimos 10 posts
+	let lastPosts = postsArray.slice(0, 10);
 	return lastPosts;
 };
 

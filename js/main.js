@@ -65,28 +65,16 @@ const createTabDiscuss = (post) => {
 	return tabElement;
 };
 
-const insertTitleLastPosts = (title) => {
-	const titlePost = document.getElementById('title-last-post');
+const insertTitleLastPosts = (title, wrapperId) => {
+	const titlePost = document.getElementById(wrapperId);
 	titlePost.textContent = title;
 };
 
-const printLastPosts = async () => {
-	const lastPosts = document.getElementById('last-posts');
-	const posts = await getLastPosts();
+const AddBadgeNew = (wrapperId, position) => {
+	position -= 1;
+	const listPost =
+		document.getElementById(wrapperId).children[position].children[0];
 
-	insertTitleLastPosts(`#${posts[0].tags[0]}`);
-
-	posts.forEach((post) => {
-		const tabElement = createTabDiscuss(post);
-		lastPosts.appendChild(tabElement);
-	});
-
-	AddBadgeNew();
-};
-
-const AddBadgeNew = () => {
-	const ultimaPublicacion =
-		document.querySelector('#last-posts').lastElementChild;
 	const badge = document.createElement('div');
 	badge.classList.add('pt-1');
 	const etiquetaNuevo = document.createElement('span');
@@ -94,7 +82,32 @@ const AddBadgeNew = () => {
 	etiquetaNuevo.classList.add('badge', 'bg-warning', 'text-danger');
 
 	badge.appendChild(etiquetaNuevo);
-	ultimaPublicacion.appendChild(badge);
+	listPost.appendChild(badge);
+};
+
+const printLastPosts = async () => {
+	const firstLastPosts = document.getElementById('first-last-posts');
+	const secondLastPosts = document.getElementById('second-last-posts');
+	const posts = await getLastPosts();
+
+	insertTitleLastPosts(`#${posts[0].tags[0]}`, 'first-title-last-post');
+	insertTitleLastPosts(`#${posts[1].tags[0]}`, 'second-title-last-post');
+
+	//Imprimir los primeros 5 posts en firstLastPosts
+	posts.slice(0, 5).forEach((post) => {
+		const tabElement = createTabDiscuss(post);
+		firstLastPosts.appendChild(tabElement);
+	});
+
+	//Imprimir los ultimos 5 posts en secondLastPosts
+	posts.slice(5, 10).forEach((post) => {
+		const tabElement = createTabDiscuss(post);
+		secondLastPosts.appendChild(tabElement);
+	});
+
+	AddBadgeNew('first-last-posts', 5);
+	AddBadgeNew('second-last-posts', 4);
+	AddBadgeNew('second-last-posts', 5);
 };
 
 printTags();

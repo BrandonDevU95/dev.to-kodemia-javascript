@@ -17,4 +17,8 @@
   background-color: rgba(59, 73, 233, 0.1);
   color: rgb(47, 58, 178);
   text-decoration: underline;
+}
+
+.bg-dev {
+  background-color: rgb(245, 245, 245);
 }/*# sourceMappingURL=styles.css.map */

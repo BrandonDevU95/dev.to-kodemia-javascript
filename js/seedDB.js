@@ -1,4 +1,4 @@
-const posts = [
+const seed = [
 	{
 		titulo: 'Cómo mejorar el rendimiento de tu sitio web con técnicas de optimización avanzadas',
 		descripcion:
@@ -245,4 +245,4 @@ const posts = [
 	},
 ];
 
-export { posts };
+export { seed };

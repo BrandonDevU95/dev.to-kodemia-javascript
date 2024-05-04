@@ -80,6 +80,21 @@ const printLastPosts = async () => {
 		const tabElement = createTabDiscuss(post);
 		lastPosts.appendChild(tabElement);
 	});
+
+	AddBadgeNew();
+};
+
+const AddBadgeNew = () => {
+	const ultimaPublicacion =
+		document.querySelector('#last-posts').lastElementChild;
+	const badge = document.createElement('div');
+	badge.classList.add('pt-1');
+	const etiquetaNuevo = document.createElement('span');
+	etiquetaNuevo.textContent = 'New';
+	etiquetaNuevo.classList.add('badge', 'bg-warning', 'text-danger');
+
+	badge.appendChild(etiquetaNuevo);
+	ultimaPublicacion.appendChild(badge);
 };
 
 printTags();

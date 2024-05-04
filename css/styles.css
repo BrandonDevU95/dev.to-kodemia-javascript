@@ -1,1 +1,20 @@
-/*# sourceMappingURL=styles.css.map */
+.btn-login {
+  background-color: transparent;
+  color: rgb(64, 64, 64);
+}
+.btn-login:hover {
+  background-color: rgba(59, 73, 233, 0.1);
+  color: rgb(47, 58, 178);
+  text-decoration: underline;
+}
+
+.btn-search {
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  color: rgb(64, 64, 64);
+}
+.btn-search:hover {
+  background-color: rgba(59, 73, 233, 0.1);
+  color: rgb(47, 58, 178);
+  text-decoration: underline;
+}/*# sourceMappingURL=styles.css.map */

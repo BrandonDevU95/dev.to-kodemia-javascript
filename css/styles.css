@@ -8,6 +8,30 @@
   text-decoration: underline;
 }
 
+.link-nav {
+  background-color: transparent;
+}
+.link-nav:hover {
+  background-color: rgba(59, 73, 233, 0.1);
+  color: rgb(47, 58, 178);
+  text-decoration: underline;
+}
+.link-nav a {
+  color: rgb(64, 64, 64);
+}
+.link-nav a:hover {
+  color: rgb(47, 58, 178);
+}
+
+.social-icon {
+  background-color: transparent;
+  color: rgb(64, 64, 64);
+}
+.social-icon:hover {
+  background-color: rgba(59, 73, 233, 0.1);
+  color: rgb(47, 58, 178);
+}
+
 .btn-search {
   background-color: #fff;
   border: 1px solid #dee2e6;

@@ -83,6 +83,15 @@
 	}
 }
 
+.widget {
+	padding: 16px;
+
+	&:hover {
+		background-color: #fff;
+		color: rgb(47, 58, 178) !important;
+	}
+}
+
 // *** Helpers ****
 
 .fs-6 {

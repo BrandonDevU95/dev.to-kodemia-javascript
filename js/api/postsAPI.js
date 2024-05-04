@@ -87,6 +87,23 @@ const getLastPosts = async () => {
 	return lastPosts;
 };
 
+const getAllCategories = async () => {
+	let response = await fetch(`${POSTS_BASE_URL}/.json`);
+	let data = await response.json();
+
+	if (!data) return null;
+
+	let keys = Object.keys(data);
+	let postsArray = keys.map((key) => ({ ...data[key], key }));
+
+	let categoriesArray = postsArray.map((post) => post.categoria);
+	//Crea un objeto Set para almacenar valores únicos de categorias
+	let categoriesSet = new Set(categoriesArray);
+	//Convierte el objeto Set a un array
+	let categoriesUnique = [...categoriesSet];
+	return categoriesUnique;
+};
+
 export {
 	createDB,
 	createPost,
@@ -96,4 +113,5 @@ export {
 	verifyDB,
 	getAllTags,
 	getLastPosts,
+	getAllCategories,
 };

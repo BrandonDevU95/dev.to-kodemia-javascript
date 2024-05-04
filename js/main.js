@@ -3,6 +3,7 @@ import {
 	verifyDB,
 	getAllTags,
 	getLastPosts,
+	getAllCategories,
 } from './api/postsAPI.js';
 
 //crea una funcion anonima autoejecutable para cargar la DB
@@ -110,5 +111,32 @@ const printLastPosts = async () => {
 	AddBadgeNew('second-last-posts', 5);
 };
 
+const createTabCategory = (category) => {
+	const tabElement = document.createElement('div');
+	tabElement.classList.add('ms-3');
+	const tabLink = document.createElement('a');
+	tabLink.href = '#';
+	tabLink.classList.add(
+		'd-block',
+		'text-decoration-none',
+		'text-secondary',
+		'widget'
+	);
+	tabLink.textContent = category;
+	tabElement.appendChild(tabLink);
+	return tabElement;
+};
+
+const printCategories = async () => {
+	const categories = document.getElementById('list-categories');
+	const categoriesArray = await getAllCategories();
+
+	categoriesArray.forEach((category) => {
+		const tabElement = createTabCategory(category);
+		categories.appendChild(tabElement);
+	});
+};
+
 printTags();
 printLastPosts();
+printCategories();

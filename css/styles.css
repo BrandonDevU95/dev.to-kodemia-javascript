@@ -70,6 +70,14 @@
   color: rgb(47, 58, 178);
 }
 
+.widget {
+  padding: 16px;
+}
+.widget:hover {
+  background-color: #fff;
+  color: rgb(47, 58, 178) !important;
+}
+
 .fs-6 {
   font-size: 14px !important;
 }

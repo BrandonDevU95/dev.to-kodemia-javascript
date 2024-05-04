@@ -45,4 +45,8 @@
 
 .bg-dev {
   background-color: rgb(245, 245, 245);
+}
+
+#popular-tags {
+  max-height: 42vh;
 }/*# sourceMappingURL=styles.css.map */

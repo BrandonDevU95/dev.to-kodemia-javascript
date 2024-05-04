@@ -50,4 +50,30 @@ const getAllPost = async () => {
 	return postsArray;
 };
 
-export { createDB, createPost, deletePost, getPostById, getAllPost, verifyDB };
+const getAllTags = async () => {
+	let response = await fetch(`${POSTS_BASE_URL}/.json`);
+	let data = await response.json();
+
+	if (!data) return null;
+
+	let keys = Object.keys(data);
+	let postsArray = keys.map((key) => ({ ...data[key], key }));
+
+	//Crea un array con todos los tags de los posts con una profundidad de 1
+	let tagsArray = postsArray.map((post) => post.tags).flat();
+	//Crea un objeto Set para almacenar valores únicos de tags
+	let tagsSet = new Set(tagsArray);
+	//Convierte el objeto Set a un array
+	let tagsUnique = [...tagsSet];
+	return tagsUnique;
+};
+
+export {
+	createDB,
+	createPost,
+	deletePost,
+	getPostById,
+	getAllPost,
+	verifyDB,
+	getAllTags,
+};

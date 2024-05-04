@@ -1,4 +1,9 @@
-import { createDB, verifyDB, getAllTags } from './api/postsAPI.js';
+import {
+	createDB,
+	verifyDB,
+	getAllTags,
+	getLastPosts,
+} from './api/postsAPI.js';
 
 //crea una funcion anonima autoejecutable para cargar la DB
 (async () => {
@@ -38,4 +43,44 @@ const printTags = async () => {
 	});
 };
 
+const createTabDiscuss = (post) => {
+	const tabElement = document.createElement('div');
+	tabElement.classList.add('p-3', 'border-bottom', 'border-light');
+	const tabLink = document.createElement('a');
+	tabLink.href = '#';
+	tabLink.classList.add('text-decoration-none', 'text-discuss');
+	const tabTitle = document.createElement('p');
+	tabTitle.classList.add('m-0');
+	//Limitar el titulo a 25 caracteres
+	tabTitle.textContent =
+		post.titulo.length > 30
+			? post.titulo.substring(0, 30) + '...'
+			: post.titulo;
+	const tabComments = document.createElement('span');
+	tabComments.classList.add('pt-1', 'fs-6', 'text-secondary');
+	tabComments.textContent = `${post.numComentarios} comments`;
+	tabLink.appendChild(tabTitle);
+	tabLink.appendChild(tabComments);
+	tabElement.appendChild(tabLink);
+	return tabElement;
+};
+
+const insertTitleLastPosts = (title) => {
+	const titlePost = document.getElementById('title-last-post');
+	titlePost.textContent = title;
+};
+
+const printLastPosts = async () => {
+	const lastPosts = document.getElementById('last-posts');
+	const posts = await getLastPosts();
+
+	insertTitleLastPosts(`#${posts[0].tags[0]}`);
+
+	posts.forEach((post) => {
+		const tabElement = createTabDiscuss(post);
+		lastPosts.appendChild(tabElement);
+	});
+};
+
 printTags();
+printLastPosts();

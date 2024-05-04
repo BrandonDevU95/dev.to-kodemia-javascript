@@ -68,6 +68,25 @@ const getAllTags = async () => {
 	return tagsUnique;
 };
 
+const getLastPosts = async () => {
+	let response = await fetch(`${POSTS_BASE_URL}/.json`);
+	let data = await response.json();
+
+	if (!data) return null;
+
+	let keys = Object.keys(data);
+	let postsArray = keys.map((key) => ({ ...data[key], key }));
+
+	//Ordenar los posts por fecha
+	postsArray.sort((a, b) => {
+		return new Date(b.fechaCreacion) - new Date(a.fechaCreacion);
+	});
+
+	//Obtener los ultimos 5 posts
+	let lastPosts = postsArray.slice(0, 5);
+	return lastPosts;
+};
+
 export {
 	createDB,
 	createPost,
@@ -76,4 +95,5 @@ export {
 	getAllPost,
 	verifyDB,
 	getAllTags,
+	getLastPosts,
 };

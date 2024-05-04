@@ -63,6 +63,17 @@
   color: rgb(47, 58, 178);
 }
 
+.text-discuss {
+  color: rgb(64, 64, 64);
+}
+.text-discuss:hover {
+  color: rgb(47, 58, 178);
+}
+
 .fs-6 {
   font-size: 14px !important;
+}
+
+.fs-xs {
+  font-size: 12px !important;
 }/*# sourceMappingURL=styles.css.map */

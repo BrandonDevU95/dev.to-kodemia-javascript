@@ -9,6 +9,8 @@
 	}
 }
 
+// *** Aside Left ***
+
 .link-nav {
 	background-color: transparent;
 
@@ -71,6 +73,22 @@
 	}
 }
 
+// *** Aside Right ***
+
+.text-discuss {
+	color: rgb(64, 64, 64);
+
+	&:hover {
+		color: rgb(47, 58, 178);
+	}
+}
+
+// *** Helpers ****
+
 .fs-6 {
 	font-size: 14px !important;
+}
+
+.fs-xs {
+	font-size: 12px !important;
 }

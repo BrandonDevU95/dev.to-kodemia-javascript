@@ -10,6 +10,7 @@ const seed = [
 		fechaCreacion: '2024-04-25',
 		imagen: 'https://picsum.photos/id/32/200/300',
 		numReacciones: 56,
+		numComentarios: 12,
 	},
 	{
 		titulo: 'Introducción a React Hooks: Cómo utilizar useState y useEffect',
@@ -22,6 +23,7 @@ const seed = [
 		fechaCreacion: '2024-04-20',
 		imagen: 'https://picsum.photos/id/33/200/300',
 		numReacciones: 42,
+		numComentarios: 8,
 	},
 	{
 		titulo: 'Guía completa de CSS Grid: Cómo crear diseños modernos y flexibles',
@@ -34,6 +36,7 @@ const seed = [
 		fechaCreacion: '2024-04-18',
 		imagen: 'https://picsum.photos/id/34/200/300',
 		numReacciones: 73,
+		numComentarios: 16,
 	},
 	{
 		titulo: '10 Consejos para escribir código limpio y mantenible',
@@ -46,6 +49,7 @@ const seed = [
 		fechaCreacion: '2024-04-15',
 		imagen: 'https://picsum.photos/id/35/200/300',
 		numReacciones: 29,
+		numComentarios: 6,
 	},
 	{
 		titulo: 'Cómo implementar autenticación de usuarios con Firebase en tu aplicación web',
@@ -58,6 +62,7 @@ const seed = [
 		fechaCreacion: '2024-04-12',
 		imagen: 'https://picsum.photos/id/36/200/300',
 		numReacciones: 38,
+		numComentarios: 10,
 	},
 	{
 		titulo: 'Principios básicos de SEO para desarrolladores web',
@@ -74,6 +79,7 @@ const seed = [
 		fechaCreacion: '2024-04-10',
 		imagen: 'https://picsum.photos/id/37/200/300',
 		numReacciones: 51,
+		numComentarios: 14,
 	},
 	{
 		titulo: 'Introducción a TypeScript: Principales características y ventajas',
@@ -86,6 +92,7 @@ const seed = [
 		fechaCreacion: '2024-04-05',
 		imagen: 'https://picsum.photos/id/38/200/300',
 		numReacciones: 62,
+		numComentarios: 18,
 	},
 	{
 		titulo: 'Cómo mejorar la seguridad de tu aplicación web con medidas proactivas',
@@ -98,6 +105,7 @@ const seed = [
 		fechaCreacion: '2024-04-02',
 		imagen: 'https://picsum.photos/id/39/200/300',
 		numReacciones: 45,
+		numComentarios: 11,
 	},
 	{
 		titulo: '10 Herramientas útiles para el desarrollo web en 2024',
@@ -110,6 +118,7 @@ const seed = [
 		fechaCreacion: '2024-03-28',
 		imagen: 'https://picsum.photos/id/40/200/300',
 		numReacciones: 34,
+		numComentarios: 9,
 	},
 	{
 		titulo: 'Cómo diseñar una API RESTful: Principios y buenas prácticas',
@@ -122,6 +131,7 @@ const seed = [
 		fechaCreacion: '2024-03-25',
 		imagen: 'https://picsum.photos/id/41/200/300',
 		numReacciones: 58,
+		numComentarios: 15,
 	},
 	{
 		titulo: 'Guía completa de Bootstrap 5: Cómo crear sitios web modernos y responsivos',
@@ -134,6 +144,7 @@ const seed = [
 		fechaCreacion: '2024-03-22',
 		imagen: 'https://picsum.photos/id/42/200/300',
 		numReacciones: 49,
+		numComentarios: 13,
 	},
 	{
 		titulo: 'Introducción a GraphQL: Una alternativa moderna para el desarrollo de APIs',
@@ -146,6 +157,7 @@ const seed = [
 		fechaCreacion: '2024-03-20',
 		imagen: 'https://picsum.photos/id/43/200/300',
 		numReacciones: 37,
+		numComentarios: 7,
 	},
 	{
 		titulo: 'Estrategias para mejorar la accesibilidad en tus proyectos web',
@@ -158,6 +170,7 @@ const seed = [
 		fechaCreacion: '2024-03-18',
 		imagen: 'https://picsum.photos/id/44/200/300',
 		numReacciones: 43,
+		numComentarios: 10,
 	},
 	{
 		titulo: 'Optimización de imágenes para la web: Consejos y herramientas útiles',
@@ -170,6 +183,7 @@ const seed = [
 		fechaCreacion: '2024-03-15',
 		imagen: 'https://picsum.photos/id/45/200/300',
 		numReacciones: 31,
+		numComentarios: 8,
 	},
 	{
 		titulo: 'Implementación de autenticación basada en tokens JWT en tu API REST',
@@ -182,6 +196,7 @@ const seed = [
 		fechaCreacion: '2024-03-12',
 		imagen: 'https://picsum.photos/id/46/200/300',
 		numReacciones: 52,
+		numComentarios: 12,
 	},
 	{
 		titulo: 'Cómo realizar pruebas unitarias con Jest: Guía paso a paso',
@@ -194,6 +209,7 @@ const seed = [
 		fechaCreacion: '2024-03-10',
 		imagen: 'https://picsum.photos/id/47/200/300',
 		numReacciones: 47,
+		numComentarios: 9,
 	},
 	{
 		titulo: '10 Librerías JavaScript populares que debes conocer en 2024',
@@ -206,6 +222,7 @@ const seed = [
 		fechaCreacion: '2024-03-08',
 		imagen: 'https://picsum.photos/id/48/200/300',
 		numReacciones: 39,
+		numComentarios: 11,
 	},
 	{
 		titulo: 'Introducción a la programación reactiva con RxJS: Conceptos básicos y ejemplos prácticos',
@@ -218,6 +235,7 @@ const seed = [
 		fechaCreacion: '2024-03-05',
 		imagen: 'https://picsum.photos/id/49/200/300',
 		numReacciones: 56,
+		numComentarios: 13,
 	},
 	{
 		titulo: 'Cómo crear y consumir APIs RESTful con Node.js y Express',
@@ -230,6 +248,7 @@ const seed = [
 		fechaCreacion: '2024-03-02',
 		imagen: 'https://picsum.photos/id/50/200/300',
 		numReacciones: 65,
+		numComentarios: 15,
 	},
 	{
 		titulo: 'Principios básicos de diseño UI/UX para desarrolladores web',
@@ -242,6 +261,7 @@ const seed = [
 		fechaCreacion: '2024-02-28',
 		imagen: 'https://picsum.photos/id/51/200/300',
 		numReacciones: 48,
+		numComentarios: 10,
 	},
 ];
 

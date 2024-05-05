@@ -84,4 +84,30 @@
 
 .fs-xs {
   font-size: 12px !important;
+}
+
+.ps-4_5 {
+  padding-left: 2.5rem !important;
+}
+
+.tags-post:hover {
+  background-color: rgba(86, 160, 54, 0.2);
+  box-shadow: inset 0 0 0 1px rgba(86, 160, 54, 0.1), inset 0 0 0 1px rgba(86, 160, 54, 0.1), inset 0 0 0 1px rgba(86, 160, 54, 0.1);
+}
+
+.ps-4_5 {
+  padding-left: calc(2.5rem - 8px) !important;
+}
+
+.btn-comments:hover {
+  background-color: rgba(121, 127, 199, 0.1);
+}
+
+.crayons_icon_container {
+  background-color: rgb(245, 245, 245);
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 15px;
+  margin-right: -0.75em;
+  width: 28px;
+  height: 28px;
 }/*# sourceMappingURL=styles.css.map */

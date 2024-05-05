@@ -104,6 +104,26 @@ const getAllCategories = async () => {
 	return categoriesUnique;
 };
 
+const getPostsMoreCommenst = async () => {
+	let response = await fetch(`${POSTS_BASE_URL}/.json`);
+	let data = await response.json();
+
+	if (!data) return null;
+
+	let keys = Object.keys(data);
+	let postsArray = keys.map((key) => ({ ...data[key], key }));
+
+	//Ordenar los posts por numero de reacciones
+	postsArray.sort((a, b) => {
+		return b.numReacciones - a.numReacciones;
+	});
+
+	const trendingPosts = postsArray.map((post) => post.titulo);
+
+	//Obtener los ultimos 10 posts
+	return trendingPosts.slice(0, 10);
+};
+
 export {
 	createDB,
 	createPost,
@@ -114,4 +134,5 @@ export {
 	getAllTags,
 	getLastPosts,
 	getAllCategories,
+	getPostsMoreCommenst,
 };

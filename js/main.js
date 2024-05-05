@@ -4,6 +4,7 @@ import {
 	getAllTags,
 	getLastPosts,
 	getAllCategories,
+	getPostsMoreCommenst,
 } from './api/postsAPI.js';
 
 //crea una funcion anonima autoejecutable para cargar la DB
@@ -111,7 +112,7 @@ const printLastPosts = async () => {
 	AddBadgeNew('second-last-posts', 5);
 };
 
-const createTabCategory = (category) => {
+const createTab = (title) => {
 	const tabElement = document.createElement('div');
 	tabElement.classList.add('ms-3');
 	const tabLink = document.createElement('a');
@@ -122,7 +123,7 @@ const createTabCategory = (category) => {
 		'text-secondary',
 		'widget'
 	);
-	tabLink.textContent = category;
+	tabLink.textContent = title;
 	tabElement.appendChild(tabLink);
 	return tabElement;
 };
@@ -132,11 +133,22 @@ const printCategories = async () => {
 	const categoriesArray = await getAllCategories();
 
 	categoriesArray.forEach((category) => {
-		const tabElement = createTabCategory(category);
+		const tabElement = createTab(category);
 		categories.appendChild(tabElement);
+	});
+};
+
+const printTrendingPosts = async () => {
+	const trendingList = document.getElementById('trends-list');
+	const trendingPosts = await getPostsMoreCommenst();
+
+	trendingPosts.forEach((trend) => {
+		const tabElement = createTab(trend);
+		trendingList.appendChild(tabElement);
 	});
 };
 
 printTags();
 printLastPosts();
 printCategories();
+printTrendingPosts();

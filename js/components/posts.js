@@ -1,6 +1,7 @@
 import {
 	getAllTags,
 	getAllPost,
+	getPostById,
 	getLastPosts,
 	getAllCategories,
 	getPostsMoreCommenst,
@@ -171,6 +172,7 @@ const createTagsInCard = (wrapperId, tags) => {
 };
 
 const createPostCard = async (post, index) => {
+	//TODO Modificar para recibir el wrapperId
 	const posts = document.getElementById('posts-lists');
 	const div1 = document.createElement('div');
 	div1.classList.add('mb-1');
@@ -443,10 +445,170 @@ const printPost = async () => {
 	});
 };
 
+const createPostDetail = (post) => {
+	const card = document.createElement('div');
+	card.classList.add('card', 'border-light-subtle');
+
+	const imageFirstPost = document.createElement('div');
+	imageFirstPost.id = 'image-first-post';
+	card.appendChild(imageFirstPost);
+
+	const image = document.createElement('img');
+	image.classList.add('card-img-top', 'object-fit-cover');
+	image.src = post.imagen;
+	image.alt = post.titulo;
+	image.height = '340';
+	imageFirstPost.appendChild(image);
+
+	const px7 = document.createElement('div');
+	px7.classList.add('px-7', 'pt-3_5');
+	card.appendChild(px7);
+
+	const mb4 = document.createElement('div');
+	mb4.classList.add(
+		'mb-4',
+		'd-flex',
+		'align-items-center',
+		'justify-content-between'
+	);
+	px7.appendChild(mb4);
+
+	const lh1 = document.createElement('div');
+	lh1.classList.add('d-flex', 'align-items-center', 'lh-1');
+	mb4.appendChild(lh1);
+
+	const authorImage = document.createElement('div');
+	const avatar = document.createElement('img');
+	avatar.src = post.autor.avatar;
+	avatar.classList.add('rounded-circle');
+	avatar.width = '46';
+	avatar.height = '46';
+	avatar.alt = post.autor.name;
+	authorImage.appendChild(avatar);
+	lh1.appendChild(authorImage);
+
+	const authorInfo = document.createElement('div');
+	authorInfo.classList.add('mt-1', 'ps-2');
+	lh1.appendChild(authorInfo);
+
+	const authorName = document.createElement('p');
+	authorName.classList.add('mb-1', 'fw-bold', 'text-capitalize', 'fs-5_5');
+	authorName.textContent = post.autor.name;
+	authorInfo.appendChild(authorName);
+
+	const fechaCreacion = document.createElement('span');
+	fechaCreacion.classList.add('fw-light', 'text-secondary', 'fs-xs');
+	fechaCreacion.textContent = `Posted on ${new Date(
+		post.fechaCreacion
+	).toLocaleDateString('en-US', {
+		month: 'short',
+		day: 'numeric',
+	})}`;
+	authorInfo.appendChild(fechaCreacion);
+
+	const py2 = document.createElement('div');
+	py2.classList.add('py-2', 'd-flex', 'column-gap-4', 'flex-wrap');
+	px7.appendChild(py2);
+	const reactions = [
+		{
+			src: 'https://dev.to/assets/sparkle-heart-5f9bee3767e18deb1bb725290cb151c25234768a0e9a2bd39370c382d02920cf.svg',
+			count: Math.floor(Math.random() * 25) + 1,
+		},
+		{
+			src: 'https://dev.to/assets/multi-unicorn-b44d6f8c23cdd00964192bedc38af3e82463978aa611b4365bd33a0f1f4f3e97.svg',
+			count: Math.floor(Math.random() * 25) + 1,
+		},
+		{
+			src: 'https://dev.to/assets/exploding-head-daceb38d627e6ae9b730f36a1e390fca556a4289d5a41abb2c35068ad3e2c4b5.svg',
+			count: Math.floor(Math.random() * 25) + 1,
+		},
+		{
+			src: 'https://dev.to/assets/raised-hands-74b2099fd66a39f2d7eed9305ee0f4553df0eb7b4f11b01b6b1b499973048fe5.svg',
+			count: Math.floor(Math.random() * 25) + 1,
+		},
+		{
+			src: 'https://dev.to/assets/fire-f60e7a582391810302117f987b22a8ef04a2fe0df7e3258a5f49332df1cec71e.svg',
+			count: Math.floor(Math.random() * 25) + 1,
+		},
+	];
+
+	//Ordenar el array de reacciones de mayor a menor
+	reactions.sort((a, b) => b.count - a.count);
+
+	reactions.forEach((reaction) => {
+		const span = document.createElement('span');
+		span.classList.add('d-flex', 'column-gap-1', 'align-items-center');
+		py2.appendChild(span);
+
+		const img = document.createElement('img');
+		img.src = reaction.src;
+		img.width = '24';
+		img.height = '24';
+		span.appendChild(img);
+
+		const spanCount = document.createElement('span');
+		spanCount.textContent = reaction.count;
+		span.appendChild(spanCount);
+	});
+
+	const mt2 = document.createElement('div');
+	mt2.classList.add('mt-2');
+	px7.appendChild(mt2);
+
+	const postInfo = document.createElement('div');
+	mt2.appendChild(postInfo);
+
+	const postTitle = document.createElement('h1');
+	postTitle.classList.add('fw-bold');
+	postTitle.textContent = post.titulo;
+	postInfo.appendChild(postTitle);
+
+	const tagsContainer = document.createElement('div');
+	tagsContainer.classList.add('mb-2', 'd-flex', 'flex-wrap', 'gap-1');
+	postInfo.appendChild(tagsContainer);
+
+	post.tags.forEach((tag) => {
+		const tagLink = document.createElement('a');
+		tagLink.href = '#';
+		tagLink.classList.add(
+			'text-decoration-none',
+			'text-secondary',
+			'px-2',
+			'py-1',
+			'tags-post',
+			'rounded'
+		);
+		tagLink.textContent = `#${tag}`;
+		tagsContainer.appendChild(tagLink);
+	});
+
+	const cardBody = document.createElement('div');
+	cardBody.classList.add('card-body', 'py-4_5', 'px-7');
+	card.appendChild(cardBody);
+
+	const postDescription = document.createElement('p');
+	postDescription.classList.add('fs-5');
+	postDescription.textContent = post.descripcion;
+	cardBody.appendChild(postDescription);
+
+	return card;
+};
+
+const printDetailsPost = async (id, wrapperId) => {
+	const wrapper = document.getElementById(wrapperId);
+	const post = await getPostById(id);
+	const avatar = await getAvatarByUsername(post.autor.username);
+
+	post.autor.avatar = avatar;
+	const postDetail = createPostDetail(post);
+	wrapper.appendChild(postDetail);
+};
+
 export {
 	printTags,
+	printPost,
 	printLastPosts,
 	printCategories,
+	printDetailsPost,
 	printTrendingPosts,
-	printPost,
 };

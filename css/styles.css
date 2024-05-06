@@ -163,4 +163,12 @@
 .pill-position {
   top: 20% !important;
   left: 80% !important;
+}
+
+.w-fav {
+  width: 4rem !important;
+}
+
+.top-fav {
+  top: 60px;
 }/*# sourceMappingURL=styles.css.map */

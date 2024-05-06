@@ -186,4 +186,13 @@
 .bi-bookmark-hover:hover {
   color: #0d6efd !important;
   cursor: pointer;
+}
+
+.info-user-top {
+  height: 32px !important;
+  background-color: #48addf !important;
+}
+
+.margin-avatar {
+  margin-top: -2.5rem !important;
 }/*# sourceMappingURL=styles.css.map */

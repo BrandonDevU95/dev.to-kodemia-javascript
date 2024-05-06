@@ -207,7 +207,7 @@ const createPostCard = async (post, index) => {
 	const img = document.createElement('img');
 	const avatar = await getAvatarByUsername(post.autor.username);
 	img.src = avatar;
-	img.alt = 'dhruvjoshi9 profile';
+	img.alt = post.autor.name;
 	img.classList.add('rounded-circle');
 	img.width = '32';
 	img.height = '32';
@@ -235,10 +235,16 @@ const createPostCard = async (post, index) => {
 
 	const div10 = document.createElement('div');
 
+	const a3 = document.createElement('a');
+	a3.href = `../../views/details.html?id=${post.key}`;
+	a3.classList.add('text-decoration-none');
+
 	const h2 = document.createElement('h2');
-	h2.classList.add('mb-1', 'fs-4', 'fw-bold', 'px-2');
+	h2.classList.add('mb-1', 'fs-4', 'fw-bold', 'px-2', 'text-discuss');
 	h2.textContent = post.titulo;
-	div10.appendChild(h2);
+
+	a3.appendChild(h2);
+	div10.appendChild(a3);
 
 	const div11 = document.createElement('div');
 	div11.classList.add('mb-2', 'd-flex', 'flex-wrap', 'gap-1');

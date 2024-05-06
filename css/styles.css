@@ -64,10 +64,10 @@
 }
 
 .text-discuss {
-  color: rgb(64, 64, 64);
+  color: rgb(64, 64, 64) !important;
 }
 .text-discuss:hover {
-  color: rgb(47, 58, 178);
+  color: rgb(47, 58, 178) !important;
 }
 
 .widget {

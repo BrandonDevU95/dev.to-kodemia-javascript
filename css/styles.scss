@@ -34,7 +34,7 @@
 	color: rgb(64, 64, 64);
 
 	&:hover {
-		background-color: rgba(59, 73, 233, 0.1);
+		background-color: rgba(59, 73, 233, 0.2);
 		color: rgb(47, 58, 178);
 	}
 }
@@ -174,4 +174,10 @@
 
 .btn-lg-login {
 	padding: 12px 20px;
+}
+
+// *** Header Home ***
+.pill-position {
+	top: 20% !important;
+	left: 80% !important;
 }

@@ -7,7 +7,7 @@ import {
 } from '../js/api/usersAPI.js';
 
 if (getToken()) {
-	window.location.href = '../index.html';
+	window.location.href = '../views/home.html';
 }
 
 const loginBtn = document.getElementById('login-btn');
@@ -38,5 +38,5 @@ loginBtn.addEventListener('click', async (event) => {
 	setUserData(user);
 	form[0].classList.remove('was-validated');
 	form[0].reset();
-	window.location.href = '../index.html';
+	window.location.href = '../views/home.html';
 });

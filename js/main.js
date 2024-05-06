@@ -14,6 +14,12 @@ import {
 	getAvatarByUsername,
 } from './api/usersAPI.js';
 
+import { getToken } from './api/usersAPI.js';
+
+if (getToken()) {
+	window.location.href = '../views/home.html';
+}
+
 //crea una funcion anonima autoejecutable para cargar la DB
 (async () => {
 	const posts = await verifyPostsDB();

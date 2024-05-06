@@ -45,23 +45,6 @@
             <div class="row">
                 <div class="col">
                     <aside>
-                        <!-- Card Community -->
-                        <div class="card border-light-subtle text-start shadow-sm">
-                            <div class="card-body">
-                                <h5 class="card-title pb-3 fw-bold fs-4">DEV Community is a community of 1,446,322
-                                    amazing
-                                    developers
-                                </h5>
-                                <p class="card-text text-secondary">We're a place where coders share, stay
-                                    up-to-date
-                                    and grow their
-                                    careers.</p>
-                                <div class="d-flex flex-column gap-1">
-                                    <button type="button" class="btn btn-outline-primary">Create account</button>
-                                    <button type="button" class="btn btn-login">Log in</button>
-                                </div>
-                            </div>
-                        </div>
                         <!-- Navigation -->
                         <nav class="my-3">
                             <ul class="list-group">
@@ -419,40 +402,29 @@
                         <!-- Popular Tags -->
                         <!-- TODO: Crear compenente cuando no haya tags -->
                         <nav class="mb-4">
-                            <h3 class="fs-6 fw-bold text-start p-2">Popular Tags</h3>
+                            <h3 class="fs-6 fw-bold text-start p-2">My Tags</h3>
                             <div id="popular-tags" class="overflow-y-auto"></div>
                         </nav>
-                        <!-- Billboard Container -->
-                        <div>
-                            <div class="bilboard overflow-y-auto card border-light-subtle text-start shadow-sm pb-3">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <p class="m-0 text-secondary fs-6">DEV Community</p>
-                                    <button type="button" class="btn btn-bilboard p-1"><svg
-                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" role="img"
-                                            aria-labelledby="akx9dnldf58qc86smqohvrx8tejxz61t"
-                                            class="crayons-icon pointer-events-none">
-                                            <title id="akx9dnldf58qc86smqohvrx8tejxz61t">Dropdown menu</title>
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M8.25 12a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm5.25 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm3.75 1.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z">
-                                            </path>
-                                        </svg></button>
-                                </div>
-                                <div class="p-1 pt-2">
-                                    <p class="m-0">
-                                        <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--KfYhPrXu--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_350/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/gxatl8njvv45ht30hcx9.png"
-                                            alt="Become A Moderator!" width="250" class="mb-4">
-                                        <br>
-                                        <strong>
-                                            <a href="#">
-                                                Fill out this survey
-                                            </a> and help us moderate our community by becoming a tag moderator here at
-                                            DEV.
-                                        </strong>
-                                    </p>
-                                </div>
+                        <!-- Dev Community -->
+                        <div class="card border-light-subtle text-start shadow-sm p-3">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <p class="mb-0 ms-1 fs-6 text-dark">DEV Community</p>
+                                <a href="#" class="btn social-icon">
+                                    <i class="bi bi-three-dots"></i>
+                                </a>
+                            </div>
+                            <div class="card-header bg-transparent border-light pt-2_5">
+                                <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--MV0h6VJf--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_350/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/rwdadr222nahumlzn0ff.jpg"
+                                    alt="DEV Community" width="250" class="w-100 rounded mb-3">
+                            </div>
+                            <div class="card-body p-0">
+                                <h5 class="card-title fw-bold fs-4 mb-3">Stay in the loop with the latest articles,
+                                    trends, and tips in the developer community.
+                                </h5>
+                                <a href="#">Sign up for our newsletter now!</a>
                             </div>
                         </div>
+                        <hr class="pt-3 border-0 m-0">
                         <!-- Footer -->
                         <footer class="mt-4 fs-6 text-secondary">
                             <p>

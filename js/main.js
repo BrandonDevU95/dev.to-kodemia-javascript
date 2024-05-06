@@ -376,7 +376,6 @@ const createPostCard = async (post, index) => {
 
 	const span8 = document.createElement('span');
 	span8.classList.add('ms-3');
-	span8.textContent = '5';
 
 	const span9 = document.createElement('span');
 	span9.classList.add('hidden', 's:inline');
@@ -400,30 +399,12 @@ const createPostCard = async (post, index) => {
 		'align-items-center'
 	);
 
-	const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-	svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-	svg.setAttribute('width', '24');
-	svg.setAttribute('height', '24');
-	svg.setAttribute('role', 'img');
-	svg.setAttribute('aria-labelledby', 'aa7nrp8jx8nnb05gesp2rkyrpnmgsxke');
-	svg.classList.add('me-1');
-
-	const title = document.createElement('title');
-	title.id = 'aa7nrp8jx8nnb05gesp2rkyrpnmgsxke';
-	title.textContent = 'Comments';
-	svg.appendChild(title);
-
-	const path = document.createElement('path');
-	path.setAttribute(
-		'd',
-		'M10.5 5h3a6 6 0 110 12v2.625c-3.75-1.5-9-3.75-9-8.625a6 6 0 016-6zM12 15.5h1.5a4.501 4.501 0 001.722-8.657A4.5 4.5 0 0013.5 6.5h-3A4.5 4.5 0 006 11c0 2.707 1.846 4.475 6 6.36V15.5z'
-	);
-	path.setAttribute('role', 'presentation');
-	svg.appendChild(path);
+	const icon = document.createElement('i');
+	icon.classList.add('bi', 'bi-chat', 'me-2');
 
 	const span10 = document.createElement('span');
 	span10.textContent = 'Add Comment';
-	a5.appendChild(svg);
+	a5.appendChild(icon);
 	a5.appendChild(span10);
 
 	div13.appendChild(a4);

@@ -262,6 +262,7 @@ const users = [
 			lastname: 'doe',
 		},
 		phone: '1-570-236-7033',
+		acerca: 'Full-stack developer apasionado por crear aplicaciones web interactivas y escalables || Me encanta trabajar con JavaScript, React.js y Node.js || Amante del café y los paseos en bicicleta.',
 	},
 	{
 		avatar: 'https://avataaars.io/?avatarStyle=Circle&topType=WinterHat1&accessoriesType=Blank&hatColor=Red&hairColor=Red&facialHairType=MoustacheFancy&facialHairColor=Blonde&clotheType=Hoodie&clotheColor=Black&eyeType=Squint&eyebrowType=UpDownNatural&mouthType=Sad&skinColor=DarkBrown',
@@ -279,6 +280,7 @@ const users = [
 			lastname: 'morrison',
 		},
 		phone: '1-570-236-7033',
+		acerca: 'Desarrollador de aplicaciones móviles especializado en iOS y Android || Adicto al diseño de interfaces intuitivas y la optimización de rendimiento || Disfruto explorar nuevas tecnologías y viajar por el mundo.',
 	},
 	{
 		avatar: 'https://avataaars.io/?avatarStyle=Circle&topType=LongHairFroBand&accessoriesType=Blank&hatColor=White&hairColor=Blue&facialHairType=MoustacheFancy&facialHairColor=Auburn&clotheType=BlazerShirt&clotheColor=Blue01&eyeType=Wink&eyebrowType=FlatNatural&mouthType=Default&skinColor=Brown',
@@ -296,6 +298,7 @@ const users = [
 			lastname: 'ryan',
 		},
 		phone: '1-567-094-1345',
+		acerca: 'Programador web especializado en el desarrollo de e-commerce y sistemas de gestión || Apasionado por la accesibilidad y la usabilidad en el diseño de interfaces || Me encanta el café, la música electrónica y el senderismo.',
 	},
 	{
 		avatar: 'https://avataaars.io/?avatarStyle=Circle&topType=Turban&accessoriesType=Sunglasses&hatColor=Pink&hairColor=PastelPink&facialHairType=BeardLight&facialHairColor=BlondeGolden&clotheType=BlazerSweater&eyeType=Squint&eyebrowType=RaisedExcited&mouthType=Vomit&skinColor=Brown',
@@ -313,6 +316,7 @@ const users = [
 			lastname: 'romer',
 		},
 		phone: '1-765-789-6734',
+		acerca: 'Ingeniero de software y entusiasta de la inteligencia artificial || Me emociona explorar el aprendizaje automático y la visión por computadora || Apasionado por el mundo del cine y los juegos de estrategia.',
 	},
 	{
 		avatar: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads01&accessoriesType=Prescription02&hatColor=PastelOrange&hairColor=Brown&facialHairType=Blank&facialHairColor=Blonde&clotheType=ShirtVNeck&clotheColor=PastelRed&eyeType=Dizzy&eyebrowType=DefaultNatural&mouthType=Disbelief&skinColor=Brown',
@@ -330,6 +334,7 @@ const users = [
 			lastname: 'powell',
 		},
 		phone: '1-956-001-1945',
+		acerca: 'Desarrollador de juegos independiente y diseñador de experiencias interactivas || Me encanta experimentar con Unity, Unreal Engine y Godot || Aficionado a los videojuegos retro y las historias de ciencia ficción.',
 	},
 	{
 		avatar: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairTheCaesar&accessoriesType=Sunglasses&hairColor=Red&facialHairType=Blank&clotheType=CollarSweater&clotheColor=White&eyeType=Close&eyebrowType=UpDownNatural&mouthType=Serious&skinColor=Pale',
@@ -347,6 +352,7 @@ const users = [
 			lastname: 'russell',
 		},
 		phone: '1-678-345-9856',
+		acerca: 'Ingeniero de software enfocado en la automatización y la integración continua || Especializado en DevOps, Docker y Kubernetes || Amante de los deportes al aire libre y la cocina internacional.',
 	},
 	{
 		avatar: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairFrizzle&accessoriesType=Prescription01&hairColor=Auburn&facialHairType=BeardMajestic&facialHairColor=Red&clotheType=Hoodie&clotheColor=Blue02&eyeType=Happy&eyebrowType=SadConcernedNatural&mouthType=Twinkle&skinColor=Tanned',
@@ -364,6 +370,7 @@ const users = [
 			lastname: 'snyder',
 		},
 		phone: '1-123-943-0563',
+		acerca: 'Desarrollador de software libre y amante del código abierto || Me apasiona contribuir a proyectos de la comunidad y compartir conocimientos || Disfruto de la música indie y las caminatas en la naturaleza.',
 	},
 	{
 		avatar: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortCurly&accessoriesType=Round&hairColor=BlondeGolden&facialHairType=MoustacheMagnum&facialHairColor=Platinum&clotheType=GraphicShirt&clotheColor=PastelOrange&graphicType=Resist&eyeType=Happy&eyebrowType=AngryNatural&mouthType=Smile&skinColor=Tanned',
@@ -381,6 +388,7 @@ const users = [
 			lastname: 'hopkins',
 		},
 		phone: '1-478-001-0890',
+		acerca: 'Ingeniero de sistemas y experto en arquitectura de microservicios || Me fascina diseñar infraestructuras escalables y tolerantes a fallos || Aficionado a la fotografía y los viajes de mochilero.',
 	},
 	{
 		avatar: 'https://avataaars.io/?avatarStyle=Circle&topType=LongHairBun&accessoriesType=Prescription02&hairColor=Brown&facialHairType=MoustacheFancy&facialHairColor=Platinum&clotheType=CollarSweater&clotheColor=Heather&graphicType=Deer&eyeType=Cry&eyebrowType=RaisedExcited&mouthType=Grimace&skinColor=Black',
@@ -398,6 +406,7 @@ const users = [
 			lastname: 'hale',
 		},
 		phone: '1-678-456-1934',
+		acerca: 'Desarrollador de blockchain y entusiasta de las criptomonedas || Apasionado por la descentralización y la tecnología distribuida || Me encanta la música electrónica y la cultura hacker.',
 	},
 	{
 		avatar: 'https://avataaars.io/?avatarStyle=Circle&topType=WinterHat3&accessoriesType=Round&hatColor=PastelGreen&hairColor=BrownDark&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=BlazerShirt&clotheColor=Blue02&eyeType=Happy&eyebrowType=DefaultNatural&mouthType=Grimace&skinColor=Tanned',
@@ -415,6 +424,7 @@ const users = [
 			lastname: 'klein',
 		},
 		phone: '1-104-001-4567',
+		acerca: 'Ingeniero de software enfocado en la seguridad informática y la criptografía || Me fascina resolver problemas complejos con Python, C++ y Java || Aficionado a los retos de programación y los juegos de mesa.',
 	},
 ];
 

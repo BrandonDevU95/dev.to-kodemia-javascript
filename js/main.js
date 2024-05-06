@@ -1,6 +1,6 @@
 import {
-	createDB,
-	verifyDB,
+	createPostsDB,
+	verifyPostsDB,
 	getAllTags,
 	getAllPost,
 	getLastPosts,
@@ -8,10 +8,14 @@ import {
 	getPostsMoreCommenst,
 } from './api/postsAPI.js';
 
+import { verifyUsersDB, createUsersDB } from './api/usersAPI.js';
+
 //crea una funcion anonima autoejecutable para cargar la DB
 (async () => {
-	const products = await verifyDB();
-	if (!products) createDB();
+	const posts = await verifyPostsDB();
+	const users = await verifyUsersDB();
+	if (!posts) createPostsDB();
+	if (!users) createUsersDB();
 })();
 
 const createTag = (tag) => {

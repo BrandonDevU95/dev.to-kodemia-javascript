@@ -1,16 +1,24 @@
-import { seed } from '../seedDB.js';
+import { posts, users } from '../seedDB.js';
 
 const POSTS_BASE_URL =
 	'https://kodemia-devto-default-rtdb.firebaseio.com/posts';
 
-const createDB = () => {
-	seed.forEach(async (post) => {
-		await createPost(post);
+const createPostsDB = () => {
+	posts.forEach(async (post) => {
+		const user = users[Math.floor(Math.random() * users.length)];
+		const postUser = {
+			...post,
+			autor: {
+				username: user.username,
+				name: user.name.firstname + ' ' + user.name.lastname,
+			},
+		};
+		await createPost(postUser);
 	});
-	console.log('Success DB');
+	console.log('Posts DB Success');
 };
 
-const verifyDB = async () => {
+const verifyPostsDB = async () => {
 	let response = await fetch(`${POSTS_BASE_URL}/.json`);
 	let data = await response.json();
 	return data;
@@ -125,12 +133,12 @@ const getPostsMoreCommenst = async () => {
 };
 
 export {
-	createDB,
+	createPostsDB,
 	createPost,
 	deletePost,
 	getPostById,
 	getAllPost,
-	verifyDB,
+	verifyPostsDB,
 	getAllTags,
 	getLastPosts,
 	getAllCategories,

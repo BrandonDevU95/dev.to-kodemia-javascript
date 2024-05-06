@@ -1,10 +1,9 @@
-const seed = [
+const posts = [
 	{
 		titulo: 'Cómo mejorar el rendimiento de tu sitio web con técnicas de optimización avanzadas',
 		descripcion:
 			'Descubre algunas técnicas avanzadas para mejorar el rendimiento de tu sitio web, desde la optimización del lado del servidor hasta la gestión eficiente de recursos en el cliente.',
 		categoria: 'Desarrollo Web',
-		autor: 'John Doe',
 		tags: ['optimización', 'rendimiento', 'desarrollo web'],
 		tiempoLectura: '10 minutos',
 		fechaCreacion: '2024-04-25',
@@ -17,7 +16,6 @@ const seed = [
 		descripcion:
 			'Aprende los conceptos básicos de React Hooks y cómo utilizar useState y useEffect para gestionar el estado y los efectos en tus aplicaciones React.',
 		categoria: 'React',
-		autor: 'Jane Smith',
 		tags: ['React', 'Hooks', 'useState', 'useEffect'],
 		tiempoLectura: '8 minutos',
 		fechaCreacion: '2024-04-20',
@@ -30,7 +28,6 @@ const seed = [
 		descripcion:
 			'Domina CSS Grid con esta guía completa que te enseñará a crear diseños modernos y flexibles para tus proyectos web.',
 		categoria: 'CSS',
-		autor: 'Juan Pérez',
 		tags: ['CSS', 'CSS Grid', 'diseño web'],
 		tiempoLectura: '12 minutos',
 		fechaCreacion: '2024-04-18',
@@ -43,7 +40,6 @@ const seed = [
 		descripcion:
 			'Descubre algunos consejos prácticos para escribir código limpio y mantenible que mejore la calidad y la legibilidad de tus proyectos de desarrollo.',
 		categoria: 'Desarrollo Web',
-		autor: 'Ana García',
 		tags: ['código limpio', 'mantenibilidad', 'buenas prácticas'],
 		tiempoLectura: '6 minutos',
 		fechaCreacion: '2024-04-15',
@@ -56,7 +52,6 @@ const seed = [
 		descripcion:
 			'Aprende a utilizar Firebase Authentication para agregar fácilmente autenticación de usuarios a tu aplicación web y proteger tu contenido.',
 		categoria: 'Firebase',
-		autor: 'David López',
 		tags: ['Firebase', 'autenticación', 'seguridad'],
 		tiempoLectura: '9 minutos',
 		fechaCreacion: '2024-04-12',
@@ -69,7 +64,6 @@ const seed = [
 		descripcion:
 			'Conoce los principios básicos de SEO que todo desarrollador web debería entender para mejorar el posicionamiento y visibilidad de sus proyectos en buscadores.',
 		categoria: 'SEO',
-		autor: 'María Fernández',
 		tags: [
 			'SEO',
 			'optimización para motores de búsqueda',
@@ -86,7 +80,6 @@ const seed = [
 		descripcion:
 			'Descubre las principales características y ventajas de TypeScript y aprende cómo puede mejorar la calidad y mantenibilidad de tus proyectos JavaScript.',
 		categoria: 'TypeScript',
-		autor: 'Pedro Martínez',
 		tags: ['TypeScript', 'JavaScript', 'tipado estático'],
 		tiempoLectura: '11 minutos',
 		fechaCreacion: '2024-04-05',
@@ -99,7 +92,6 @@ const seed = [
 		descripcion:
 			'Aprende a identificar y aplicar medidas proactivas para mejorar la seguridad de tu aplicación web y protegerla contra posibles vulnerabilidades.',
 		categoria: 'Seguridad Web',
-		autor: 'Elena Ruiz',
 		tags: ['seguridad web', 'ciberseguridad', 'protección'],
 		tiempoLectura: '9 minutos',
 		fechaCreacion: '2024-04-02',
@@ -112,7 +104,6 @@ const seed = [
 		descripcion:
 			'Descubre algunas herramientas útiles que te ayudarán a mejorar tu flujo de trabajo y productividad como desarrollador web en el año 2024.',
 		categoria: 'Herramientas',
-		autor: 'Carlos González',
 		tags: ['herramientas', 'desarrollo web', 'productividad'],
 		tiempoLectura: '5 minutos',
 		fechaCreacion: '2024-03-28',
@@ -125,7 +116,6 @@ const seed = [
 		descripcion:
 			'Aprende los principios fundamentales y las mejores prácticas para diseñar una API RESTful que sea escalable, flexible y fácil de mantener.',
 		categoria: 'APIs',
-		autor: 'Laura Díaz',
 		tags: ['APIs', 'REST', 'diseño de APIs'],
 		tiempoLectura: '13 minutos',
 		fechaCreacion: '2024-03-25',
@@ -138,7 +128,6 @@ const seed = [
 		descripcion:
 			'Aprende a utilizar Bootstrap 5 para crear sitios web modernos, responsivos y estéticamente atractivos con facilidad, gracias a su sistema de grid y componentes.',
 		categoria: 'Bootstrap',
-		autor: 'Pablo Rodríguez',
 		tags: ['Bootstrap', 'diseño web', 'front-end'],
 		tiempoLectura: '10 minutos',
 		fechaCreacion: '2024-03-22',
@@ -151,7 +140,6 @@ const seed = [
 		descripcion:
 			'Descubre qué es GraphQL y cómo puede revolucionar la forma en que desarrollas APIs, ofreciendo flexibilidad y eficiencia en la transferencia de datos.',
 		categoria: 'GraphQL',
-		autor: 'Sara Navarro',
 		tags: ['GraphQL', 'APIs', 'consulta de datos'],
 		tiempoLectura: '8 minutos',
 		fechaCreacion: '2024-03-20',
@@ -164,7 +152,6 @@ const seed = [
 		descripcion:
 			'Aprende estrategias prácticas para mejorar la accesibilidad de tus proyectos web y hacer que sean más inclusivos para todos los usuarios.',
 		categoria: 'Accesibilidad',
-		autor: 'Luisa Torres',
 		tags: ['accesibilidad', 'usabilidad', 'diseño web'],
 		tiempoLectura: '7 minutos',
 		fechaCreacion: '2024-03-18',
@@ -177,7 +164,6 @@ const seed = [
 		descripcion:
 			'Descubre cómo optimizar tus imágenes para la web sin sacrificar calidad, utilizando herramientas y técnicas eficientes para reducir el tamaño de los archivos.',
 		categoria: 'Desarrollo Web',
-		autor: 'Mario López',
 		tags: ['optimización de imágenes', 'rendimiento', 'desarrollo web'],
 		tiempoLectura: '6 minutos',
 		fechaCreacion: '2024-03-15',
@@ -190,7 +176,6 @@ const seed = [
 		descripcion:
 			'Aprende a implementar autenticación basada en tokens JWT (JSON Web Tokens) en tu API REST para proteger rutas y recursos de forma segura y eficiente.',
 		categoria: 'Seguridad',
-		autor: 'Javier García',
 		tags: ['JWT', 'autenticación', 'seguridad web'],
 		tiempoLectura: '9 minutos',
 		fechaCreacion: '2024-03-12',
@@ -203,7 +188,6 @@ const seed = [
 		descripcion:
 			'Aprende a escribir y ejecutar pruebas unitarias eficientes para tus aplicaciones JavaScript utilizando Jest, un framework de pruebas desarrollado por Facebook.',
 		categoria: 'Testing',
-		autor: 'Carmen Martínez',
 		tags: ['Jest', 'pruebas unitarias', 'testing'],
 		tiempoLectura: '11 minutos',
 		fechaCreacion: '2024-03-10',
@@ -216,7 +200,6 @@ const seed = [
 		descripcion:
 			'Descubre algunas de las librerías JavaScript más populares y útiles que deberías conocer y considerar utilizar en tus proyectos de desarrollo web este año.',
 		categoria: 'JavaScript',
-		autor: 'Marcos Sánchez',
 		tags: ['JavaScript', 'librerías', 'desarrollo web'],
 		tiempoLectura: '7 minutos',
 		fechaCreacion: '2024-03-08',
@@ -229,7 +212,6 @@ const seed = [
 		descripcion:
 			'Aprende los conceptos básicos de la programación reactiva y cómo aplicarlos en tus proyectos JavaScript utilizando RxJS, una librería de programación reactiva.',
 		categoria: 'Reactividad',
-		autor: 'Eduardo Fernández',
 		tags: ['RxJS', 'programación reactiva', 'JavaScript'],
 		tiempoLectura: '10 minutos',
 		fechaCreacion: '2024-03-05',
@@ -242,7 +224,6 @@ const seed = [
 		descripcion:
 			'Aprende a crear APIs RESTful robustas con Node.js y Express, utilizando buenas prácticas y patrones de diseño para desarrollar servicios web escalables y mantenibles.',
 		categoria: 'Node.js',
-		autor: 'Roberto Gómez',
 		tags: ['Node.js', 'Express', 'APIs'],
 		tiempoLectura: '12 minutos',
 		fechaCreacion: '2024-03-02',
@@ -255,7 +236,6 @@ const seed = [
 		descripcion:
 			'Conoce los principios básicos de diseño de interfaz de usuario (UI) y experiencia de usuario (UX) que todo desarrollador web debería entender para crear mejores productos.',
 		categoria: 'Diseño',
-		autor: 'Sofía Pérez',
 		tags: ['UI', 'UX', 'diseño web'],
 		tiempoLectura: '8 minutos',
 		fechaCreacion: '2024-02-28',
@@ -265,4 +245,177 @@ const seed = [
 	},
 ];
 
-export { seed };
+const users = [
+	{
+		avatar: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortWaved&accessoriesType=Prescription01&hairColor=Black&facialHairType=BeardMajestic&facialHairColor=Brown&clotheType=BlazerShirt&eyeType=Close&eyebrowType=RaisedExcited&mouthType=Sad&skinColor=Black',
+		address: {
+			city: 'kilcoole',
+			street: 'new road',
+			number: 7682,
+			zipcode: '12926-3874',
+		},
+		email: 'john@gmail.com',
+		username: 'johnd',
+		password: 'm38rmF$',
+		name: {
+			firstname: 'john',
+			lastname: 'doe',
+		},
+		phone: '1-570-236-7033',
+	},
+	{
+		avatar: 'https://avataaars.io/?avatarStyle=Circle&topType=WinterHat1&accessoriesType=Blank&hatColor=Red&hairColor=Red&facialHairType=MoustacheFancy&facialHairColor=Blonde&clotheType=Hoodie&clotheColor=Black&eyeType=Squint&eyebrowType=UpDownNatural&mouthType=Sad&skinColor=DarkBrown',
+		address: {
+			city: 'kilcoole',
+			street: 'Lovers Ln',
+			number: 7267,
+			zipcode: '12926-3874',
+		},
+		email: 'morrison@gmail.com',
+		username: 'mor_2314',
+		password: '83r5^_',
+		name: {
+			firstname: 'david',
+			lastname: 'morrison',
+		},
+		phone: '1-570-236-7033',
+	},
+	{
+		avatar: 'https://avataaars.io/?avatarStyle=Circle&topType=LongHairFroBand&accessoriesType=Blank&hatColor=White&hairColor=Blue&facialHairType=MoustacheFancy&facialHairColor=Auburn&clotheType=BlazerShirt&clotheColor=Blue01&eyeType=Wink&eyebrowType=FlatNatural&mouthType=Default&skinColor=Brown',
+		address: {
+			city: 'Cullman',
+			street: 'Frances Ct',
+			number: 86,
+			zipcode: '29567-1452',
+		},
+		email: 'kevin@gmail.com',
+		username: 'kevinryan',
+		password: 'kev02937@',
+		name: {
+			firstname: 'kevin',
+			lastname: 'ryan',
+		},
+		phone: '1-567-094-1345',
+	},
+	{
+		avatar: 'https://avataaars.io/?avatarStyle=Circle&topType=Turban&accessoriesType=Sunglasses&hatColor=Pink&hairColor=PastelPink&facialHairType=BeardLight&facialHairColor=BlondeGolden&clotheType=BlazerSweater&eyeType=Squint&eyebrowType=RaisedExcited&mouthType=Vomit&skinColor=Brown',
+		address: {
+			city: 'San Antonio',
+			street: 'Hunters Creek Dr',
+			number: 6454,
+			zipcode: '98234-1734',
+		},
+		email: 'don@gmail.com',
+		username: 'donero',
+		password: 'ewedon',
+		name: {
+			firstname: 'don',
+			lastname: 'romer',
+		},
+		phone: '1-765-789-6734',
+	},
+	{
+		avatar: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads01&accessoriesType=Prescription02&hatColor=PastelOrange&hairColor=Brown&facialHairType=Blank&facialHairColor=Blonde&clotheType=ShirtVNeck&clotheColor=PastelRed&eyeType=Dizzy&eyebrowType=DefaultNatural&mouthType=Disbelief&skinColor=Brown',
+		address: {
+			city: 'san Antonio',
+			street: 'adams St',
+			number: 245,
+			zipcode: '80796-1234',
+		},
+		email: 'derek@gmail.com',
+		username: 'derek',
+		password: 'jklg*_56',
+		name: {
+			firstname: 'derek',
+			lastname: 'powell',
+		},
+		phone: '1-956-001-1945',
+	},
+	{
+		avatar: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairTheCaesar&accessoriesType=Sunglasses&hairColor=Red&facialHairType=Blank&clotheType=CollarSweater&clotheColor=White&eyeType=Close&eyebrowType=UpDownNatural&mouthType=Serious&skinColor=Pale',
+		address: {
+			city: 'el paso',
+			street: 'prospect st',
+			number: 124,
+			zipcode: '12346-0456',
+		},
+		email: 'david_r@gmail.com',
+		username: 'david_r',
+		password: '3478*#54',
+		name: {
+			firstname: 'david',
+			lastname: 'russell',
+		},
+		phone: '1-678-345-9856',
+	},
+	{
+		avatar: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairFrizzle&accessoriesType=Prescription01&hairColor=Auburn&facialHairType=BeardMajestic&facialHairColor=Red&clotheType=Hoodie&clotheColor=Blue02&eyeType=Happy&eyebrowType=SadConcernedNatural&mouthType=Twinkle&skinColor=Tanned',
+		address: {
+			city: 'fresno',
+			street: 'saddle st',
+			number: 1342,
+			zipcode: '96378-0245',
+		},
+		email: 'miriam@gmail.com',
+		username: 'snyder',
+		password: 'f238&@*$',
+		name: {
+			firstname: 'miriam',
+			lastname: 'snyder',
+		},
+		phone: '1-123-943-0563',
+	},
+	{
+		avatar: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortCurly&accessoriesType=Round&hairColor=BlondeGolden&facialHairType=MoustacheMagnum&facialHairColor=Platinum&clotheType=GraphicShirt&clotheColor=PastelOrange&graphicType=Resist&eyeType=Happy&eyebrowType=AngryNatural&mouthType=Smile&skinColor=Tanned',
+		address: {
+			city: 'mesa',
+			street: 'vally view ln',
+			number: 1342,
+			zipcode: '96378-0245',
+		},
+		email: 'william@gmail.com',
+		username: 'hopkins',
+		password: 'William56$hj',
+		name: {
+			firstname: 'william',
+			lastname: 'hopkins',
+		},
+		phone: '1-478-001-0890',
+	},
+	{
+		avatar: 'https://avataaars.io/?avatarStyle=Circle&topType=LongHairBun&accessoriesType=Prescription02&hairColor=Brown&facialHairType=MoustacheFancy&facialHairColor=Platinum&clotheType=CollarSweater&clotheColor=Heather&graphicType=Deer&eyeType=Cry&eyebrowType=RaisedExcited&mouthType=Grimace&skinColor=Black',
+		address: {
+			city: 'miami',
+			street: 'avondale ave',
+			number: 345,
+			zipcode: '96378-0245',
+		},
+		email: 'kate@gmail.com',
+		username: 'kate_h',
+		password: 'kfejk@*_',
+		name: {
+			firstname: 'kate',
+			lastname: 'hale',
+		},
+		phone: '1-678-456-1934',
+	},
+	{
+		avatar: 'https://avataaars.io/?avatarStyle=Circle&topType=WinterHat3&accessoriesType=Round&hatColor=PastelGreen&hairColor=BrownDark&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=BlazerShirt&clotheColor=Blue02&eyeType=Happy&eyebrowType=DefaultNatural&mouthType=Grimace&skinColor=Tanned',
+		address: {
+			city: 'fort wayne',
+			street: 'oak lawn ave',
+			number: 526,
+			zipcode: '10256-4532',
+		},
+		email: 'jimmie@gmail.com',
+		username: 'jimmie_k',
+		password: 'klein*#%*',
+		name: {
+			firstname: 'jimmie',
+			lastname: 'klein',
+		},
+		phone: '1-104-001-4567',
+	},
+];
+
+export { posts, users };

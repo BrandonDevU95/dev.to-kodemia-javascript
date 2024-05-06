@@ -226,8 +226,8 @@ const createPostCard = (post, index) => {
 	const div8 = document.createElement('div');
 
 	const p = document.createElement('p');
-	p.classList.add('m-0', 'pb-1', 'fw-medium');
-	p.textContent = post.autor;
+	p.classList.add('m-0', 'pb-1', 'fw-medium', 'text-capitalize');
+	p.textContent = post.autor.name;
 	div8.appendChild(p);
 
 	const span = document.createElement('span');

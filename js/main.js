@@ -192,7 +192,7 @@ const createTagsInCard = (wrapperId, tags) => {
 };
 
 const createPostCard = async (post, index) => {
-	const prueba = document.getElementById('prueba');
+	const posts = document.getElementById('posts-lists');
 	const div1 = document.createElement('div');
 	div1.classList.add('mb-1');
 
@@ -448,7 +448,7 @@ const createPostCard = async (post, index) => {
 	div2.appendChild(div4);
 	div1.appendChild(div2);
 
-	prueba.appendChild(div1);
+	posts.appendChild(div1);
 };
 
 const printPost = async () => {

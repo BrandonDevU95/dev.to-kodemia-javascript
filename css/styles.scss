@@ -102,8 +102,22 @@
 	font-size: 12px !important;
 }
 
+.p-2_5 {
+	padding: 0.75rem !important;
+}
+
 .ps-4_5 {
 	padding-left: 2.5rem !important;
+}
+
+.gap-2_5 {
+	gap: 0.75rem !important;
+}
+
+//deberia ser 64px
+.px-7 {
+	padding-left: 4rem !important;
+	padding-right: 4rem !important;
 }
 
 // *** POSTS ***
@@ -134,4 +148,20 @@
 	margin-right: -0.75em;
 	width: 28px;
 	height: 28px;
+}
+
+// *** Login ***
+
+.registration {
+	width: 640px;
+}
+
+.btn-login-social {
+	&:hover {
+		background-color: rgba(121, 127, 199, 0.1) !important;
+	}
+}
+
+.btn-lg-login {
+	padding: 12px 20px;
 }

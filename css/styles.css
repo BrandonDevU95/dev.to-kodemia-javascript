@@ -171,4 +171,19 @@
 
 .top-fav {
   top: 60px;
+}
+
+.bi-heart-hover:hover {
+  color: #ff0000 !important;
+  cursor: pointer;
+}
+
+.bi-chat-hover:hover {
+  color: #ffc107 !important;
+  cursor: pointer;
+}
+
+.bi-bookmark-hover:hover {
+  color: #0d6efd !important;
+  cursor: pointer;
 }/*# sourceMappingURL=styles.css.map */

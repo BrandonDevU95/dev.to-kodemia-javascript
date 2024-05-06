@@ -594,6 +594,11 @@ const createPostDetail = (post) => {
 	return card;
 };
 
+const setFavDetails = (fav, wrapperId) => {
+	const wrapper = document.getElementById(wrapperId);
+	wrapper.textContent = fav;
+};
+
 const printDetailsPost = async (id, wrapperId) => {
 	const wrapper = document.getElementById(wrapperId);
 	const post = await getPostById(id);
@@ -601,6 +606,9 @@ const printDetailsPost = async (id, wrapperId) => {
 
 	post.autor.avatar = avatar;
 	const postDetail = createPostDetail(post);
+	setFavDetails(post.numReacciones, 'fav-details');
+	setFavDetails(post.numComentarios, 'comments-details');
+	setFavDetails(Math.floor(Math.random() * 10) + 1, 'saved-details');
 	wrapper.appendChild(postDetail);
 };
 

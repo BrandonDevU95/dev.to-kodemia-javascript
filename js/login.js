@@ -1,10 +1,17 @@
 const loginBtn = document.getElementById('login-btn');
 
-loginBtn.addEventListener('click', () => {
+loginBtn.addEventListener('click', (event) => {
 	const fields = document.querySelectorAll('#login-form input');
+	const form = document.querySelectorAll('.needs-validation');
 	const userObject = {};
 
-	//Si el checkbox está marcado, se añade al objeto userObject
+	if (!form[0].checkValidity()) {
+		event.preventDefault();
+		event.stopPropagation();
+		form[0].classList.add('was-validated');
+		return;
+	}
+
 	fields.forEach((field) => {
 		if (field.type === 'checkbox') {
 			userObject[field.name] = field.checked;
@@ -12,6 +19,6 @@ loginBtn.addEventListener('click', () => {
 			userObject[field.name] = field.value;
 		}
 	});
-
-	console.log(userObject);
+	form[0].classList.remove('was-validated');
+	form[0].reset();
 });

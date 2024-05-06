@@ -25,4 +25,12 @@ const createUser = async (userObject) => {
 	return data;
 };
 
-export { createUsersDB, verifyUsersDB, createUser };
+const getAvatarByUsername = async (username) => {
+	let response = await fetch(`${USERS_BASE_URL}/.json`);
+	let data = await response.json();
+	let keys = Object.keys(data);
+	let user = keys.find((key) => data[key].username === username);
+	return data[user].avatar;
+};
+
+export { createUsersDB, verifyUsersDB, createUser, getAvatarByUsername };

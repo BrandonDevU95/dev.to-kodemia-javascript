@@ -8,7 +8,11 @@ import {
 	getPostsMoreCommenst,
 } from './api/postsAPI.js';
 
-import { verifyUsersDB, createUsersDB } from './api/usersAPI.js';
+import {
+	verifyUsersDB,
+	createUsersDB,
+	getAvatarByUsername,
+} from './api/usersAPI.js';
 
 //crea una funcion anonima autoejecutable para cargar la DB
 (async () => {
@@ -180,7 +184,7 @@ const createTagsInCard = (wrapperId, tags) => {
 	});
 };
 
-const createPostCard = (post, index) => {
+const createPostCard = async (post, index) => {
 	const prueba = document.getElementById('prueba');
 	const div1 = document.createElement('div');
 	div1.classList.add('mb-1');
@@ -215,8 +219,8 @@ const createPostCard = (post, index) => {
 	div7.classList.add('me-2');
 
 	const img = document.createElement('img');
-	img.src =
-		'https://media.dev.to/cdn-cgi/image/width=90,height=90,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F930493%2F54f1af4e-dc5b-48bc-8c05-f78ea1246574.png';
+	const avatar = await getAvatarByUsername(post.autor.username);
+	img.src = avatar;
 	img.alt = 'dhruvjoshi9 profile';
 	img.classList.add('rounded-circle');
 	img.width = '32';

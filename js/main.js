@@ -20,6 +20,7 @@ import {
 	const users = await verifyUsersDB();
 	if (!posts) createPostsDB();
 	if (!users) createUsersDB();
+	loadPage();
 })();
 
 const createTag = (tag) => {
@@ -451,8 +452,10 @@ const printPost = async () => {
 	});
 };
 
-printPost();
-printTags();
-printLastPosts();
-printCategories();
-printTrendingPosts();
+const loadPage = () => {
+	printPost();
+	printTags();
+	printLastPosts();
+	printCategories();
+	printTrendingPosts();
+};

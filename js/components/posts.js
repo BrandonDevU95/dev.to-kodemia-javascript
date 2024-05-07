@@ -42,17 +42,18 @@ const printTags = async () => {
 };
 
 const createTabDiscuss = (post) => {
+	console.log(post);
 	const tabElement = document.createElement('div');
 	tabElement.classList.add('p-3', 'border-bottom', 'border-light');
 	const tabLink = document.createElement('a');
-	tabLink.href = '#';
+	tabLink.href = `../../views/details.html?id=${post.key}`;
 	tabLink.classList.add('text-decoration-none', 'text-discuss');
 	const tabTitle = document.createElement('p');
 	tabTitle.classList.add('m-0');
-	//Limitar el titulo a 25 caracteres
+	//Limitar el titulo a 40 caracteres
 	tabTitle.textContent =
 		post.titulo.length > 30
-			? post.titulo.substring(0, 30) + '...'
+			? post.titulo.substring(0, 40) + '...'
 			: post.titulo;
 	const tabComments = document.createElement('span');
 	tabComments.classList.add('pt-1', 'fs-6', 'text-secondary');

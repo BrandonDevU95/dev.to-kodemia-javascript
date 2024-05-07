@@ -1,3 +1,4 @@
+import { getPostById, getPostsByUsername } from '../api/postsAPI.js';
 import {
 	getToken,
 	getUserByUsername,
@@ -5,7 +6,7 @@ import {
 	logout,
 } from '../api/usersAPI.js';
 
-import { getPostsByUsername } from '../api/postsAPI.js';
+import { getAllBookmarksByUser } from '../api/bookmarks.js';
 import { printPost } from '../components/posts.js';
 
 const btnLogout = document.getElementById('logout');
@@ -54,7 +55,7 @@ posts.addEventListener('click', async () => {
 	printPost(postsUser, 'posts-lists');
 });
 
-collections.addEventListener('click', () => {
+collections.addEventListener('click', async () => {
 	collections.querySelector('a').classList.add('active');
 	profile.querySelector('a').classList.remove('active');
 	posts.querySelector('a').classList.remove('active');
@@ -63,6 +64,17 @@ collections.addEventListener('click', () => {
 		collectionsTab.classList.remove('d-none');
 	profileTab.classList.add('d-none');
 	postsTab.classList.add('d-none');
+
+	const collectionsUser = await getAllBookmarksByUser(user);
+	const postIdArray = collectionsUser.map((item) => item.postId);
+	let bookmarkPosts = [];
+
+	for (let i = 0; i < postIdArray.length; i++) {
+		const post = await getPostById(postIdArray[i]);
+		bookmarkPosts.push(post);
+	}
+
+	printPost(bookmarkPosts, 'collections-lists');
 });
 
 (async () => {

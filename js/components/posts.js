@@ -570,9 +570,15 @@ const createPostDetail = (post) => {
 	const postInfo = document.createElement('div');
 	mt2.appendChild(postInfo);
 
+	const postCategory = document.createElement('h3');
+	postCategory.classList.add('text-discuss', 'fs-5_5', 'mb-2');
+	postCategory.textContent = post.categoria;
+
 	const postTitle = document.createElement('h1');
 	postTitle.classList.add('fw-bold');
 	postTitle.textContent = post.titulo;
+
+	postInfo.appendChild(postCategory);
 	postInfo.appendChild(postTitle);
 
 	const tagsContainer = document.createElement('div');

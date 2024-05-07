@@ -28,6 +28,14 @@ const createUser = async (userObject) => {
 	return data;
 };
 
+const getUserByUsername = async (username) => {
+	let response = await fetch(`${USERS_BASE_URL}/.json`);
+	let data = await response.json();
+	let keys = Object.keys(data);
+	let user = keys.find((key) => data[key].username === username);
+	return data[user];
+};
+
 const getAvatarByUsername = async (username) => {
 	let response = await fetch(`${USERS_BASE_URL}/.json`);
 	let data = await response.json();
@@ -103,9 +111,10 @@ export {
 	setUserData,
 	getUserData,
 	decodeToken,
-	verifyUsersDB,
 	createUsersDB,
+	verifyUsersDB,
 	getNameByUsername,
+	getUserByUsername,
 	getAvatarByUsername,
 	getAboutUserByUsername,
 };

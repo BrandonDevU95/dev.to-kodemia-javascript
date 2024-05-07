@@ -60,104 +60,70 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <aside class="w-fav position-relative ms-auto">
-                        <div class="d-grid gap-3 position-absolute top-fav">
-                            <div class="d-flex flex-column align-items-center lh-1">
-                                <i class="bi bi-heart bi-heart-hover fs-4 p-2"></i>
-                                <span id="fav-details" class="pt-1"></span>
-                            </div>
-                            <div class="d-flex flex-column align-items-center lh-1">
-                                <i class="bi bi-chat bi-chat-hover fs-4 p-2"></i>
-                                <span id="comments-details" class="pt-1"></span>
-                            </div>
-                            <div class="d-flex flex-column align-items-center lh-1">
-                                <i class="bi bi-bookmark bi-bookmark-hover fs-4 p-2"></i>
-                                <span id="saved-details" class="pt-1"></span>
-                            </div>
-                            <div class="d-flex flex-column align-items-center">
-                                <a href="#" class="btn social-icon rounded-pill">
-                                    <i class="bi bi-three-dots fs-4"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </aside>
+                    1 of 3
                 </div>
-                <div class="col-8">
-                    <div id="post-details">
+                <div class="col-7">
+                    <ul class="nav nav-tabs w-100 justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary border-2 active" aria-current="page" href="#">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary border-2" href="#">My Posts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary border-2" href="#">Collections</a>
+                        </li>
+                    </ul>
+                    <div class="bg-white rounded-bottom">
+                        <div id="user-profile" class="p-4">
+                            <div class="d-flex justify-content-center mb-3">
+                                <img src="" id="avatar-image" width="150" height="150">
+                            </div>
+                            <form id="form-profile" class="d-grid gap-3">
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="fullname" class="form-label">Name</label>
+                                        <input type="text" id="fullname" name="fullname" class="form-control"
+                                            aria-label="Fullname" disabled>
+                                    </div>
+                                    <div class="col">
+                                        <label for="username" class="form-label">Username</label>
+                                        <input type="text" id="username" name="username" class="form-control"
+                                            aria-label="Username" disabled>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="text" id="email" name="email" class="form-control"
+                                            aria-label="Email" disabled>
+                                    </div>
+                                    <div class="col">
+                                        <label for="phone" class="form-label">Phone</label>
+                                        <input type="text" id="phone" name="phone" class="form-control"
+                                            aria-label="Phone number" disabled>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="address" class="form-label">Adress</label>
+                                        <input type="text" id="address" name="address" class="form-control"
+                                            aria-label="Address" disabled>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="about">About Me</label>
+                                        <textarea class="form-control" id="about" name="about" disabled></textarea>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
                     </div>
                 </div>
-                <div class="col-3">
-                    <aside class="d-grid gap-3">
-                        <div id="user-details"></div>
-                        <div class="card">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item fw-bold fs-5_5">Trending on <span class="text-primary">DEV
-                                        Community </span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44"
-                                        width="24" height="24" role="img"
-                                        aria-labelledby="ac26uezt307n27s3lgh3jy0ivowh8tlt"
-                                        class="crayons-icon crayons-icon--default">
-                                        <title id="ac26uezt307n27s3lgh3jy0ivowh8tlt">Hot</title>
-                                        <g class="nc-icon-wrapper">
-                                            <path fill="#F4900C"
-                                                d="M39 23a16.96 16.96 0 00-1.04-5.868c-.46 5.389-3.333 8.157-6.335 6.868-2.812-1.208-.917-5.917-.777-8.164.236-3.809-.012-8.169-6.931-11.794 2.875 5.5.333 8.917-2.333 9.125-2.958.231-5.667-2.542-4.667-7.042-3.238 2.386-3.332 6.402-2.333 9 1.042 2.708-.042 4.958-2.583 5.208-2.84.28-4.418-3.041-2.963-8.333A16.936 16.936 0 005 23c0 9.389 7.611 17 17 17s17-7.611 17-17z">
-                                            </path>
-                                            <path fill="#FFCC4D"
-                                                d="M32.394 27.999c.148 3.084-2.561 4.293-4.019 3.709-2.106-.843-1.541-2.291-2.083-5.291s-2.625-5.083-5.708-6c2.25 6.333-1.247 8.667-3.08 9.084-1.872.426-3.753-.001-3.968-4.007A11.964 11.964 0 0010 34c0 .368.023.73.055 1.09C13.125 38.124 17.342 40 22 40s8.875-1.876 11.945-4.91c.032-.36.055-.722.055-1.09 0-2.187-.584-4.236-1.606-6.001z">
-                                            </path>
-                                        </g>
-                                    </svg>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="d-flex">
-                                        <img src="https://avataaars.io/?avatarStyle=Circle&topType=LongHairNotTooLong&accessoriesType=Kurt&hairColor=Brown&facialHairType=MoustacheMagnum&facialHairColor=Black&clotheType=BlazerShirt&clotheColor=Blue03&eyeType=Wink&eyebrowType=UpDownNatural&mouthType=Eating&skinColor=Brown"
-                                            class="rounded-circle" width="28" height="28" alt="david russell">
-                                        <div class="ps-2 pt-2">
-                                            <a href="#" class="text-decoration-none">
-                                                <p class="m-0 text-dark">Showcase your open source project at top
-                                                    developer conferences in Berlin this summer 🇩🇪 camp</p>
-                                                <div>
-                                                    <span class="fs-xs text-secondary">#source</span>
-                                                    <span class="fs-xs text-secondary">#conference</span>
-                                                    <span class="fs-xs text-secondary">#gitHub</span>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="d-flex">
-                                        <img src="https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortFlat&accessoriesType=Blank&hatColor=Gray02&hairColor=Platinum&facialHairType=Blank&facialHairColor=Auburn&clotheType=CollarSweater&clotheColor=PastelGreen&eyeType=WinkWacky&eyebrowType=UpDownNatural&mouthType=Smile&skinColor=DarkBrown"
-                                            class="rounded-circle" width="28" height="28" alt="david russell">
-                                        <div class="ps-2 pt-2">
-                                            <a href="#" class="text-decoration-none">
-                                                <p class="m-0 text-dark">What are you learning about this weekend? 🧠
-                                                </p>
-                                                <div>
-                                                    <span class="fs-xs text-secondary">#learning</span>
-                                                    <span class="fs-xs text-secondary">#begginers</span>
-                                                    <span class="fs-xs text-secondary">#discuss</span>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="d-flex">
-                                        <img src="https://avataaars.io/?avatarStyle=Circle&topType=LongHairFro&accessoriesType=Prescription01&hairColor=Platinum&facialHairType=MoustacheFancy&facialHairColor=Blonde&clotheType=ShirtVNeck&clotheColor=PastelRed&eyeType=Wink&eyebrowType=RaisedExcited&mouthType=Serious&skinColor=Light"
-                                            class="rounded-circle" width="28" height="28" alt="david russell">
-                                        <div class="ps-2 pt-2">
-                                            <a href="#" class="text-decoration-none">
-                                                <p class="m-0 text-dark">Do You Fear Code Changes? 😱</p>
-                                                <div>
-                                                    <span class="fs-xs text-secondary">#discuss</span>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </aside>
+                <div class="col">
+                    3 of 3
                 </div>
             </div>
         </div>

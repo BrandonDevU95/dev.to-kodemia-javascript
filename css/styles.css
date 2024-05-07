@@ -262,4 +262,8 @@
 
 .fade-in.show {
   opacity: 1 !important;
+}
+
+#about {
+  height: 130px !important;
 }/*# sourceMappingURL=styles.css.map */

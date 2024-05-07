@@ -63,17 +63,17 @@
                 </div>
                 <div class="col-7">
                     <ul class="nav nav-tabs w-100 justify-content-center">
-                        <li class="nav-item">
+                        <li id="my-profile" class="nav-item">
                             <a class="nav-link text-secondary border-2 active" aria-current="page" href="#">Profile</a>
                         </li>
-                        <li class="nav-item">
+                        <li id="my-posts" class="nav-item">
                             <a class="nav-link text-secondary border-2" href="#">My Posts</a>
                         </li>
-                        <li class="nav-item">
+                        <li id="my-collections" class="nav-item">
                             <a class="nav-link text-secondary border-2" href="#">Collections</a>
                         </li>
                     </ul>
-                    <div class="bg-white rounded-bottom">
+                    <div id="profile-tab" class="bg-white rounded-bottom">
                         <div id="user-profile" class="p-4">
                             <div class="d-flex justify-content-center mb-3">
                                 <img id="avatar-image" width="150" height="150">
@@ -119,6 +119,12 @@
 
                             </form>
                         </div>
+                    </div>
+                    <div id="posts-tab" class="bg-white rounded-bottom d-none">
+                        <h1>My Posts</h1>
+                    </div>
+                    <div id="collections-tab" class="bg-white rounded-bottom d-none">
+                        <h1>Collections</h1>
                     </div>
                 </div>
                 <div class="col">

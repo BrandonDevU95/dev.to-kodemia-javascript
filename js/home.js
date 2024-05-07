@@ -84,23 +84,29 @@ const loadAvatar = async () => {
 const booksmarkIcon = () => {
 	const icons = document.querySelectorAll('.bi-bookmark');
 	icons.forEach((icon) => {
+		const parentElement = icon.parentNode;
+		parentElement.disabled = false;
 		icon.classList.remove('text-dark');
 		icon.addEventListener('click', async () => {
 			if (icon.classList.contains('bi-bookmark')) {
+				parentElement.disabled = true;
 				const res = await saveBookmarkUser(user, icon.id);
 				if (res.name) {
 					icon.classList.add('bi-bookmark-check-fill');
 					icon.classList.add('text-warning');
 					icon.classList.remove('bi-bookmark');
+					parentElement.disabled = false;
 				} else {
 					console.error('Error al guardar el bookmark');
 				}
 			} else if (icon.classList.contains('bi-bookmark-check-fill')) {
+				parentElement.disabled = true;
 				const res = await deleteBookmark(icon.id);
 				if (!res) {
 					icon.classList.remove('text-warning');
 					icon.classList.remove('bi-bookmark-check-fill');
 					icon.classList.add('bi-bookmark');
+					parentElement.disabled = false;
 				} else {
 					console.error('Error al eliminar el bookmark');
 				}

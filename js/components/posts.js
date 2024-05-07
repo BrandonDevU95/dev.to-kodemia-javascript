@@ -418,6 +418,11 @@ const createPostCard = async (post, index) => {
 	p2.appendChild(span11);
 	div15.appendChild(p2);
 
+	const btnIcon = document.createElement('button');
+	btnIcon.classList.add('btn', 'border-0', 'p-0');
+	btnIcon.setAttribute('type', 'button');
+	btnIcon.disabled = true;
+
 	const i = document.createElement('i');
 	i.id = post.key;
 	i.classList.add(
@@ -428,7 +433,8 @@ const createPostCard = async (post, index) => {
 		'btn-comments',
 		'rounded'
 	);
-	div15.appendChild(i);
+	btnIcon.appendChild(i);
+	div15.appendChild(btnIcon);
 
 	div12.appendChild(div15);
 	div9.appendChild(div12);

@@ -14,6 +14,7 @@ import {
 	logout,
 	verifyUsersDB,
 } from '../js/api/usersAPI.js';
+import { deleteBookmark, saveBookmarkUser } from '../js/api/bookmarks.js';
 import {
 	printCategories,
 	printLastPosts,
@@ -79,15 +80,19 @@ const booksmarkIcon = () => {
 	const icons = document.querySelectorAll('.bi-bookmark');
 	icons.forEach((icon) => {
 		icon.classList.remove('text-dark');
-		icon.addEventListener('click', () => {
+		icon.addEventListener('click', async () => {
 			if (icon.classList.contains('bi-bookmark')) {
 				icon.classList.add('bi-bookmark-check-fill');
 				icon.classList.add('text-warning');
 				icon.classList.remove('bi-bookmark');
+				const res = await saveBookmarkUser(user, icon.id);
+				console.log(res);
 			} else if (icon.classList.contains('bi-bookmark-check-fill')) {
 				icon.classList.remove('text-warning');
 				icon.classList.remove('bi-bookmark-check-fill');
 				icon.classList.add('bi-bookmark');
+				const res = await deleteBookmark(icon.id);
+				console.log(res);
 			}
 		});
 	});

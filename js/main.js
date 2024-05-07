@@ -23,7 +23,7 @@ if (getToken()) {
 })();
 
 const loadPage = () => {
-	printPost();
+	printPost(null, 'posts-lists');
 	printTags();
 	printLastPosts();
 	printCategories();

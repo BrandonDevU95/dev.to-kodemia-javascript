@@ -42,6 +42,11 @@ const loadPage = () => {
 	printLastPosts();
 	printTrendingPosts(10, 'trends-list');
 	printCategories('list-categories');
+
+	//TODO: reparar esto para no usar timeout
+	setTimeout(() => {
+		booksmarkIcon();
+	}, 1500);
 };
 
 const toggleClass = async (
@@ -68,6 +73,28 @@ const loadAvatar = async () => {
 	const avatarImage = await getAvatarByUsername(user);
 	avatar.src = avatarImage;
 	avatar.alt = user;
+};
+
+const booksmarkIcon = () => {
+	const icons = document.querySelectorAll('.bi-bookmark');
+	icons.forEach((icon) => {
+		icon.classList.remove('text-dark');
+		icon.addEventListener('click', () => {
+			if (icon.classList.contains('bi-bookmark')) {
+				icon.classList.add('bi-bookmark-check-fill');
+				icon.classList.add('text-warning');
+				icon.classList.remove('bi-bookmark');
+				return;
+			}
+			if (icon.classList.contains('bi-bookmark-check-fill')) {
+				icon.classList.remove('text-warning');
+				icon.classList.remove('bi-bookmark-check-fill');
+				icon.classList.add('bi-bookmark');
+				return;
+			}
+		});
+	});
+	console.log('Icons loaded');
 };
 
 relevant.addEventListener('click', async () => {

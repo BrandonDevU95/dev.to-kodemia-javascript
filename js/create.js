@@ -77,7 +77,12 @@ btnPublish.addEventListener('click', async () => {
 
 	const postObject = createObjectPost(post);
 	const data = await createPost(postObject);
-	console.log(data);
+
+	if (data.name) {
+		window.location.href = '../views/home.html';
+	} else {
+		alert('Error al crear el post');
+	}
 });
 
 tags.addEventListener('keydown', (e) => {

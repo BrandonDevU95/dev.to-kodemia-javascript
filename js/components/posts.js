@@ -42,7 +42,6 @@ const printTags = async () => {
 };
 
 const createTabDiscuss = (post) => {
-	console.log(post);
 	const tabElement = document.createElement('div');
 	tabElement.classList.add('p-3', 'border-bottom', 'border-light');
 	const tabLink = document.createElement('a');

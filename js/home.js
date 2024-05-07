@@ -1,4 +1,4 @@
-import { getToken } from '../js/api/usersAPI.js';
+import { createUsersDB, getToken, verifyUsersDB } from '../js/api/usersAPI.js';
 import {
 	printPost,
 	printTags,
@@ -7,10 +7,12 @@ import {
 	printTrendingPosts,
 } from '../js/components/posts.js';
 import {
+	createPostsDB,
 	getAllPost,
 	getLastPosts,
 	getPostsByRelevant,
 	getPostsMoreReactions,
+	verifyPostsDB,
 } from '../js/api/postsAPI.js';
 const search = document.getElementById('input-search');
 const relevant = document.getElementById('relevant');
@@ -20,6 +22,15 @@ const top = document.getElementById('top');
 if (!getToken()) {
 	window.location.href = '../index.html';
 }
+
+//crea una funcion anonima autoejecutable para cargar la DB
+(async () => {
+	const posts = await verifyPostsDB();
+	const users = await verifyUsersDB();
+	if (!posts) createPostsDB();
+	if (!users) createUsersDB();
+	loadPage();
+})();
 
 search.addEventListener('keyup', async (e) => {
 	const query = e.target.value;
@@ -101,8 +112,10 @@ top.addEventListener('click', async () => {
 	);
 });
 
-printPost(null, 'posts-lists');
-printTags();
-printLastPosts();
-printTrendingPosts(10, 'trends-list');
-printCategories('list-categories');
+const loadPage = () => {
+	printPost(null, 'posts-lists');
+	printTags();
+	printLastPosts();
+	printTrendingPosts(10, 'trends-list');
+	printCategories('list-categories');
+};

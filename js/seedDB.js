@@ -10,6 +10,7 @@ const posts = [
 		imagen: 'https://picsum.photos/650/275',
 		numReacciones: 56,
 		numComentarios: 12,
+		relevante: true,
 	},
 	{
 		titulo: 'Introducción a React Hooks: Cómo utilizar useState y useEffect',
@@ -22,6 +23,7 @@ const posts = [
 		imagen: 'https://picsum.photos/650/275',
 		numReacciones: 42,
 		numComentarios: 8,
+		relevante: false,
 	},
 	{
 		titulo: 'Guía completa de CSS Grid: Cómo crear diseños modernos y flexibles',
@@ -34,6 +36,7 @@ const posts = [
 		imagen: 'https://picsum.photos/650/275',
 		numReacciones: 73,
 		numComentarios: 16,
+		relevante: false,
 	},
 	{
 		titulo: '10 Consejos para escribir código limpio y mantenible',
@@ -46,6 +49,7 @@ const posts = [
 		imagen: 'https://picsum.photos/650/275',
 		numReacciones: 29,
 		numComentarios: 6,
+		relevante: false,
 	},
 	{
 		titulo: 'Cómo implementar autenticación de usuarios con Firebase en tu aplicación web',
@@ -58,6 +62,7 @@ const posts = [
 		imagen: 'https://picsum.photos/650/275',
 		numReacciones: 38,
 		numComentarios: 10,
+		relevante: true,
 	},
 	{
 		titulo: 'Principios básicos de SEO para desarrolladores web',
@@ -74,6 +79,7 @@ const posts = [
 		imagen: 'https://picsum.photos/650/275',
 		numReacciones: 51,
 		numComentarios: 14,
+		relevante: false,
 	},
 	{
 		titulo: 'Introducción a TypeScript: Principales características y ventajas',
@@ -86,6 +92,7 @@ const posts = [
 		imagen: 'https://picsum.photos/650/275',
 		numReacciones: 62,
 		numComentarios: 18,
+		relevante: false,
 	},
 	{
 		titulo: 'Cómo mejorar la seguridad de tu aplicación web con medidas proactivas',
@@ -98,6 +105,7 @@ const posts = [
 		imagen: 'https://picsum.photos/650/275',
 		numReacciones: 45,
 		numComentarios: 11,
+		relevante: false,
 	},
 	{
 		titulo: '10 Herramientas útiles para el desarrollo web en 2024',
@@ -110,6 +118,7 @@ const posts = [
 		imagen: 'https://picsum.photos/650/275',
 		numReacciones: 34,
 		numComentarios: 9,
+		relevante: false,
 	},
 	{
 		titulo: 'Cómo diseñar una API RESTful: Principios y buenas prácticas',
@@ -122,6 +131,7 @@ const posts = [
 		imagen: 'https://picsum.photos/650/275',
 		numReacciones: 58,
 		numComentarios: 15,
+		relevante: true,
 	},
 	{
 		titulo: 'Guía completa de Bootstrap 5: Cómo crear sitios web modernos y responsivos',
@@ -134,6 +144,7 @@ const posts = [
 		imagen: 'https://picsum.photos/650/275',
 		numReacciones: 49,
 		numComentarios: 13,
+		relevante: false,
 	},
 	{
 		titulo: 'Introducción a GraphQL: Una alternativa moderna para el desarrollo de APIs',
@@ -146,6 +157,7 @@ const posts = [
 		imagen: 'https://picsum.photos/650/275',
 		numReacciones: 37,
 		numComentarios: 7,
+		relevante: false,
 	},
 	{
 		titulo: 'Estrategias para mejorar la accesibilidad en tus proyectos web',
@@ -158,6 +170,7 @@ const posts = [
 		imagen: 'https://picsum.photos/650/275',
 		numReacciones: 43,
 		numComentarios: 10,
+		relevante: false,
 	},
 	{
 		titulo: 'Optimización de imágenes para la web: Consejos y herramientas útiles',
@@ -170,6 +183,7 @@ const posts = [
 		imagen: 'https://picsum.photos/650/275',
 		numReacciones: 31,
 		numComentarios: 8,
+		relevante: false,
 	},
 	{
 		titulo: 'Implementación de autenticación basada en tokens JWT en tu API REST',
@@ -182,6 +196,7 @@ const posts = [
 		imagen: 'https://picsum.photos/650/275',
 		numReacciones: 52,
 		numComentarios: 12,
+		relevante: true,
 	},
 	{
 		titulo: 'Cómo realizar pruebas unitarias con Jest: Guía paso a paso',
@@ -194,6 +209,7 @@ const posts = [
 		imagen: 'https://picsum.photos/650/275',
 		numReacciones: 47,
 		numComentarios: 9,
+		relevante: false,
 	},
 	{
 		titulo: '10 Librerías JavaScript populares que debes conocer en 2024',
@@ -206,6 +222,7 @@ const posts = [
 		imagen: 'https://picsum.photos/650/275',
 		numReacciones: 39,
 		numComentarios: 11,
+		relevante: false,
 	},
 	{
 		titulo: 'Introducción a la programación reactiva con RxJS: Conceptos básicos y ejemplos prácticos',
@@ -218,6 +235,7 @@ const posts = [
 		imagen: 'https://picsum.photos/650/275',
 		numReacciones: 56,
 		numComentarios: 13,
+		relevante: false,
 	},
 	{
 		titulo: 'Cómo crear y consumir APIs RESTful con Node.js y Express',
@@ -230,6 +248,7 @@ const posts = [
 		imagen: 'https://picsum.photos/650/275',
 		numReacciones: 65,
 		numComentarios: 15,
+		relevante: false,
 	},
 	{
 		titulo: 'Principios básicos de diseño UI/UX para desarrolladores web',
@@ -242,6 +261,7 @@ const posts = [
 		imagen: 'https://picsum.photos/650/275',
 		numReacciones: 48,
 		numComentarios: 10,
+		relevante: true,
 	},
 ];
 

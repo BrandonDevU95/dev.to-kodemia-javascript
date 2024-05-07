@@ -137,6 +137,19 @@ const getPostsMoreCommenst = async () => {
 	return trendingPosts.slice(0, 10);
 };
 
+const getPostsByRelevant = async () => {
+	let response = await fetch(`${POSTS_BASE_URL}/.json`);
+	let data = await response.json();
+	let keys = Object.keys(data);
+
+	// Regresa solo los post que tengas true en la propiedad relevante
+	let postsArray = keys.map((key) => ({ ...data[key], key }));
+	let relevantPosts = postsArray.filter((post) => post.relevante);
+
+	// regresa solo 3 post relevantes
+	return relevantPosts.slice(0, 3);
+};
+
 export {
 	createPostsDB,
 	createPost,
@@ -148,4 +161,5 @@ export {
 	getLastPosts,
 	getAllCategories,
 	getPostsMoreCommenst,
+	getPostsByRelevant,
 };

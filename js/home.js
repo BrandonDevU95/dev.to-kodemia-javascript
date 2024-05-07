@@ -39,7 +39,8 @@ const latest = document.getElementById('latest');
 const top = document.getElementById('top');
 const btnLogout = document.getElementById('logout');
 const avatar = document.getElementById('avatar-image');
-let timeoutId;
+let timeoutSearch;
+let timeoutIdBookmarks;
 
 const loadPage = () => {
 	printPost(null, 'posts-lists');
@@ -48,8 +49,9 @@ const loadPage = () => {
 	printTrendingPosts(10, 'trends-list');
 	printCategories('list-categories');
 
-	//TODO: reparar esto para no usar timeout
-	setTimeout(() => {
+	clearTimeout(timeoutIdBookmarks);
+
+	timeoutIdBookmarks = setTimeout(async () => {
 		booksmarkIcon();
 		loadBookmarks();
 	}, 1500);
@@ -182,9 +184,9 @@ top.addEventListener('click', async () => {
 });
 
 search.addEventListener('keyup', async (e) => {
-	clearTimeout(timeoutId);
+	clearTimeout(timeoutSearch);
 
-	timeoutId = setTimeout(async () => {
+	timeoutSearch = setTimeout(async () => {
 		const query = e.target.value;
 
 		const posts = await getAllPost();

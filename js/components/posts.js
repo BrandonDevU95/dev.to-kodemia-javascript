@@ -1,10 +1,10 @@
 import {
-	getAllTags,
-	getAllPost,
-	getPostById,
-	getLastPosts,
 	getAllCategories,
+	getAllPost,
+	getAllTags,
+	getLastPosts,
 	getPostByCategory,
+	getPostById,
 	getPostsMoreReactions,
 } from '../api/postsAPI.js';
 
@@ -447,7 +447,6 @@ const printPost = async (posts, wrapperId) => {
 	}
 
 	while (wrapper.firstChild) {
-		console.log('Eliminando');
 		wrapper.removeChild(wrapper.firstChild);
 	}
 

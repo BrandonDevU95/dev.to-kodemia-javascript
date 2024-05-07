@@ -5,6 +5,9 @@ import {
 	logout,
 } from '../api/usersAPI.js';
 
+import { getPostsByUsername } from '../api/postsAPI.js';
+import { printPost } from '../components/posts.js';
+
 const btnLogout = document.getElementById('logout');
 const avatar = document.querySelectorAll('#avatar-image');
 
@@ -36,7 +39,7 @@ profile.addEventListener('click', () => {
 	collectionsTab.classList.add('d-none');
 });
 
-posts.addEventListener('click', () => {
+posts.addEventListener('click', async () => {
 	posts.querySelector('a').classList.add('active');
 	profile.querySelector('a').classList.remove('active');
 	collections.querySelector('a').classList.remove('active');
@@ -46,6 +49,9 @@ posts.addEventListener('click', () => {
 
 	profileTab.classList.add('d-none');
 	collectionsTab.classList.add('d-none');
+
+	const postsUser = await getPostsByUsername(user);
+	printPost(postsUser, 'posts-lists');
 });
 
 collections.addEventListener('click', () => {

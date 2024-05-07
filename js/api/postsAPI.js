@@ -163,17 +163,32 @@ const getPostByCategory = async (categoria) => {
 	return categoryPosts[Math.floor(Math.random() * categoryPosts.length)];
 };
 
+const getPostsByUsername = async (username) => {
+	let response = await fetch(`${POSTS_BASE_URL}/.json`);
+	let data = await response.json();
+	let keys = Object.keys(data);
+
+	// Regresa solo los post que tengan el username que se le pase
+	let postsArray = keys.map((key) => ({ ...data[key], key }));
+	let userPosts = postsArray.filter(
+		(post) => post.autor.username === username
+	);
+
+	return userPosts;
+};
+
 export {
-	createPostsDB,
 	createPost,
 	deletePost,
-	getPostById,
 	getAllPost,
-	verifyPostsDB,
 	getAllTags,
+	getPostById,
 	getLastPosts,
+	verifyPostsDB,
+	createPostsDB,
 	getAllCategories,
-	getPostsMoreReactions,
-	getPostsByRelevant,
 	getPostByCategory,
+	getPostsByUsername,
+	getPostsByRelevant,
+	getPostsMoreReactions,
 };

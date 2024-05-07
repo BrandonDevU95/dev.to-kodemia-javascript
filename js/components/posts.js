@@ -119,7 +119,7 @@ const createTab = (title) => {
 		'text-secondary',
 		'widget'
 	);
-	tabLink.textContent = title.titulo;
+	tabLink.textContent = title;
 	tabElement.appendChild(tabLink);
 	return tabElement;
 };
@@ -139,7 +139,7 @@ const printTrendingPosts = async () => {
 	const trendingPosts = await getPostsMoreReactions(10);
 
 	trendingPosts.forEach((trend) => {
-		const tabElement = createTab(trend);
+		const tabElement = createTab(trend.titulo);
 		trendingList.appendChild(tabElement);
 	});
 };

@@ -55,6 +55,11 @@ const getAllPost = async () => {
 
 	let keys = Object.keys(data);
 	let postsArray = keys.map((key) => ({ ...data[key], key }));
+
+	postsArray.sort((a, b) => {
+		return new Date(b.fechaCreacion) - new Date(a.fechaCreacion);
+	});
+
 	return postsArray;
 };
 

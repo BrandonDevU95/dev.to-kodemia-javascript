@@ -148,6 +148,21 @@ const getPostsByRelevant = async () => {
 	return relevantPosts.slice(0, 3);
 };
 
+const getPostByCategory = async (categoria) => {
+	let response = await fetch(`${POSTS_BASE_URL}/.json`);
+	let data = await response.json();
+	let keys = Object.keys(data);
+
+	// Regresa solo los post que tengan la categoria que se le pase
+	let postsArray = keys.map((key) => ({ ...data[key], key }));
+	let categoryPosts = postsArray.filter(
+		(post) => post.categoria === categoria
+	);
+
+	// regresa solo 1 post random
+	return categoryPosts[Math.floor(Math.random() * categoryPosts.length)];
+};
+
 export {
 	createPostsDB,
 	createPost,
@@ -160,4 +175,5 @@ export {
 	getAllCategories,
 	getPostsMoreReactions,
 	getPostsByRelevant,
+	getPostByCategory,
 };

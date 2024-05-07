@@ -4,6 +4,7 @@ import {
 	getPostById,
 	getLastPosts,
 	getAllCategories,
+	getPostByCategory,
 	getPostsMoreReactions,
 } from '../api/postsAPI.js';
 
@@ -108,11 +109,11 @@ const printLastPosts = async () => {
 	AddBadgeNew('second-last-posts', 5);
 };
 
-const createTab = (title) => {
+const createTab = (title, key) => {
 	const tabElement = document.createElement('div');
 	tabElement.classList.add('ms-3');
 	const tabLink = document.createElement('a');
-	tabLink.href = '#';
+	tabLink.href = `../../views/details.html?id=${key}`;
 	tabLink.classList.add(
 		'd-block',
 		'text-decoration-none',
@@ -128,8 +129,9 @@ const printCategories = async (wrapperId) => {
 	const wrapper = document.getElementById(wrapperId);
 	const categoriesArray = await getAllCategories();
 
-	categoriesArray.forEach((category) => {
-		const tabElement = createTab(category);
+	categoriesArray.forEach(async (category) => {
+		const post = await getPostByCategory(category);
+		const tabElement = createTab(category, post.key);
 		wrapper.appendChild(tabElement);
 	});
 };
@@ -139,7 +141,7 @@ const printTrendingPosts = async (numPost, wrapperId) => {
 	const trendingPosts = await getPostsMoreReactions(numPost);
 
 	trendingPosts.forEach((trend) => {
-		const tabElement = createTab(trend.titulo);
+		const tabElement = createTab(trend.titulo, trend.key);
 		wrapper.appendChild(tabElement);
 	});
 };

@@ -419,6 +419,7 @@ const createPostCard = async (post, index) => {
 	div15.appendChild(p2);
 
 	const i = document.createElement('i');
+	i.id = post.key;
 	i.classList.add(
 		'bi',
 		'bi-bookmark',

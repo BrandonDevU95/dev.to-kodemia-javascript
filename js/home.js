@@ -84,17 +84,13 @@ const booksmarkIcon = () => {
 				icon.classList.add('bi-bookmark-check-fill');
 				icon.classList.add('text-warning');
 				icon.classList.remove('bi-bookmark');
-				return;
-			}
-			if (icon.classList.contains('bi-bookmark-check-fill')) {
+			} else if (icon.classList.contains('bi-bookmark-check-fill')) {
 				icon.classList.remove('text-warning');
 				icon.classList.remove('bi-bookmark-check-fill');
 				icon.classList.add('bi-bookmark');
-				return;
 			}
 		});
 	});
-	console.log('Icons loaded');
 };
 
 relevant.addEventListener('click', async () => {

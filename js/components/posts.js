@@ -447,6 +447,7 @@ const printPost = async (posts, wrapperId) => {
 	}
 
 	while (wrapper.firstChild) {
+		console.log('Eliminando');
 		wrapper.removeChild(wrapper.firstChild);
 	}
 

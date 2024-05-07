@@ -23,24 +23,22 @@ if (!getToken()) {
 	window.location.href = '../index.html';
 }
 
-//crea una funcion anonima autoejecutable para cargar la DB
-(async () => {
-	const posts = await verifyPostsDB();
-	const users = await verifyUsersDB();
-	if (!posts) createPostsDB();
-	if (!users) createUsersDB();
-	loadPage();
-})();
+const postsToFilter = await getAllPost();
+
+let timeoutId;
 
 search.addEventListener('keyup', async (e) => {
-	const query = e.target.value;
-	const posts = await getAllPost();
+	clearTimeout(timeoutId);
 
-	const result = posts.filter((post) =>
-		post.titulo.toLowerCase().includes(query.toLowerCase())
-	);
+	timeoutId = setTimeout(async () => {
+		const query = e.target.value;
 
-	await printPost(result, 'posts-lists');
+		const result = postsToFilter.filter((post) =>
+			post.titulo.toLowerCase().includes(query.toLowerCase())
+		);
+
+		await printPost(result, 'posts-lists');
+	}, 500);
 });
 
 const toggleClass = async (
@@ -119,3 +117,12 @@ const loadPage = () => {
 	printTrendingPosts(10, 'trends-list');
 	printCategories('list-categories');
 };
+
+//crea una funcion anonima autoejecutable para cargar la DB
+(async () => {
+	const posts = await verifyPostsDB();
+	const users = await verifyUsersDB();
+	if (!posts) createPostsDB();
+	if (!users) createUsersDB();
+	loadPage();
+})();

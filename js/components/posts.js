@@ -438,8 +438,13 @@ const createPostCard = async (post, index) => {
 	posts.appendChild(div1);
 };
 
-const printPost = async () => {
-	const posts = await getAllPost();
+const printPost = async (posts) => {
+	console.log(posts);
+	if (!posts) {
+		posts = await getAllPost();
+		console.log(posts);
+	}
+
 	posts.forEach((post, index) => {
 		createPostCard(post, index);
 	});

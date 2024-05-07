@@ -38,4 +38,25 @@ const getBookmarkIdByPost = async (postId) => {
 	return bookmark.key;
 };
 
-export { saveBookmarkUser, deleteBookmark, getBookmarkIdByPost };
+const getAllBookmarksByUser = async (username) => {
+	let response = await fetch(`${BOOKMAK_BASE_URL}/.json`);
+	let data = await response.json();
+
+	if (!data) return null;
+
+	let keys = Object.keys(data);
+	let bookmarksArray = keys.map((key) => ({ ...data[key], key }));
+
+	const bookmarks = bookmarksArray.filter(
+		(bookmark) => bookmark.username === username
+	);
+
+	return bookmarks;
+};
+
+export {
+	saveBookmarkUser,
+	deleteBookmark,
+	getBookmarkIdByPost,
+	getAllBookmarksByUser,
+};

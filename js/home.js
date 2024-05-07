@@ -14,7 +14,11 @@ import {
 	logout,
 	verifyUsersDB,
 } from '../js/api/usersAPI.js';
-import { deleteBookmark, saveBookmarkUser } from '../js/api/bookmarks.js';
+import {
+	deleteBookmark,
+	getAllBookmarksByUser,
+	saveBookmarkUser,
+} from '../js/api/bookmarks.js';
 import {
 	printCategories,
 	printLastPosts,
@@ -47,6 +51,7 @@ const loadPage = () => {
 	//TODO: reparar esto para no usar timeout
 	setTimeout(() => {
 		booksmarkIcon();
+		loadBookmarks();
 	}, 1500);
 };
 
@@ -82,20 +87,43 @@ const booksmarkIcon = () => {
 		icon.classList.remove('text-dark');
 		icon.addEventListener('click', async () => {
 			if (icon.classList.contains('bi-bookmark')) {
-				icon.classList.add('bi-bookmark-check-fill');
-				icon.classList.add('text-warning');
-				icon.classList.remove('bi-bookmark');
 				const res = await saveBookmarkUser(user, icon.id);
-				console.log(res);
+				if (res.name) {
+					icon.classList.add('bi-bookmark-check-fill');
+					icon.classList.add('text-warning');
+					icon.classList.remove('bi-bookmark');
+				} else {
+					console.error('Error al guardar el bookmark');
+				}
 			} else if (icon.classList.contains('bi-bookmark-check-fill')) {
-				icon.classList.remove('text-warning');
-				icon.classList.remove('bi-bookmark-check-fill');
-				icon.classList.add('bi-bookmark');
 				const res = await deleteBookmark(icon.id);
-				console.log(res);
+				if (!res) {
+					icon.classList.remove('text-warning');
+					icon.classList.remove('bi-bookmark-check-fill');
+					icon.classList.add('bi-bookmark');
+				} else {
+					console.error('Error al eliminar el bookmark');
+				}
 			}
 		});
 	});
+};
+
+const loadBookmarks = async () => {
+	const bookmarks = await getAllBookmarksByUser(user);
+	if (bookmarks) {
+		const icons = document.querySelectorAll('.bi-bookmark');
+		icons.forEach((icon) => {
+			const isBookmarked = bookmarks.find(
+				(bookmark) => bookmark.postId === icon.id
+			);
+			if (isBookmarked) {
+				icon.classList.add('bi-bookmark-check-fill');
+				icon.classList.add('text-warning');
+				icon.classList.remove('bi-bookmark');
+			}
+		});
+	}
 };
 
 relevant.addEventListener('click', async () => {

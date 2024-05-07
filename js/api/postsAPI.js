@@ -81,7 +81,7 @@ const getAllTags = async () => {
 	return tagsUnique;
 };
 
-const getLastPosts = async () => {
+const getLastPosts = async (numPost) => {
 	let response = await fetch(`${POSTS_BASE_URL}/.json`);
 	let data = await response.json();
 
@@ -96,7 +96,7 @@ const getLastPosts = async () => {
 	});
 
 	//Obtener los ultimos 10 posts
-	let lastPosts = postsArray.slice(0, 10);
+	let lastPosts = postsArray.slice(0, numPost);
 	return lastPosts;
 };
 
@@ -117,7 +117,7 @@ const getAllCategories = async () => {
 	return categoriesUnique;
 };
 
-const getPostsMoreCommenst = async () => {
+const getPostsMoreReactions = async (numPost) => {
 	let response = await fetch(`${POSTS_BASE_URL}/.json`);
 	let data = await response.json();
 
@@ -131,10 +131,8 @@ const getPostsMoreCommenst = async () => {
 		return b.numReacciones - a.numReacciones;
 	});
 
-	const trendingPosts = postsArray.map((post) => post.titulo);
-
 	//Obtener los ultimos 10 posts
-	return trendingPosts.slice(0, 10);
+	return postsArray.slice(0, numPost);
 };
 
 const getPostsByRelevant = async () => {
@@ -160,6 +158,6 @@ export {
 	getAllTags,
 	getLastPosts,
 	getAllCategories,
-	getPostsMoreCommenst,
+	getPostsMoreReactions,
 	getPostsByRelevant,
 };

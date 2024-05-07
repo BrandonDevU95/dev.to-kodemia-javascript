@@ -4,7 +4,7 @@ import {
 	getPostById,
 	getLastPosts,
 	getAllCategories,
-	getPostsMoreCommenst,
+	getPostsMoreReactions,
 } from '../api/postsAPI.js';
 
 import { getAvatarByUsername } from '../api/usersAPI.js';
@@ -86,7 +86,7 @@ const AddBadgeNew = (wrapperId, position) => {
 const printLastPosts = async () => {
 	const firstLastPosts = document.getElementById('first-last-posts');
 	const secondLastPosts = document.getElementById('second-last-posts');
-	const posts = await getLastPosts();
+	const posts = await getLastPosts(10);
 
 	insertTitleLastPosts(`#${posts[0].tags[0]}`, 'first-title-last-post');
 	insertTitleLastPosts(`#${posts[1].tags[0]}`, 'second-title-last-post');
@@ -119,7 +119,7 @@ const createTab = (title) => {
 		'text-secondary',
 		'widget'
 	);
-	tabLink.textContent = title;
+	tabLink.textContent = title.titulo;
 	tabElement.appendChild(tabLink);
 	return tabElement;
 };
@@ -136,7 +136,7 @@ const printCategories = async () => {
 
 const printTrendingPosts = async () => {
 	const trendingList = document.getElementById('trends-list');
-	const trendingPosts = await getPostsMoreCommenst();
+	const trendingPosts = await getPostsMoreReactions(10);
 
 	trendingPosts.forEach((trend) => {
 		const tabElement = createTab(trend);

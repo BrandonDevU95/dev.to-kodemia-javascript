@@ -171,9 +171,7 @@ const createTagsInCard = (wrapperId, tags) => {
 	});
 };
 
-const createPostCard = async (post, index, wrapperId) => {
-	//TODO Modificar para recibir el wrapperId
-	const wrapper = document.getElementById(wrapperId);
+const createPostCard = async (post, index) => {
 	const div1 = document.createElement('div');
 	div1.classList.add('mb-1');
 
@@ -435,16 +433,23 @@ const createPostCard = async (post, index, wrapperId) => {
 	div2.appendChild(div4);
 	div1.appendChild(div2);
 
-	wrapper.appendChild(div1);
+	return div1;
 };
 
 const printPost = async (posts, wrapperId) => {
+	let wrapper = document.getElementById(wrapperId);
+
 	if (!posts) {
 		posts = await getAllPost();
 	}
 
-	posts.forEach((post, index) => {
-		createPostCard(post, index, wrapperId);
+	while (wrapper.firstChild) {
+		wrapper.removeChild(wrapper.firstChild);
+	}
+
+	posts.forEach(async (post, index) => {
+		const postCard = await createPostCard(post, index);
+		wrapper.appendChild(postCard);
 	});
 };
 

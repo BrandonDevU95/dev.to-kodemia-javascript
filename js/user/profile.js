@@ -1,7 +1,7 @@
 import { getUserByUsername, getUserData, logout } from '../api/usersAPI.js';
 
 const btnLogout = document.getElementById('logout');
-const avatar = document.getElementById('avatar-image');
+const avatar = document.querySelectorAll('#avatar-image');
 
 btnLogout.addEventListener('click', () => {
 	logout();
@@ -16,8 +16,10 @@ const { user } = getUserData();
 		'#form-profile input , #form-profile textarea'
 	);
 
-	avatar.src = userObject.avatar;
-	avatar.alt = userObject.username;
+	avatar.forEach((img) => {
+		img.src = userObject.avatar;
+		img.alt = userObject.username;
+	});
 
 	const newUser = {
 		fullname: userObject.name.firstname + ' ' + userObject.name.lastname,

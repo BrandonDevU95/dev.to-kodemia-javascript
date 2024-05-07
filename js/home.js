@@ -8,7 +8,9 @@ import {
 } from '../js/api/postsAPI.js';
 import {
 	createUsersDB,
+	getAvatarByUsername,
 	getToken,
+	getUserData,
 	logout,
 	verifyUsersDB,
 } from '../js/api/usersAPI.js';
@@ -24,11 +26,14 @@ if (!getToken()) {
 	window.location.href = '../index.html';
 }
 
+const { user } = getUserData();
+
 const search = document.getElementById('input-search');
 const relevant = document.getElementById('relevant');
 const latest = document.getElementById('latest');
 const top = document.getElementById('top');
 const btnLogout = document.getElementById('logout');
+const avatar = document.getElementById('avatar-image');
 let timeoutId;
 
 const loadPage = () => {
@@ -57,6 +62,12 @@ const toggleClass = async (
 		const post = await callback();
 		await printPost(post, wrapperId);
 	}
+};
+
+const loadAvatar = async () => {
+	const avatarImage = await getAvatarByUsername(user);
+	avatar.src = avatarImage;
+	avatar.alt = user;
 };
 
 relevant.addEventListener('click', async () => {
@@ -136,4 +147,5 @@ btnLogout.addEventListener('click', () => {
 	if (!posts) createPostsDB();
 	if (!users) createUsersDB();
 	loadPage();
+	loadAvatar();
 })();

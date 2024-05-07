@@ -67,6 +67,11 @@ const login = async (userObject) => {
 	return data;
 };
 
+const logout = () => {
+	localStorage.removeItem(TOKEN);
+	localStorage.removeItem(USER);
+};
+
 const setToken = (token) => {
 	localStorage.setItem(TOKEN, token);
 };
@@ -90,16 +95,17 @@ const decodeToken = (token) => {
 };
 
 export {
-	createUsersDB,
-	verifyUsersDB,
-	createUser,
-	getAvatarByUsername,
 	login,
-	setToken,
+	logout,
 	getToken,
+	setToken,
+	createUser,
 	setUserData,
 	getUserData,
 	decodeToken,
-	getAboutUserByUsername,
+	verifyUsersDB,
+	createUsersDB,
 	getNameByUsername,
+	getAvatarByUsername,
+	getAboutUserByUsername,
 };

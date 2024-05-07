@@ -1,11 +1,3 @@
-import { createUsersDB, getToken, verifyUsersDB } from '../js/api/usersAPI.js';
-import {
-	printPost,
-	printTags,
-	printLastPosts,
-	printCategories,
-	printTrendingPosts,
-} from '../js/components/posts.js';
 import {
 	createPostsDB,
 	getAllPost,
@@ -14,6 +6,19 @@ import {
 	getPostsMoreReactions,
 	verifyPostsDB,
 } from '../js/api/postsAPI.js';
+import {
+	createUsersDB,
+	getToken,
+	logout,
+	verifyUsersDB,
+} from '../js/api/usersAPI.js';
+import {
+	printCategories,
+	printLastPosts,
+	printPost,
+	printTags,
+	printTrendingPosts,
+} from '../js/components/posts.js';
 
 if (!getToken()) {
 	window.location.href = '../index.html';
@@ -23,6 +28,7 @@ const search = document.getElementById('input-search');
 const relevant = document.getElementById('relevant');
 const latest = document.getElementById('latest');
 const top = document.getElementById('top');
+const btnLogout = document.getElementById('logout');
 let timeoutId;
 
 const loadPage = () => {
@@ -116,6 +122,11 @@ search.addEventListener('keyup', async (e) => {
 
 		await printPost(result, 'posts-lists');
 	}, 500);
+});
+
+btnLogout.addEventListener('click', () => {
+	logout();
+	window.location.href = '../index.html';
 });
 
 //crea una funcion anonima autoejecutable para cargar la DB

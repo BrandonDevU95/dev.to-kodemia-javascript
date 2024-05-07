@@ -14,32 +14,24 @@ import {
 	getPostsMoreReactions,
 	verifyPostsDB,
 } from '../js/api/postsAPI.js';
-const search = document.getElementById('input-search');
-const relevant = document.getElementById('relevant');
-const latest = document.getElementById('latest');
-const top = document.getElementById('top');
 
 if (!getToken()) {
 	window.location.href = '../index.html';
 }
 
-const postsToFilter = await getAllPost();
-
+const search = document.getElementById('input-search');
+const relevant = document.getElementById('relevant');
+const latest = document.getElementById('latest');
+const top = document.getElementById('top');
 let timeoutId;
 
-search.addEventListener('keyup', async (e) => {
-	clearTimeout(timeoutId);
-
-	timeoutId = setTimeout(async () => {
-		const query = e.target.value;
-
-		const result = postsToFilter.filter((post) =>
-			post.titulo.toLowerCase().includes(query.toLowerCase())
-		);
-
-		await printPost(result, 'posts-lists');
-	}, 500);
-});
+const loadPage = () => {
+	printPost(null, 'posts-lists');
+	printTags();
+	printLastPosts();
+	printTrendingPosts(10, 'trends-list');
+	printCategories('list-categories');
+};
 
 const toggleClass = async (
 	element,
@@ -110,13 +102,21 @@ top.addEventListener('click', async () => {
 	);
 });
 
-const loadPage = () => {
-	printPost(null, 'posts-lists');
-	printTags();
-	printLastPosts();
-	printTrendingPosts(10, 'trends-list');
-	printCategories('list-categories');
-};
+search.addEventListener('keyup', async (e) => {
+	clearTimeout(timeoutId);
+
+	timeoutId = setTimeout(async () => {
+		const query = e.target.value;
+
+		const posts = await getAllPost();
+
+		const result = posts.filter((post) =>
+			post.titulo.toLowerCase().includes(query.toLowerCase())
+		);
+
+		await printPost(result, 'posts-lists');
+	}, 500);
+});
 
 //crea una funcion anonima autoejecutable para cargar la DB
 (async () => {

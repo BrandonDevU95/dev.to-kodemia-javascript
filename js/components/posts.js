@@ -124,23 +124,23 @@ const createTab = (title) => {
 	return tabElement;
 };
 
-const printCategories = async () => {
-	const categories = document.getElementById('list-categories');
+const printCategories = async (wrapperId) => {
+	const wrapper = document.getElementById(wrapperId);
 	const categoriesArray = await getAllCategories();
 
 	categoriesArray.forEach((category) => {
 		const tabElement = createTab(category);
-		categories.appendChild(tabElement);
+		wrapper.appendChild(tabElement);
 	});
 };
 
-const printTrendingPosts = async () => {
-	const trendingList = document.getElementById('trends-list');
-	const trendingPosts = await getPostsMoreReactions(10);
+const printTrendingPosts = async (numPost, wrapperId) => {
+	const wrapper = document.getElementById(wrapperId);
+	const trendingPosts = await getPostsMoreReactions(numPost);
 
 	trendingPosts.forEach((trend) => {
 		const tabElement = createTab(trend.titulo);
-		trendingList.appendChild(tabElement);
+		wrapper.appendChild(tabElement);
 	});
 };
 

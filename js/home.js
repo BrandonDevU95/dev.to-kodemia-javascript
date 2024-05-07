@@ -104,5 +104,5 @@ top.addEventListener('click', async () => {
 printPost(null, 'posts-lists');
 printTags();
 printLastPosts();
-printCategories();
-printTrendingPosts();
+printTrendingPosts(10, 'trends-list');
+printCategories('list-categories');

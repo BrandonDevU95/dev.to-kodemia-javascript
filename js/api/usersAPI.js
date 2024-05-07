@@ -44,6 +44,14 @@ const getAboutUserByUsername = async (username) => {
 	return data[user].acerca;
 };
 
+const getNameByUsername = async (username) => {
+	let response = await fetch(`${USERS_BASE_URL}/.json`);
+	let data = await response.json();
+	let keys = Object.keys(data);
+	let user = keys.find((key) => data[key].username === username);
+	return data[user].name;
+};
+
 const login = async (userObject) => {
 	let response = await fetch(AUTH_BASE_URL, {
 		headers: {
@@ -93,4 +101,5 @@ export {
 	getUserData,
 	decodeToken,
 	getAboutUserByUsername,
+	getNameByUsername,
 };

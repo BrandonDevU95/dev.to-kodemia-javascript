@@ -32,9 +32,11 @@
                     </nav>
                 </div>
                 <div class="col-3 p-0">
-                    <div class="d-flex justify-content-end align-items-center h-100">
-                        <i class="bi bi-x-lg social-icon btn"></i>
-                    </div>
+                    <a href="/views/home.html">
+                        <div class="d-flex justify-content-end align-items-center h-100">
+                            <i class="bi bi-x-lg social-icon btn"></i>
+                        </div>
+                    </a>
                 </div>
             </header>
             <div class="row mt-3">
@@ -45,18 +47,33 @@
                             <!-- Header -->
                             <div class="px-7 py-4_5">
                                 <div class="mb-4">
-                                    <button type="button"
-                                        class="btn btn-outline-secondary border-dark-subtle border-2 text-dark btn-cover fw-semibold">Add
-                                        a cover
-                                        image</button>
+                                    <div class="row">
+                                        <div class="col">
+                                            <button type="button" id="btn-cover-image"
+                                                class="btn btn-outline-secondary border-dark-subtle border-2 text-dark btn-cover fw-semibold">
+                                                Add a cover image</button>
+                                        </div>
+                                        <div class="col-8">
+                                            <input type="text" id="input-cover-image" name="input-cover-image"
+                                                class="form-control d-none" placeholder="Add url image..."
+                                                aria-label="Add url image...">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div>
                                     <input type="text" class="form-control title-new-post wot-focus border-0"
                                         id="title-new-post" name="title-new-post" placeholder="New post title here...">
                                 </div>
-                                <div>
-                                    <input type="text" class="form-control wot-focus border-0 text-secondary"
-                                        id="tags-new-post" name="tags-new-post" placeholder="Add up to 4 tags...">
+                                <div class="d-flex justify-content-between">
+                                    <div class="w-50">
+                                        <input type="text" class="form-control wot-focus border-0 text-secondary"
+                                            id="tags-new-post" name="tags-new-post" placeholder="Add up to 4 tags...">
+                                    </div>
+                                    <div class="w-50">
+                                        <input type="text" class="form-control wot-focus border-0 text-secondary"
+                                            id="category-new-post" name="category-new-post"
+                                            placeholder="Category post...">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -111,7 +128,7 @@
                                 <textarea class="form-control wot-focus wot-border border-0" placeholder="Write your post content
                                 here..." id="description-new-post" name="description-new-post"
                                     style="height: 100px;"></textarea>
-                                <label for="description-new-post" class="text-secondary fs-5">Write your post content
+                                <label for="description-new-post" class="text-secondary">Write your post content
                                     here...</label>
                             </div>
                         </div>
@@ -174,7 +191,7 @@
                     <div class="col-1">
                     </div>
                     <div class="col-11">
-                        <button type="button" class="btn btn-primary">Primary</button>
+                        <button type="button" id="btn-publish" class="btn btn-primary">Publish</button>
                         <a href="#" class="m-0 btn social-icon">Safe draft</a>
                         <a href="#" class="m-0 btn social-icon">
                             <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"

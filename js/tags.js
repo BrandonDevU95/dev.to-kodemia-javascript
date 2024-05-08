@@ -11,7 +11,7 @@ import { getAllPostByTag } from './api/postsAPI.js';
 import { reloadBookmarks } from './components/bookmark.js';
 
 if (!getToken()) {
-	window.location.href = '../index.html';
+	window.location.href = '../views/login.html';
 }
 
 const { user } = getUserData();

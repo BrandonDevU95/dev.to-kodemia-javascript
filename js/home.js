@@ -52,7 +52,7 @@ const loadPage = () => {
 	clearTimeout(timeoutIdBookmarks);
 
 	timeoutIdBookmarks = setTimeout(async () => {
-		booksmarkIcon();
+		bookmarkIcon();
 		loadBookmarks();
 	}, 1500);
 };
@@ -83,7 +83,7 @@ const loadAvatar = async () => {
 	avatar.alt = user;
 };
 
-const booksmarkIcon = () => {
+const bookmarkIcon = () => {
 	const icons = document.querySelectorAll('.bi-bookmark');
 	icons.forEach((icon) => {
 		const parentElement = icon.parentNode;

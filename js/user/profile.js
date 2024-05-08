@@ -1,3 +1,4 @@
+import { deleteBookmark, getAllBookmarksByUser } from '../api/bookmarks.js';
 import { getPostById, getPostsByUsername } from '../api/postsAPI.js';
 import {
 	getToken,
@@ -6,7 +7,6 @@ import {
 	logout,
 } from '../api/usersAPI.js';
 
-import { getAllBookmarksByUser } from '../api/bookmarks.js';
 import { printPost } from '../components/posts.js';
 
 const btnLogout = document.getElementById('logout');
@@ -23,6 +23,38 @@ const collectionsTab = document.getElementById('collections-tab');
 if (!getToken()) window.location.href = '../../index.html';
 
 const { user } = getUserData();
+let timeoutIdBookmarks;
+
+const loadBookmarks = async (icons) => {
+	icons.forEach((icon) => {
+		icon.classList.add('bi-bookmark-check-fill');
+		icon.classList.add('text-warning');
+		icon.classList.remove('bi-bookmark');
+	});
+};
+
+const bookmarkIcon = (icons, user) => {
+	icons.forEach((icon) => {
+		const parentElement = icon.parentNode;
+		parentElement.disabled = false;
+		icon.classList.remove('text-dark');
+		icon.addEventListener('click', async () => {
+			parentElement.disabled = true;
+			const res = await deleteBookmark(icon.id);
+			if (!res) {
+				icon.classList.remove('text-warning');
+				icon.classList.remove('bi-bookmark-check-fill');
+				icon.classList.add('bi-bookmark');
+				const bookmarkPosts = await getBookmarkByUser(user);
+				printPost(bookmarkPosts, 'collections-lists');
+				reloadBookmarks(user);
+				parentElement.disabled = false;
+			} else {
+				console.error('Error al eliminar el bookmark');
+			}
+		});
+	});
+};
 
 btnLogout.addEventListener('click', () => {
 	logout();
@@ -65,17 +97,35 @@ collections.addEventListener('click', async () => {
 	profileTab.classList.add('d-none');
 	postsTab.classList.add('d-none');
 
-	const collectionsUser = await getAllBookmarksByUser(user);
-	const postIdArray = collectionsUser.map((item) => item.postId);
-	let bookmarkPosts = [];
-
-	for (let i = 0; i < postIdArray.length; i++) {
-		const post = await getPostById(postIdArray[i]);
-		bookmarkPosts.push(post);
-	}
+	const bookmarkPosts = await getBookmarkByUser(user);
 
 	printPost(bookmarkPosts, 'collections-lists');
+	reloadBookmarks(user);
 });
+
+const reloadBookmarks = async (user) => {
+	clearTimeout(timeoutIdBookmarks);
+
+	timeoutIdBookmarks = setTimeout(async () => {
+		const icons = document.querySelectorAll('.bi-bookmark');
+		loadBookmarks(icons);
+		bookmarkIcon(icons, user);
+	}, 1000);
+};
+
+const getBookmarkByUser = async (user) => {
+	const collectionsUser = await getAllBookmarksByUser(user);
+	const postIdArray = collectionsUser.map((item) => item.postId);
+
+	const bookmarkPosts = await Promise.all(
+		postIdArray.map(async (postId) => {
+			const post = await getPostById(postId);
+			return post;
+		})
+	);
+
+	return bookmarkPosts;
+};
 
 (async () => {
 	const userObject = await getUserByUsername(user);

@@ -42,9 +42,14 @@ const deletePost = async (postId) => {
 };
 
 const getPostById = async (postId) => {
-	let response = await fetch(`${POSTS_BASE_URL}/${postId}/.json`);
+	let response = await fetch(`${POSTS_BASE_URL}/.json`);
 	let data = await response.json();
-	return data;
+
+	let keys = Object.keys(data);
+	let postsArray = keys.map((key) => ({ ...data[key], key }));
+
+	const post = postsArray.filter((post) => post.key === postId);
+	return post[0];
 };
 
 const getAllPost = async () => {

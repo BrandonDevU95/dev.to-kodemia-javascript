@@ -201,6 +201,23 @@ const getPostsByUsername = async (username) => {
 	return userPosts;
 };
 
+const getAllPostByTag = async (tag) => {
+	let response = await fetch(`${POSTS_BASE_URL}/.json`);
+	let data = await response.json();
+
+	if (!data) return null;
+
+	let keys = Object.keys(data);
+	let postsArray = keys.map((key) => ({ ...data[key], key }));
+
+	// Regresa solo los post que tengan el tag que se le pase
+	let tagPosts = postsArray.filter((post) => post.tags.includes(tag));
+
+	if (tagPosts.length === 0) return null;
+
+	return tagPosts;
+};
+
 const verifyPostUser = async (username, postId) => {
 	let response = await fetch(`${POSTS_BASE_URL}/${postId}.json`);
 	let data = await response.json();
@@ -225,6 +242,7 @@ export {
 	verifyPostsDB,
 	createPostsDB,
 	verifyPostUser,
+	getAllPostByTag,
 	getAllCategories,
 	getPostByCategory,
 	getPostsByUsername,

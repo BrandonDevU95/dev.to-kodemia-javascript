@@ -24,7 +24,7 @@ const createTag = (tag) => {
 		'text-start'
 	);
 	const tagLink = document.createElement('a');
-	tagLink.href = '#';
+	tagLink.href = `../../views/tags.html?tag=${tag}`;
 	tagLink.classList.add(
 		'text-decoration-none',
 		'd-flex',
@@ -190,7 +190,7 @@ const createTagsInCard = (wrapperId, tags) => {
 	});
 };
 
-const createPostCard = async (post, index) => {
+const createPostCard = async (post, index, notImg) => {
 	const div1 = document.createElement('div');
 	div1.classList.add('mb-1');
 
@@ -200,7 +200,7 @@ const createPostCard = async (post, index) => {
 	const div3 = document.createElement('div');
 	div3.id = 'image-first-post';
 
-	if (index === 0) {
+	if (index === 0 && !notImg) {
 		createImageTop(div3, post.imagen, post.titulo);
 	}
 
@@ -463,7 +463,7 @@ const createPostCard = async (post, index) => {
 	return div1;
 };
 
-const printPost = async (posts, wrapperId) => {
+const printPost = async (posts, wrapperId, notImg = false) => {
 	let wrapper = document.getElementById(wrapperId);
 
 	if (!posts) {
@@ -475,7 +475,7 @@ const printPost = async (posts, wrapperId) => {
 	}
 
 	posts.forEach(async (post, index) => {
-		const postCard = await createPostCard(post, index);
+		const postCard = await createPostCard(post, index, notImg);
 		wrapper.appendChild(postCard);
 	});
 };

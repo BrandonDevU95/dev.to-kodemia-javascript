@@ -22,12 +22,10 @@ const params = new URLSearchParams(new URL(url).search);
 const id = params.get('id');
 
 if (!getToken()) {
-	window.location.href = '../index.html';
+	window.location.href = `../views/guesDetails.html?id=${id}`;
 }
 
 const { user } = getUserData();
-
-// TODO: Verificar si esta en fav el detalle del post
 
 btnLogout.addEventListener('click', () => {
 	logout();

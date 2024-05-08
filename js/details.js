@@ -5,8 +5,8 @@ import {
 	getUserData,
 	logout,
 } from '../js/api/usersAPI.js';
+import { loadInfoUser, printCardUser } from '../js/components/users.js';
 
-import { printCardUser } from '../js/components/users.js';
 import { printDetailsPost } from '../js/components/posts.js';
 
 const url = window.location.href;
@@ -86,7 +86,7 @@ const printControlsUser = async (username, postId, wrapperId) => {
 	const avatarImage = await getAvatarByUsername(user);
 	avatar.src = avatarImage;
 	avatar.alt = user;
-	//Verificar si el pos pertenece al usuario en sesion
+	loadInfoUser(user);
 })();
 
 printDetailsPost(id, 'post-details');

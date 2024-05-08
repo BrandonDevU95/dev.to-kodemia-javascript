@@ -7,6 +7,7 @@ import {
 } from '../api/usersAPI.js';
 
 import { getPostsByUsername } from '../api/postsAPI.js';
+import { loadInfoUser } from '../components/users.js';
 import { printPost } from '../components/posts.js';
 import { reloadBookmarks } from '../components/bookmark.js';
 
@@ -91,7 +92,9 @@ collections.addEventListener('click', async () => {
 	const fields = document.querySelectorAll(
 		'#form-profile input , #form-profile textarea'
 	);
+	loadInfoUser(user);
 
+	//Revisar esta funcion para que funcione con el avatar
 	avatar.forEach((img) => {
 		img.src = userObject.avatar;
 		img.alt = userObject.username;

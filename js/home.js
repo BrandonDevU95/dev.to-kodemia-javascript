@@ -10,6 +10,7 @@ import {
 	createUsersDB,
 	getAvatarByUsername,
 	getToken,
+	getUserByUsername,
 	getUserData,
 	logout,
 	verifyUsersDB,
@@ -22,6 +23,7 @@ import {
 	printTrendingPosts,
 } from '../js/components/posts.js';
 
+import { loadInfoUser } from './components/users.js';
 import { reloadBookmarks } from '../js/components/bookmark.js';
 
 if (!getToken()) {
@@ -68,6 +70,7 @@ const toggleClass = async (
 	}
 };
 
+//Enviar a users component
 const loadAvatar = async () => {
 	const avatarImage = await getAvatarByUsername(user);
 	avatar.src = avatarImage;
@@ -157,4 +160,5 @@ btnLogout.addEventListener('click', () => {
 	if (!users) createUsersDB();
 	loadPage();
 	loadAvatar();
+	loadInfoUser(user);
 })();

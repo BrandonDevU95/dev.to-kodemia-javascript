@@ -110,6 +110,10 @@
   padding-right: 0.75rem !important;
 }
 
+.cursor-auto {
+  cursor: auto !important;
+}
+
 .py-4_5 {
   padding-top: 2rem !important;
   padding-bottom: 2rem !important;

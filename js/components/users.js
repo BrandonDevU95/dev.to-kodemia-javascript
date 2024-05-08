@@ -1,8 +1,10 @@
-import { getPostById } from '../api/postsAPI.js';
 import {
-	getAvatarByUsername,
 	getAboutUserByUsername,
+	getAvatarByUsername,
+	getUserByUsername,
 } from '../api/usersAPI.js';
+
+import { getPostById } from '../api/postsAPI.js';
 
 const createUserCardInfo = (user) => {
 	const card = document.createElement('div');
@@ -93,4 +95,13 @@ const printCardUser = async (id, wrapperId) => {
 	wrapper.appendChild(card);
 };
 
-export { printCardUser };
+const loadInfoUser = async (user) => {
+	const userInfo = await getUserByUsername(user);
+	const name = document.getElementById('info-name-user');
+	const username = document.getElementById('info-username-user');
+
+	name.textContent = `${userInfo.name.firstname} ${userInfo.name.lastname}`;
+	username.textContent = `@${userInfo.username}`;
+};
+
+export { printCardUser, loadInfoUser };

@@ -171,10 +171,13 @@ const getPostByCategory = async (categoria) => {
 const getPostsByUsername = async (username) => {
 	let response = await fetch(`${POSTS_BASE_URL}/.json`);
 	let data = await response.json();
+
+	if (!data) return null;
+
 	let keys = Object.keys(data);
+	let postsArray = keys.map((key) => ({ ...data[key], key }));
 
 	// Regresa solo los post que tengan el username que se le pase
-	let postsArray = keys.map((key) => ({ ...data[key], key }));
 	let userPosts = postsArray.filter(
 		(post) => post.autor.username === username
 	);

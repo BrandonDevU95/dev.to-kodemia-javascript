@@ -1,4 +1,8 @@
-import { deleteBookmark, getAllBookmarksByUser } from '../api/bookmarks.js';
+import {
+	deleteBookmark,
+	getAllBookmarksByUser,
+	saveBookmarkUser,
+} from '../api/bookmarks.js';
 import { getPostById, getPostsByUsername } from '../api/postsAPI.js';
 import {
 	getToken,
@@ -25,12 +29,20 @@ const collectionsTab = document.getElementById('collections-tab');
 const { user } = getUserData();
 let timeoutIdBookmarks;
 
-const loadBookmarks = async (icons) => {
-	icons.forEach((icon) => {
-		icon.classList.add('bi-bookmark-check-fill');
-		icon.classList.add('text-warning');
-		icon.classList.remove('bi-bookmark');
-	});
+const loadBookmarks = async (icons, user) => {
+	const bookmarks = await getAllBookmarksByUser(user);
+	if (bookmarks) {
+		icons.forEach((icon) => {
+			const isBookmarked = bookmarks.find(
+				(bookmark) => bookmark.postId === icon.id
+			);
+			if (isBookmarked) {
+				icon.classList.add('bi-bookmark-check-fill');
+				icon.classList.add('text-warning');
+				icon.classList.remove('bi-bookmark');
+			}
+		});
+	}
 };
 
 const bookmarkIcon = (icons, user) => {
@@ -39,18 +51,28 @@ const bookmarkIcon = (icons, user) => {
 		parentElement.disabled = false;
 		icon.classList.remove('text-dark');
 		icon.addEventListener('click', async () => {
-			parentElement.disabled = true;
-			const res = await deleteBookmark(icon.id);
-			if (!res) {
-				icon.classList.remove('text-warning');
-				icon.classList.remove('bi-bookmark-check-fill');
-				icon.classList.add('bi-bookmark');
-				const bookmarkPosts = await getBookmarkByUser(user);
-				printPost(bookmarkPosts, 'collections-lists');
-				reloadBookmarks(user);
-				parentElement.disabled = false;
-			} else {
-				console.error('Error al eliminar el bookmark');
+			if (icon.classList.contains('bi-bookmark')) {
+				parentElement.disabled = true;
+				const res = await saveBookmarkUser(user, icon.id);
+				if (res.name) {
+					icon.classList.add('bi-bookmark-check-fill');
+					icon.classList.add('text-warning');
+					icon.classList.remove('bi-bookmark');
+					parentElement.disabled = false;
+				} else {
+					console.error('Error al guardar el bookmark');
+				}
+			} else if (icon.classList.contains('bi-bookmark-check-fill')) {
+				parentElement.disabled = true;
+				const res = await deleteBookmark(icon.id);
+				if (!res) {
+					icon.classList.remove('text-warning');
+					icon.classList.remove('bi-bookmark-check-fill');
+					icon.classList.add('bi-bookmark');
+					parentElement.disabled = false;
+				} else {
+					console.error('Error al eliminar el bookmark');
+				}
 			}
 		});
 	});
@@ -61,7 +83,7 @@ const reloadBookmarks = async (user) => {
 
 	timeoutIdBookmarks = setTimeout(async () => {
 		const icons = document.querySelectorAll('.bi-bookmark');
-		loadBookmarks(icons);
+		loadBookmarks(icons, user);
 		bookmarkIcon(icons, user);
 	}, 1000);
 };
@@ -111,7 +133,14 @@ posts.addEventListener('click', async () => {
 	collectionsTab.classList.add('d-none');
 
 	const postsUser = await getPostsByUsername(user);
+
+	if (!postsUser) {
+		printNoPosts('No tienes colecciones aún', 'posts-lists');
+		return;
+	}
+
 	printPost(postsUser, 'posts-lists');
+	reloadBookmarks(user);
 });
 
 collections.addEventListener('click', async () => {

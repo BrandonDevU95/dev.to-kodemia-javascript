@@ -53,7 +53,7 @@ const printControlsUser = async (username, postId, wrapperId) => {
 		deleteBtn.appendChild(iconDelete);
 
 		editBtn.addEventListener('click', () => {
-			window.location.href = `../edit.html?id=${postId}`;
+			window.location.href = `../views/edit.html?id=${postId}`;
 		});
 
 		deleteBtn.addEventListener('click', async () => {

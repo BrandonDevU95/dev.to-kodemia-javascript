@@ -616,7 +616,7 @@ const createPostDetail = (post) => {
 
 	return card;
 };
-
+//TODO: Revisar que esten bien hechas estas 2 funciones
 const setFavDetails = (fav, wrapperId) => {
 	const wrapper = document.getElementById(wrapperId);
 	wrapper.textContent = fav;

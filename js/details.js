@@ -12,6 +12,7 @@ import {
 } from '../js/components/users.js';
 
 import { printDetailsPost } from '../js/components/posts.js';
+import { reloadBookmarks } from '../js/components/bookmark.js';
 
 const url = window.location.href;
 const btnLogout = document.getElementById('logout');
@@ -86,11 +87,20 @@ const printControlsUser = async (username, postId, wrapperId) => {
 	}
 };
 
+const setIdBookmark = (id) => {
+	const icons = document.querySelectorAll('.bi-bookmark');
+	icons.forEach((icon) => {
+		icon.id = id;
+	});
+};
+
 (async () => {
 	const avatarImage = await getAvatarByUsername(user);
 	avatar.src = avatarImage;
 	avatar.alt = user;
+	setIdBookmark(id);
 	loadInfoUser(user);
+	reloadBookmarks(user, 500);
 })();
 
 printDetailsPost(id, 'post-details');

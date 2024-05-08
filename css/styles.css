@@ -9,12 +9,9 @@
   text-decoration: underline;
 }
 
-.dropdown-menu {
-  min-width: 5rem !important;
-}
-
 .negative-left {
   left: -100% !important;
+  transform: translate(-50%, 0%) !important;
 }
 
 .link-nav {

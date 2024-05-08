@@ -185,6 +185,19 @@ const getPostsByUsername = async (username) => {
 	return userPosts;
 };
 
+const verifyPostUser = async (username, postId) => {
+	let response = await fetch(`${POSTS_BASE_URL}/${postId}.json`);
+	let data = await response.json();
+
+	if (!data) return null;
+
+	if (data.autor.username === username) {
+		return true;
+	}
+
+	return false;
+};
+
 export {
 	createPost,
 	deletePost,
@@ -194,6 +207,7 @@ export {
 	getLastPosts,
 	verifyPostsDB,
 	createPostsDB,
+	verifyPostUser,
 	getAllCategories,
 	getPostByCategory,
 	getPostsByUsername,

@@ -1,3 +1,4 @@
+import { deletePost, verifyPostUser } from '../js/api/postsAPI.js';
 import {
 	getAvatarByUsername,
 	getUserData,
@@ -16,16 +17,73 @@ const id = params.get('id');
 
 const { user } = getUserData();
 
+// TODO: Verificar si esta en fav el detalle del post
+
 btnLogout.addEventListener('click', () => {
 	logout();
 	window.location.href = '../index.html';
 });
 
+//Crear dos botones editar y eliminar e incertar en el wrapperId
+const printControlsUser = async (username, postId, wrapperId) => {
+	const wrapper = document.getElementById(wrapperId);
+	const isVerified = await verifyPostUser(username, postId);
+
+	if (isVerified) {
+		const controls = document.createElement('div');
+		controls.classList.add(
+			'd-flex',
+			'flex-column',
+			'align-items-center',
+			'gap-3'
+		);
+
+		const editBtn = document.createElement('button');
+		editBtn.classList.add('btn', 'btn-primary', 'w-100');
+		editBtn.setAttribute('type', 'button');
+		const iconEdit = document.createElement('i');
+		iconEdit.classList.add('bi', 'bi-pencil');
+		editBtn.appendChild(iconEdit);
+
+		const deleteBtn = document.createElement('button');
+		deleteBtn.classList.add('btn', 'btn-danger', 'w-100');
+		deleteBtn.setAttribute('type', 'button');
+		const iconDelete = document.createElement('i');
+		iconDelete.classList.add('bi', 'bi-x-lg');
+		deleteBtn.appendChild(iconDelete);
+
+		editBtn.addEventListener('click', () => {
+			window.location.href = `../edit.html?id=${postId}`;
+		});
+
+		deleteBtn.addEventListener('click', async () => {
+			//Confirmar que desea elimianr el post
+			const isDelete = confirm(
+				'¿Estas seguro que deseas eliminar el post?'
+			);
+			if (isDelete) {
+				const data = await deletePost(postId);
+				if (!data) {
+					window.location.href = '../views/home.html';
+				} else {
+					alert('No se pudo eliminar el post');
+				}
+			}
+		});
+
+		controls.appendChild(editBtn);
+		controls.appendChild(deleteBtn);
+		wrapper.appendChild(controls);
+	}
+};
+
 (async () => {
 	const avatarImage = await getAvatarByUsername(user);
 	avatar.src = avatarImage;
 	avatar.alt = user;
+	//Verificar si el pos pertenece al usuario en sesion
 })();
 
 printDetailsPost(id, 'post-details');
 printCardUser(id, 'user-details');
+printControlsUser(user, id, 'aside-left-details');

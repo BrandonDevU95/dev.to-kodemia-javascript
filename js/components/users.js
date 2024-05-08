@@ -1,5 +1,6 @@
 import {
 	getAboutUserByUsername,
+	getAllAvatarUsers,
 	getAvatarByUsername,
 	getUserByUsername,
 } from '../api/usersAPI.js';
@@ -104,10 +105,41 @@ const loadInfoUser = async (user) => {
 	username.textContent = `@${userInfo.username}`;
 };
 
+const loadAvatar = async (user, wrapperId) => {
+	const avatar = document.getElementById(wrapperId);
+	const avatarImage = await getAvatarByUsername(user);
+	avatar.src = avatarImage;
+	avatar.alt = user;
+};
+
 const notificatiosnRandom = () => {
 	const notifications = document.getElementById('notifications-user');
 	const number = Math.floor(Math.random() * 10);
 	notifications.textContent = number;
 };
 
-export { printCardUser, loadInfoUser, notificatiosnRandom };
+const printAvatarsFollowers = async (wrapperId) => {
+	const wrapper = document.getElementById(wrapperId);
+	const avatars = await getAllAvatarUsers();
+
+	avatars.forEach((avatar) => {
+		const card = document.createElement('a');
+		card.href = '#';
+		const img = document.createElement('img');
+		img.src = avatar.imagen;
+		img.classList.add('rounded-circle');
+		img.width = 48;
+		img.height = 48;
+		img.alt = avatar.username;
+		card.appendChild(img);
+		wrapper.appendChild(card);
+	});
+};
+
+export {
+	printCardUser,
+	loadInfoUser,
+	notificatiosnRandom,
+	loadAvatar,
+	printAvatarsFollowers,
+};

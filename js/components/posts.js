@@ -653,9 +653,30 @@ const printDetailsPost = async (id, wrapperId) => {
 	wrapper.appendChild(postDetail);
 };
 
+const toggleClass = async (
+	element,
+	classToCompare,
+	classToRemove,
+	classToAdd,
+	wrapperId,
+	callback
+) => {
+	if (element.classList.contains(classToCompare)) {
+		element.classList.remove(classToRemove);
+		element.classList.add(classToAdd);
+		await printPost(null, wrapperId);
+	} else {
+		element.classList.remove(classToAdd);
+		element.classList.add(classToRemove);
+		const post = await callback();
+		await printPost(post, wrapperId);
+	}
+};
+
 export {
 	printTags,
 	printPost,
+	toggleClass,
 	printLastPosts,
 	printCategories,
 	printDetailsPost,

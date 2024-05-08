@@ -8,20 +8,23 @@ import {
 } from '../js/api/postsAPI.js';
 import {
 	createUsersDB,
-	getAvatarByUsername,
 	getToken,
-	getUserByUsername,
 	getUserData,
 	logout,
 	verifyUsersDB,
 } from '../js/api/usersAPI.js';
-import { loadInfoUser, notificatiosnRandom } from './components/users.js';
+import {
+	loadAvatar,
+	loadInfoUser,
+	notificatiosnRandom,
+} from './components/users.js';
 import {
 	printCategories,
 	printLastPosts,
 	printPost,
 	printTags,
 	printTrendingPosts,
+	toggleClass,
 } from '../js/components/posts.js';
 
 import { reloadBookmarks } from '../js/components/bookmark.js';
@@ -37,7 +40,6 @@ const relevant = document.getElementById('relevant');
 const latest = document.getElementById('latest');
 const top = document.getElementById('top');
 const btnLogout = document.getElementById('logout');
-const avatar = document.getElementById('avatar-image');
 let timeoutSearch;
 
 const loadPage = () => {
@@ -48,33 +50,6 @@ const loadPage = () => {
 	printCategories('list-categories');
 
 	reloadBookmarks(user, 1500, false);
-};
-
-const toggleClass = async (
-	element,
-	classToCompare,
-	classToRemove,
-	classToAdd,
-	wrapperId,
-	callback
-) => {
-	if (element.classList.contains(classToCompare)) {
-		element.classList.remove(classToRemove);
-		element.classList.add(classToAdd);
-		await printPost(null, wrapperId);
-	} else {
-		element.classList.remove(classToAdd);
-		element.classList.add(classToRemove);
-		const post = await callback();
-		await printPost(post, wrapperId);
-	}
-};
-
-//Enviar a users component
-const loadAvatar = async () => {
-	const avatarImage = await getAvatarByUsername(user);
-	avatar.src = avatarImage;
-	avatar.alt = user;
 };
 
 relevant.addEventListener('click', async () => {
@@ -159,7 +134,7 @@ btnLogout.addEventListener('click', () => {
 	if (!posts) createPostsDB();
 	if (!users) createUsersDB();
 	loadPage();
-	loadAvatar();
+	loadAvatar(user, 'avatar-image');
 	loadInfoUser(user);
 	notificatiosnRandom();
 })();

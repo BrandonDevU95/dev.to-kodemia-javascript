@@ -60,6 +60,19 @@ const getNameByUsername = async (username) => {
 	return data[user].name;
 };
 
+const getAllAvatarUsers = async () => {
+	let response = await fetch(`${USERS_BASE_URL}/.json`);
+	let data = await response.json();
+	let keys = Object.keys(data);
+	let avatars = keys.map((key) => {
+		return {
+			username: data[key].username,
+			imagen: data[key].avatar,
+		};
+	});
+	return avatars;
+};
+
 const login = async (userObject) => {
 	let response = await fetch(AUTH_BASE_URL, {
 		headers: {
@@ -113,8 +126,9 @@ export {
 	decodeToken,
 	createUsersDB,
 	verifyUsersDB,
-	getNameByUsername,
 	getUserByUsername,
+	getAllAvatarUsers,
+	getNameByUsername,
 	getAvatarByUsername,
 	getAboutUserByUsername,
 };

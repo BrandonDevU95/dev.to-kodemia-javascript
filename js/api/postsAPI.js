@@ -149,17 +149,22 @@ const getPostsMoreReactions = async (numPost) => {
 	return postsArray.slice(0, numPost);
 };
 
-const getPostsByRelevant = async () => {
-	let response = await fetch(`${POSTS_BASE_URL}/.json`);
-	let data = await response.json();
-	let keys = Object.keys(data);
+const getPostsByRelevant = async (post = null) => {
+	let relevantPosts;
+	if (!post) {
+		let response = await fetch(`${POSTS_BASE_URL}/.json`);
+		let data = await response.json();
+		let keys = Object.keys(data);
 
-	// Regresa solo los post que tengas true en la propiedad relevante
-	let postsArray = keys.map((key) => ({ ...data[key], key }));
-	let relevantPosts = postsArray.filter((post) => post.relevante);
-
-	// regresa solo 3 post relevantes
-	return relevantPosts.slice(0, 3);
+		let postsArray = keys.map((key) => ({ ...data[key], key }));
+		// Regresa solo los post que tengas true en la propiedad relevante
+		relevantPosts = postsArray.filter((post) => post.relevante);
+		// regresa solo 3 post relevantes
+		return relevantPosts.slice(0, 3);
+	} else {
+		relevantPosts = post.filter((post) => post.relevante);
+		return relevantPosts;
+	}
 };
 
 const getPostByCategory = async (categoria) => {

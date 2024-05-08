@@ -33,6 +33,15 @@ const createPost = async (postObject) => {
 	return data;
 };
 
+const updatePost = async (postObject, postId) => {
+	let response = await fetch(`${POSTS_BASE_URL}/${postId}.json`, {
+		method: 'PUT',
+		body: JSON.stringify(postObject),
+	});
+	let data = await response.json();
+	return data;
+};
+
 const deletePost = async (postId) => {
 	let response = await fetch(`${POSTS_BASE_URL}/${postId}.json`, {
 		method: 'DELETE',
@@ -208,6 +217,7 @@ export {
 	deletePost,
 	getAllPost,
 	getAllTags,
+	updatePost,
 	getPostById,
 	getLastPosts,
 	verifyPostsDB,

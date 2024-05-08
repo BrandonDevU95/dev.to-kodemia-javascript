@@ -196,6 +196,8 @@ const getPostsByUsername = async (username) => {
 		(post) => post.autor.username === username
 	);
 
+	if (userPosts.length === 0) return null;
+
 	return userPosts;
 };
 

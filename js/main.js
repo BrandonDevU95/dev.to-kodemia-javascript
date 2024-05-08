@@ -1,20 +1,21 @@
-import { getToken } from './api/usersAPI.js';
-import { createPostsDB, verifyPostsDB } from './api/postsAPI.js';
-import { verifyUsersDB, createUsersDB } from './api/usersAPI.js';
+import { createPostsDB, getAllPost, verifyPostsDB } from './api/postsAPI.js';
+import { createUsersDB, verifyUsersDB } from './api/usersAPI.js';
 import {
+	printCategories,
+	printLastPosts,
 	printPost,
 	printTags,
-	printLastPosts,
-	printCategories,
 	printTrendingPosts,
 } from '../js/components/posts.js';
+
+import { getToken } from './api/usersAPI.js';
 
 if (getToken()) {
 	window.location.href = '../views/home.html';
 }
 
 const search = document.getElementById('input-search');
-let timeoutId;
+let timeoutSearch;
 
 const loadPage = () => {
 	printPost(null, 'posts-lists');
@@ -25,9 +26,9 @@ const loadPage = () => {
 };
 
 search.addEventListener('keyup', async (e) => {
-	clearTimeout(timeoutId);
+	clearTimeout(timeoutSearch);
 
-	timeoutId = setTimeout(async () => {
+	timeoutSearch = setTimeout(async () => {
 		const query = e.target.value;
 
 		const posts = await getAllPost();
@@ -39,7 +40,6 @@ search.addEventListener('keyup', async (e) => {
 		await printPost(result, 'posts-lists');
 	}, 500);
 });
-
 //crea una funcion anonima autoejecutable para cargar la DB
 (async () => {
 	const posts = await verifyPostsDB();

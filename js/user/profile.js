@@ -9,6 +9,8 @@ import {
 
 import { printPost } from '../components/posts.js';
 
+if (!getToken()) window.location.href = '../../index.html';
+
 const btnLogout = document.getElementById('logout');
 const avatar = document.querySelectorAll('#avatar-image');
 
@@ -19,8 +21,6 @@ const collections = document.getElementById('my-collections');
 const profileTab = document.getElementById('profile-tab');
 const postsTab = document.getElementById('posts-tab');
 const collectionsTab = document.getElementById('collections-tab');
-
-if (!getToken()) window.location.href = '../../index.html';
 
 const { user } = getUserData();
 let timeoutIdBookmarks;
@@ -54,6 +54,33 @@ const bookmarkIcon = (icons, user) => {
 			}
 		});
 	});
+};
+
+const reloadBookmarks = async (user) => {
+	clearTimeout(timeoutIdBookmarks);
+
+	timeoutIdBookmarks = setTimeout(async () => {
+		const icons = document.querySelectorAll('.bi-bookmark');
+		loadBookmarks(icons);
+		bookmarkIcon(icons, user);
+	}, 1000);
+};
+
+const getBookmarkByUser = async (user) => {
+	const collectionsUser = await getAllBookmarksByUser(user);
+
+	if (!collectionsUser) return null;
+
+	const postIdArray = collectionsUser.map((item) => item.postId);
+
+	const bookmarkPosts = await Promise.all(
+		postIdArray.map(async (postId) => {
+			const post = await getPostById(postId);
+			return post;
+		})
+	);
+
+	return bookmarkPosts;
 };
 
 btnLogout.addEventListener('click', () => {
@@ -99,32 +126,26 @@ collections.addEventListener('click', async () => {
 
 	const bookmarkPosts = await getBookmarkByUser(user);
 
+	if (!bookmarkPosts) {
+		printNoPosts('No tienes colecciones aún', 'collections-lists');
+		return;
+	}
+
 	printPost(bookmarkPosts, 'collections-lists');
 	reloadBookmarks(user);
 });
 
-const reloadBookmarks = async (user) => {
-	clearTimeout(timeoutIdBookmarks);
+const printNoPosts = (title, wrapperId) => {
+	const wrapper = document.getElementById(wrapperId);
 
-	timeoutIdBookmarks = setTimeout(async () => {
-		const icons = document.querySelectorAll('.bi-bookmark');
-		loadBookmarks(icons);
-		bookmarkIcon(icons, user);
-	}, 1000);
-};
+	while (wrapper.firstChild) {
+		wrapper.removeChild(wrapper.firstChild);
+	}
 
-const getBookmarkByUser = async (user) => {
-	const collectionsUser = await getAllBookmarksByUser(user);
-	const postIdArray = collectionsUser.map((item) => item.postId);
-
-	const bookmarkPosts = await Promise.all(
-		postIdArray.map(async (postId) => {
-			const post = await getPostById(postId);
-			return post;
-		})
-	);
-
-	return bookmarkPosts;
+	const h1 = document.createElement('h1');
+	h1.classList.add('text-center', 'p-4');
+	h1.textContent = title;
+	wrapper.appendChild(h1);
 };
 
 (async () => {

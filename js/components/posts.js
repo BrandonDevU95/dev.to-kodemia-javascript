@@ -135,7 +135,8 @@ const createTab = (title, key) => {
 		'd-block',
 		'text-decoration-none',
 		'text-secondary',
-		'widget'
+		'widget',
+		'rounded'
 	);
 	tabLink.textContent = title;
 	tabElement.appendChild(tabLink);

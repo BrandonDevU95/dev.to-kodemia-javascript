@@ -5,9 +5,9 @@ import {
 	getUserData,
 	logout,
 } from '../api/usersAPI.js';
+import { loadInfoUser, notificatiosnRandom } from '../components/users.js';
 
 import { getPostsByUsername } from '../api/postsAPI.js';
-import { loadInfoUser } from '../components/users.js';
 import { printPost } from '../components/posts.js';
 import { reloadBookmarks } from '../components/bookmark.js';
 
@@ -93,6 +93,7 @@ collections.addEventListener('click', async () => {
 		'#form-profile input , #form-profile textarea'
 	);
 	loadInfoUser(user);
+	notificatiosnRandom();
 
 	//Revisar esta funcion para que funcione con el avatar
 	avatar.forEach((img) => {

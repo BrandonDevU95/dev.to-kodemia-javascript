@@ -15,6 +15,7 @@ import {
 	logout,
 	verifyUsersDB,
 } from '../js/api/usersAPI.js';
+import { loadInfoUser, notificatiosnRandom } from './components/users.js';
 import {
 	printCategories,
 	printLastPosts,
@@ -23,7 +24,6 @@ import {
 	printTrendingPosts,
 } from '../js/components/posts.js';
 
-import { loadInfoUser } from './components/users.js';
 import { reloadBookmarks } from '../js/components/bookmark.js';
 
 if (!getToken()) {
@@ -161,4 +161,5 @@ btnLogout.addEventListener('click', () => {
 	loadPage();
 	loadAvatar();
 	loadInfoUser(user);
+	notificatiosnRandom();
 })();

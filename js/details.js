@@ -5,7 +5,11 @@ import {
 	getUserData,
 	logout,
 } from '../js/api/usersAPI.js';
-import { loadInfoUser, printCardUser } from '../js/components/users.js';
+import {
+	loadInfoUser,
+	notificatiosnRandom,
+	printCardUser,
+} from '../js/components/users.js';
 
 import { printDetailsPost } from '../js/components/posts.js';
 
@@ -92,3 +96,4 @@ const printControlsUser = async (username, postId, wrapperId) => {
 printDetailsPost(id, 'post-details');
 printCardUser(id, 'user-details');
 printControlsUser(user, id, 'aside-left-details');
+notificatiosnRandom();

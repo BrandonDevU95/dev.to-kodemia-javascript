@@ -104,4 +104,10 @@ const loadInfoUser = async (user) => {
 	username.textContent = `@${userInfo.username}`;
 };
 
-export { printCardUser, loadInfoUser };
+const notificatiosnRandom = () => {
+	const notifications = document.getElementById('notifications-user');
+	const number = Math.floor(Math.random() * 10);
+	notifications.textContent = number;
+};
+
+export { printCardUser, loadInfoUser, notificatiosnRandom };

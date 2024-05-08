@@ -129,7 +129,8 @@ const createTab = (title, key) => {
 	const tabElement = document.createElement('div');
 	tabElement.classList.add('ms-3');
 	const tabLink = document.createElement('a');
-	tabLink.href = `../../views/details.html?id=${key}`;
+	const url = token ? 'details' : 'guestDetails';
+	tabLink.href = `../../views/${url}.html?id=${key}`;
 	tabLink.classList.add(
 		'd-block',
 		'text-decoration-none',

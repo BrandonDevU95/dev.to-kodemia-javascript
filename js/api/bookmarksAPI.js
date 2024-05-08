@@ -10,10 +10,11 @@ const saveBookmarkUser = async (username, postId) => {
 	return data;
 };
 
-const deleteBookmark = async (postId) => {
-	//Primero deberia buscar el postId y traerme el id del bookmark
+const deleteBookmark = async (user, postId) => {
+	//Eliminar el bookmark solo si el post corresponde al usuario
+	const bookmarkId = await getBookmarkIdByPost(user, postId);
 
-	const bookmarkId = await getBookmarkIdByPost(postId);
+	if (!bookmarkId) return null;
 
 	let response = await fetch(`${BOOKMAK_BASE_URL}/${bookmarkId}.json`, {
 		method: 'DELETE',
@@ -22,7 +23,7 @@ const deleteBookmark = async (postId) => {
 	return data;
 };
 
-const getBookmarkIdByPost = async (postId) => {
+const getBookmarkIdByPost = async (user, postId) => {
 	let response = await fetch(`${BOOKMAK_BASE_URL}/.json`);
 	let data = await response.json();
 
@@ -32,7 +33,7 @@ const getBookmarkIdByPost = async (postId) => {
 	let bookmarksArray = keys.map((key) => ({ ...data[key], key }));
 
 	const bookmark = bookmarksArray.find(
-		(bookmark) => bookmark.postId === postId
+		(bookmark) => bookmark.username === user && bookmark.postId === postId
 	);
 
 	return bookmark.key;

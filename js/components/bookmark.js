@@ -44,7 +44,7 @@ const bookmarkIcon = (icons, user, reload) => {
 				}
 			} else if (icon.classList.contains('bi-bookmark-check-fill')) {
 				parentElement.disabled = true;
-				const res = await deleteBookmark(icon.id);
+				const res = await deleteBookmark(user, icon.id);
 				if (!res) {
 					icon.classList.remove('text-warning');
 					icon.classList.remove('bi-bookmark-check-fill');

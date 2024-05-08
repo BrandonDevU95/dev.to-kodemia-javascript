@@ -1,3 +1,4 @@
+import { getBookmarkByUser, printNoPosts } from '../components/bookmark.js';
 import { getPostById, getPostsByUsername } from '../api/postsAPI.js';
 import {
 	getToken,
@@ -6,7 +7,6 @@ import {
 	logout,
 } from '../api/usersAPI.js';
 
-import { getAllBookmarksByUser } from '../api/bookmarks.js';
 import { printPost } from '../components/posts.js';
 import { reloadBookmarks } from '../components/bookmark.js';
 
@@ -24,23 +24,6 @@ const postsTab = document.getElementById('posts-tab');
 const collectionsTab = document.getElementById('collections-tab');
 
 const { user } = getUserData();
-
-const getBookmarkByUser = async (user) => {
-	const collectionsUser = await getAllBookmarksByUser(user);
-
-	if (!collectionsUser) return null;
-
-	const postIdArray = collectionsUser.map((item) => item.postId);
-
-	const bookmarkPosts = await Promise.all(
-		postIdArray.map(async (postId) => {
-			const post = await getPostById(postId);
-			return post;
-		})
-	);
-
-	return bookmarkPosts;
-};
 
 //No hay una funcion de entrada como en home, espera los eventos de los botones
 btnLogout.addEventListener('click', () => {
@@ -101,20 +84,6 @@ collections.addEventListener('click', async () => {
 	printPost(bookmarkPosts, 'collections-lists');
 	reloadBookmarks(user, 1000);
 });
-
-//TODO: Piner esto en My posts cuando no haya posts del usuario
-const printNoPosts = (title, wrapperId) => {
-	const wrapper = document.getElementById(wrapperId);
-
-	while (wrapper.firstChild) {
-		wrapper.removeChild(wrapper.firstChild);
-	}
-
-	const h1 = document.createElement('h1');
-	h1.classList.add('text-center', 'p-4');
-	h1.textContent = title;
-	wrapper.appendChild(h1);
-};
 
 //Funcion que carga los datos del usuario en el perfil desde el inicio
 (async () => {

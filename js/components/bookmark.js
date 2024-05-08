@@ -4,6 +4,9 @@ import {
 	saveBookmarkUser,
 } from '../api/bookmarks.js';
 
+import { getPostById } from '../api/postsAPI.js';
+import { printPost } from '../components/posts.js';
+
 let timeoutIdBookmarks;
 
 const loadBookmarks = async (icons, user) => {
@@ -46,6 +49,15 @@ const bookmarkIcon = (icons, user) => {
 					icon.classList.remove('text-warning');
 					icon.classList.remove('bi-bookmark-check-fill');
 					icon.classList.add('bi-bookmark');
+					const bookmarkPosts = await getBookmarkByUser(user);
+					if (!bookmarkPosts) {
+						printNoPosts(
+							'No tienes colecciones aún',
+							'collections-lists'
+						);
+						return;
+					}
+					printPost(bookmarkPosts, 'collections-lists');
 					parentElement.disabled = false;
 				} else {
 					console.error('Error al eliminar el bookmark');
@@ -65,4 +77,35 @@ const reloadBookmarks = async (user, time) => {
 	}, time || 1500);
 };
 
-export { reloadBookmarks };
+const getBookmarkByUser = async (user) => {
+	const collectionsUser = await getAllBookmarksByUser(user);
+
+	if (!collectionsUser) return null;
+
+	const postIdArray = collectionsUser.map((item) => item.postId);
+
+	const bookmarkPosts = await Promise.all(
+		postIdArray.map(async (postId) => {
+			const post = await getPostById(postId);
+			return post;
+		})
+	);
+
+	return bookmarkPosts;
+};
+
+//TODO: Piner esto en My posts cuando no haya posts del usuario
+const printNoPosts = (title, wrapperId) => {
+	const wrapper = document.getElementById(wrapperId);
+
+	while (wrapper.firstChild) {
+		wrapper.removeChild(wrapper.firstChild);
+	}
+
+	const h1 = document.createElement('h1');
+	h1.classList.add('text-center', 'p-4');
+	h1.textContent = title;
+	wrapper.appendChild(h1);
+};
+
+export { reloadBookmarks, getBookmarkByUser, printNoPosts };

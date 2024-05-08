@@ -86,7 +86,7 @@ const getBookmarkByUser = async (user) => {
 	//Esta variable obtiene los objetos de la db bookmarks
 	const collectionsUser = await getAllBookmarksByUser(user);
 
-	if (!collectionsUser) return null;
+	if (collectionsUser.length === 0) return null;
 
 	//Construye un nuevo array con los postId de los objetos de la db bookmarks
 	const postIdArray = collectionsUser.map((item) => item.postId);

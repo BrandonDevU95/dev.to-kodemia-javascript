@@ -4,8 +4,6 @@ const url = window.location.href;
 const params = new URLSearchParams(new URL(url).search);
 const id = params.get('id');
 
-console.log(id);
-
 const image = document.getElementById('input-cover-image');
 const title = document.getElementById('title-new-post');
 const tags = document.getElementById('tags-new-post');

@@ -56,13 +56,16 @@ const bookmarkIcon = (icons, user, reload) => {
 								'No tienes colecciones aún',
 								'collections-lists'
 							);
+							parentElement.disabled = false;
 							return;
 						}
 						printPost(bookmarkPosts, 'collections-lists');
+						parentElement.disabled = false;
 					}
 					parentElement.disabled = false;
 				} else {
 					console.error('Error al eliminar el bookmark');
+					parentElement.disabled = false;
 				}
 			}
 		});

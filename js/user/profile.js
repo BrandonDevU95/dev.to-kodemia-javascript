@@ -55,8 +55,6 @@ posts.addEventListener('click', async () => {
 
 	const postsUser = await getPostsByUsername(user);
 
-	console.log(postsUser);
-
 	if (!postsUser) {
 		printNoPosts('No tienes post aún', 'posts-lists');
 		return;

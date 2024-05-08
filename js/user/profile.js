@@ -1,8 +1,3 @@
-import {
-	deleteBookmark,
-	getAllBookmarksByUser,
-	saveBookmarkUser,
-} from '../api/bookmarks.js';
 import { getPostById, getPostsByUsername } from '../api/postsAPI.js';
 import {
 	getToken,
@@ -11,7 +6,9 @@ import {
 	logout,
 } from '../api/usersAPI.js';
 
+import { getAllBookmarksByUser } from '../api/bookmarks.js';
 import { printPost } from '../components/posts.js';
+import { reloadBookmarks } from '../components/bookmark.js';
 
 if (!getToken()) window.location.href = '../../index.html';
 
@@ -27,66 +24,6 @@ const postsTab = document.getElementById('posts-tab');
 const collectionsTab = document.getElementById('collections-tab');
 
 const { user } = getUserData();
-let timeoutIdBookmarks;
-
-const loadBookmarks = async (icons, user) => {
-	const bookmarks = await getAllBookmarksByUser(user);
-	if (bookmarks) {
-		icons.forEach((icon) => {
-			const isBookmarked = bookmarks.find(
-				(bookmark) => bookmark.postId === icon.id
-			);
-			if (isBookmarked) {
-				icon.classList.add('bi-bookmark-check-fill');
-				icon.classList.add('text-warning');
-				icon.classList.remove('bi-bookmark');
-			}
-		});
-	}
-};
-
-const bookmarkIcon = (icons, user) => {
-	icons.forEach((icon) => {
-		const parentElement = icon.parentNode;
-		parentElement.disabled = false;
-		icon.classList.remove('text-dark');
-		icon.addEventListener('click', async () => {
-			if (icon.classList.contains('bi-bookmark')) {
-				parentElement.disabled = true;
-				const res = await saveBookmarkUser(user, icon.id);
-				if (res.name) {
-					icon.classList.add('bi-bookmark-check-fill');
-					icon.classList.add('text-warning');
-					icon.classList.remove('bi-bookmark');
-					parentElement.disabled = false;
-				} else {
-					console.error('Error al guardar el bookmark');
-				}
-			} else if (icon.classList.contains('bi-bookmark-check-fill')) {
-				parentElement.disabled = true;
-				const res = await deleteBookmark(icon.id);
-				if (!res) {
-					icon.classList.remove('text-warning');
-					icon.classList.remove('bi-bookmark-check-fill');
-					icon.classList.add('bi-bookmark');
-					parentElement.disabled = false;
-				} else {
-					console.error('Error al eliminar el bookmark');
-				}
-			}
-		});
-	});
-};
-
-const reloadBookmarks = async (user) => {
-	clearTimeout(timeoutIdBookmarks);
-
-	timeoutIdBookmarks = setTimeout(async () => {
-		const icons = document.querySelectorAll('.bi-bookmark');
-		loadBookmarks(icons, user);
-		bookmarkIcon(icons, user);
-	}, 1000);
-};
 
 const getBookmarkByUser = async (user) => {
 	const collectionsUser = await getAllBookmarksByUser(user);
@@ -105,6 +42,7 @@ const getBookmarkByUser = async (user) => {
 	return bookmarkPosts;
 };
 
+//No hay una funcion de entrada como en home, espera los eventos de los botones
 btnLogout.addEventListener('click', () => {
 	logout();
 	window.location.href = '../../index.html';
@@ -140,7 +78,7 @@ posts.addEventListener('click', async () => {
 	}
 
 	printPost(postsUser, 'posts-lists');
-	reloadBookmarks(user);
+	reloadBookmarks(user, 1000);
 });
 
 collections.addEventListener('click', async () => {
@@ -161,9 +99,10 @@ collections.addEventListener('click', async () => {
 	}
 
 	printPost(bookmarkPosts, 'collections-lists');
-	reloadBookmarks(user);
+	reloadBookmarks(user, 1000);
 });
 
+//TODO: Piner esto en My posts cuando no haya posts del usuario
 const printNoPosts = (title, wrapperId) => {
 	const wrapper = document.getElementById(wrapperId);
 
@@ -177,6 +116,7 @@ const printNoPosts = (title, wrapperId) => {
 	wrapper.appendChild(h1);
 };
 
+//Funcion que carga los datos del usuario en el perfil desde el inicio
 (async () => {
 	const userObject = await getUserByUsername(user);
 	const fields = document.querySelectorAll(

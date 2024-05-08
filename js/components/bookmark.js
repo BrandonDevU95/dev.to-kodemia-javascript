@@ -1,0 +1,68 @@
+import {
+	deleteBookmark,
+	getAllBookmarksByUser,
+	saveBookmarkUser,
+} from '../api/bookmarks.js';
+
+let timeoutIdBookmarks;
+
+const loadBookmarks = async (icons, user) => {
+	const bookmarks = await getAllBookmarksByUser(user);
+	if (bookmarks) {
+		icons.forEach((icon) => {
+			const isBookmarked = bookmarks.find(
+				(bookmark) => bookmark.postId === icon.id
+			);
+			if (isBookmarked) {
+				icon.classList.add('bi-bookmark-check-fill');
+				icon.classList.add('text-warning');
+				icon.classList.remove('bi-bookmark');
+			}
+		});
+	}
+};
+
+const bookmarkIcon = (icons, user) => {
+	icons.forEach((icon) => {
+		const parentElement = icon.parentNode;
+		parentElement.disabled = false;
+		icon.classList.remove('text-dark');
+		icon.addEventListener('click', async () => {
+			if (icon.classList.contains('bi-bookmark')) {
+				parentElement.disabled = true;
+				const res = await saveBookmarkUser(user, icon.id);
+				if (res.name) {
+					icon.classList.add('bi-bookmark-check-fill');
+					icon.classList.add('text-warning');
+					icon.classList.remove('bi-bookmark');
+					parentElement.disabled = false;
+				} else {
+					console.error('Error al guardar el bookmark');
+				}
+			} else if (icon.classList.contains('bi-bookmark-check-fill')) {
+				parentElement.disabled = true;
+				const res = await deleteBookmark(icon.id);
+				if (!res) {
+					icon.classList.remove('text-warning');
+					icon.classList.remove('bi-bookmark-check-fill');
+					icon.classList.add('bi-bookmark');
+					parentElement.disabled = false;
+				} else {
+					console.error('Error al eliminar el bookmark');
+				}
+			}
+		});
+	});
+};
+
+const reloadBookmarks = async (user, time) => {
+	clearTimeout(timeoutIdBookmarks);
+
+	timeoutIdBookmarks = setTimeout(async () => {
+		const icons = document.querySelectorAll('.bi-bookmark');
+		loadBookmarks(icons, user);
+		bookmarkIcon(icons, user);
+	}, time || 1500);
+};
+
+export { reloadBookmarks };

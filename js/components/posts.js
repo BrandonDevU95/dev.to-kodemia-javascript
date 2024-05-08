@@ -176,7 +176,7 @@ const createImageTop = (wrapperId, src, alt) => {
 const createTagsInCard = (wrapperId, tags) => {
 	tags.forEach((tag) => {
 		const tagComponent = document.createElement('a');
-		tagComponent.href = '#';
+		tagComponent.href = `../../views/tags.html?tag=${tag}`;
 		tagComponent.classList.add(
 			'text-decoration-none',
 			'text-secondary',

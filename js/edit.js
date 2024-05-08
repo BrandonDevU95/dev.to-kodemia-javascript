@@ -4,6 +4,8 @@ const url = window.location.href;
 const params = new URLSearchParams(new URL(url).search);
 const id = params.get('id');
 
+console.log(id);
+
 const image = document.getElementById('input-cover-image');
 const title = document.getElementById('title-new-post');
 const tags = document.getElementById('tags-new-post');
@@ -18,15 +20,15 @@ const tipTags = document.getElementById('writting-post-tags');
 const tipDescription = document.getElementById('writting-post-description');
 const tipFooter = document.getElementById('publishing-tips');
 
-const post = await getPostById(id);
+const originalPost = await getPostById(id);
 
 (() => {
-	title.value = post.titulo;
-	tags.value = post.tags.join(',');
-	category.value = post.categoria;
-	description.value = post.descripcion;
+	title.value = originalPost.titulo;
+	tags.value = originalPost.tags.join(',');
+	category.value = originalPost.categoria;
+	description.value = originalPost.descripcion;
 	image.classList.remove('d-none');
-	image.value = post.imagen;
+	image.value = originalPost.imagen;
 	btnImage.disabled = true;
 })();
 
@@ -72,12 +74,15 @@ btnUpdate.addEventListener('click', async () => {
 	tagsArray = tagsArray.map((tag) => tag.replace(/\s+/g, ''));
 
 	const post = {
+		...originalPost,
 		imagen: image.value,
 		titulo: title.value,
 		tags: tagsArray,
 		categoria: category.value,
 		descripcion: description.value,
 	};
+
+	delete post.key;
 
 	const data = await updatePost(post, id);
 

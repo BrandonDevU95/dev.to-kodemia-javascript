@@ -22,7 +22,7 @@ const params = new URLSearchParams(new URL(url).search);
 const id = params.get('id');
 
 if (!getToken()) {
-	window.location.href = `../views/guesDetails.html?id=${id}`;
+	window.location.href = `../index.html`;
 }
 
 const { user } = getUserData();

@@ -9,6 +9,9 @@ import {
 } from '../api/postsAPI.js';
 
 import { getAvatarByUsername } from '../api/usersAPI.js';
+import { getToken } from '../api/usersAPI.js';
+
+const token = getToken();
 
 const createTag = (tag) => {
 	const tagElement = document.createElement('div');
@@ -58,7 +61,8 @@ const createTabDiscuss = (post) => {
 	const tabElement = document.createElement('div');
 	tabElement.classList.add('p-3', 'border-bottom', 'border-light');
 	const tabLink = document.createElement('a');
-	tabLink.href = `../../views/details.html?id=${post.key}`;
+	const url = token ? 'details' : 'guestDetails';
+	tabLink.href = `../../views/${url}.html?id=${post.key}`;
 	tabLink.classList.add('text-decoration-none', 'text-discuss');
 	const tabTitle = document.createElement('p');
 	tabTitle.classList.add('m-0');
@@ -250,7 +254,8 @@ const createPostCard = async (post, index) => {
 	const div10 = document.createElement('div');
 
 	const a3 = document.createElement('a');
-	a3.href = `../../views/details.html?id=${post.key}`;
+	const url = token ? 'details' : 'guestDetails';
+	a3.href = `../../views/${url}.html?id=${post.key}`;
 	a3.classList.add('text-decoration-none');
 
 	const h2 = document.createElement('h2');

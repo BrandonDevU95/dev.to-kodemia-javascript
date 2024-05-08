@@ -25,7 +25,7 @@ const loadBookmarks = async (icons, user) => {
 	}
 };
 
-const bookmarkIcon = (icons, user) => {
+const bookmarkIcon = (icons, user, reload) => {
 	icons.forEach((icon) => {
 		const parentElement = icon.parentNode;
 		parentElement.disabled = false;
@@ -49,15 +49,17 @@ const bookmarkIcon = (icons, user) => {
 					icon.classList.remove('text-warning');
 					icon.classList.remove('bi-bookmark-check-fill');
 					icon.classList.add('bi-bookmark');
-					const bookmarkPosts = await getBookmarkByUser(user);
-					if (!bookmarkPosts) {
-						printNoPosts(
-							'No tienes colecciones aún',
-							'collections-lists'
-						);
-						return;
+					if (reload) {
+						const bookmarkPosts = await getBookmarkByUser(user);
+						if (!bookmarkPosts) {
+							printNoPosts(
+								'No tienes colecciones aún',
+								'collections-lists'
+							);
+							return;
+						}
+						printPost(bookmarkPosts, 'collections-lists');
 					}
-					printPost(bookmarkPosts, 'collections-lists');
 					parentElement.disabled = false;
 				} else {
 					console.error('Error al eliminar el bookmark');
@@ -67,13 +69,13 @@ const bookmarkIcon = (icons, user) => {
 	});
 };
 
-const reloadBookmarks = async (user, time) => {
+const reloadBookmarks = async (user, time, reload) => {
 	clearTimeout(timeoutIdBookmarks);
 
 	timeoutIdBookmarks = setTimeout(async () => {
 		const icons = document.querySelectorAll('.bi-bookmark');
 		loadBookmarks(icons, user);
-		bookmarkIcon(icons, user);
+		bookmarkIcon(icons, user, reload);
 	}, time || 1500);
 };
 

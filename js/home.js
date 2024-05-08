@@ -45,7 +45,7 @@ const loadPage = () => {
 	printTrendingPosts(10, 'trends-list');
 	printCategories('list-categories');
 
-	reloadBookmarks(user, 1500);
+	reloadBookmarks(user, 1500, false);
 };
 
 const toggleClass = async (
@@ -89,6 +89,7 @@ relevant.addEventListener('click', async () => {
 		'posts-lists',
 		getPostsByRelevant
 	);
+	reloadBookmarks(user, 1000, false);
 });
 
 latest.addEventListener('click', async () => {
@@ -105,6 +106,7 @@ latest.addEventListener('click', async () => {
 		'posts-lists',
 		() => getLastPosts(3)
 	);
+	reloadBookmarks(user, 1000, false);
 });
 
 top.addEventListener('click', async () => {
@@ -121,6 +123,8 @@ top.addEventListener('click', async () => {
 		'posts-lists',
 		() => getPostsMoreReactions(3)
 	);
+
+	reloadBookmarks(user, 1000, false);
 });
 
 search.addEventListener('keyup', async (e) => {
@@ -136,6 +140,7 @@ search.addEventListener('keyup', async (e) => {
 		);
 
 		await printPost(result, 'posts-lists');
+		reloadBookmarks(user, 1000, false);
 	}, 500);
 });
 

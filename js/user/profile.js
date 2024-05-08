@@ -61,7 +61,7 @@ posts.addEventListener('click', async () => {
 	}
 
 	printPost(postsUser, 'posts-lists');
-	reloadBookmarks(user, 1000);
+	reloadBookmarks(user, 1000, true);
 });
 
 collections.addEventListener('click', async () => {
@@ -82,7 +82,7 @@ collections.addEventListener('click', async () => {
 	}
 
 	printPost(bookmarkPosts, 'collections-lists');
-	reloadBookmarks(user, 1000);
+	reloadBookmarks(user, 1000, true);
 });
 
 //Funcion que carga los datos del usuario en el perfil desde el inicio

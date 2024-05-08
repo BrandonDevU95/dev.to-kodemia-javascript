@@ -2,7 +2,7 @@ import {
 	deleteBookmark,
 	getAllBookmarksByUser,
 	saveBookmarkUser,
-} from '../api/bookmarks.js';
+} from '../api/bookmarksAPI.js';
 
 import { getPostById } from '../api/postsAPI.js';
 import { printPost } from '../components/posts.js';

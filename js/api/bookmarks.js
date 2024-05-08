@@ -47,6 +47,11 @@ const getAllBookmarksByUser = async (username) => {
 	let keys = Object.keys(data);
 	let bookmarksArray = keys.map((key) => ({ ...data[key], key }));
 
+	//Ordenar los posts por fecha
+	bookmarksArray.sort((a, b) => {
+		return new Date(b.fechaCreacion) - new Date(a.fechaCreacion);
+	});
+
 	const bookmarks = bookmarksArray.filter(
 		(bookmark) => bookmark.username === username
 	);

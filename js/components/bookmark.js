@@ -80,10 +80,12 @@ const reloadBookmarks = async (user, time, reload) => {
 };
 
 const getBookmarkByUser = async (user) => {
+	//Esta variable obtiene los objetos de la db bookmarks
 	const collectionsUser = await getAllBookmarksByUser(user);
 
 	if (!collectionsUser) return null;
 
+	//Construye un nuevo array con los postId de los objetos de la db bookmarks
 	const postIdArray = collectionsUser.map((item) => item.postId);
 
 	const bookmarkPosts = await Promise.all(
@@ -96,7 +98,6 @@ const getBookmarkByUser = async (user) => {
 	return bookmarkPosts;
 };
 
-//TODO: Piner esto en My posts cuando no haya posts del usuario
 const printNoPosts = (title, wrapperId) => {
 	const wrapper = document.getElementById(wrapperId);
 

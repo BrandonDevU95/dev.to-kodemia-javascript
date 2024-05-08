@@ -177,6 +177,11 @@ const getPostsByUsername = async (username) => {
 	let keys = Object.keys(data);
 	let postsArray = keys.map((key) => ({ ...data[key], key }));
 
+	//Ordenar los posts por fecha
+	postsArray.sort((a, b) => {
+		return new Date(b.fechaCreacion) - new Date(a.fechaCreacion);
+	});
+
 	// Regresa solo los post que tengan el username que se le pase
 	let userPosts = postsArray.filter(
 		(post) => post.autor.username === username

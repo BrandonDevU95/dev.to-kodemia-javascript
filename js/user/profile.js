@@ -1,5 +1,4 @@
 import { getBookmarkByUser, printNoPosts } from '../components/bookmark.js';
-import { getPostById, getPostsByUsername } from '../api/postsAPI.js';
 import {
 	getToken,
 	getUserByUsername,
@@ -7,6 +6,7 @@ import {
 	logout,
 } from '../api/usersAPI.js';
 
+import { getPostsByUsername } from '../api/postsAPI.js';
 import { printPost } from '../components/posts.js';
 import { reloadBookmarks } from '../components/bookmark.js';
 
@@ -56,7 +56,7 @@ posts.addEventListener('click', async () => {
 	const postsUser = await getPostsByUsername(user);
 
 	if (!postsUser) {
-		printNoPosts('No tienes colecciones aún', 'posts-lists');
+		printNoPosts('No tienes post aún', 'posts-lists');
 		return;
 	}
 

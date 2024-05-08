@@ -33,13 +33,25 @@ const createTag = (tag) => {
 };
 
 const printTags = async () => {
-	const popularTags = document.getElementById('popular-tags');
+	const wrapper = document.getElementById('popular-tags');
 	const tags = await getAllTags();
+
+	if (!tags) {
+		noTags(wrapper);
+		return;
+	}
 
 	tags.forEach((tag) => {
 		const tagElement = createTag(tag);
-		popularTags.appendChild(tagElement);
+		wrapper.appendChild(tagElement);
 	});
+};
+
+const noTags = (wrapper) => {
+	const noTags = document.createElement('p');
+	noTags.classList.add('text-center', 'text-secondary');
+	noTags.textContent = 'No tags available';
+	wrapper.appendChild(noTags);
 };
 
 const createTabDiscuss = (post) => {

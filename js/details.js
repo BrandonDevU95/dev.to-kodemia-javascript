@@ -1,6 +1,7 @@
 import { deletePost, verifyPostUser } from '../js/api/postsAPI.js';
 import {
 	getAvatarByUsername,
+	getToken,
 	getUserData,
 	logout,
 } from '../js/api/usersAPI.js';
@@ -14,6 +15,10 @@ const avatar = document.getElementById('avatar-image');
 const params = new URLSearchParams(new URL(url).search);
 
 const id = params.get('id');
+
+if (!getToken()) {
+	window.location.href = '../index.html';
+}
 
 const { user } = getUserData();
 

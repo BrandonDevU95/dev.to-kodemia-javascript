@@ -1,5 +1,11 @@
-import { getUserData, getNameByUsername } from '../js/api/usersAPI.js';
+import {
+	getNameByUsername,
+	getToken,
+	getUserData,
+} from '../js/api/usersAPI.js';
+
 import { createPost } from '../js/api/postsAPI.js';
+
 const image = document.getElementById('input-cover-image');
 const title = document.getElementById('title-new-post');
 const tags = document.getElementById('tags-new-post');
@@ -13,6 +19,10 @@ const tipTitle = document.getElementById('writting-post-title');
 const tipTags = document.getElementById('writting-post-tags');
 const tipDescription = document.getElementById('writting-post-description');
 const tipFooter = document.getElementById('publishing-tips');
+
+if (!getToken()) {
+	window.location.href = '../index.html';
+}
 
 title.addEventListener('click', () => {
 	tipTitle.classList.remove('d-none');

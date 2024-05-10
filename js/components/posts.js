@@ -611,7 +611,7 @@ const createPostDetail = (post) => {
 
 	post.tags.forEach((tag) => {
 		const tagLink = document.createElement('a');
-		tagLink.href = '#';
+		tagLink.href = `../../views/tags.html?tag=${tag}`;
 		tagLink.classList.add(
 			'text-decoration-none',
 			'text-secondary',

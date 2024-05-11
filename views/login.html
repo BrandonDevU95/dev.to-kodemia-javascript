@@ -117,18 +117,24 @@
                         <form class="needs-validation" id="login-form" novalidate>
                             <div class="form-group pb-3">
                                 <label for="username" class="fw-medium text-dark">Username</label>
-                                <input type="text" name="username" value="kevinryan" class="form-control mt-2"
-                                    required />
+                                <input type="text" name="username" minlength="6" value="kevinryan"
+                                    class="form-control mt-2" required />
                                 <div class="invalid-feedback">
                                     Please enter a valid username.
+                                </div>
+                                <div class="valid-feedback">
+                                    Looks good!
                                 </div>
                             </div>
                             <div class="form-group pb-3">
                                 <label for="password" class="fw-medium text-dark">Password</label>
-                                <input type="password" name="password" value="kev02937@" class="form-control mt-2"
-                                    required />
+                                <input type="password" name="password" minlength="6" value="kev02937@"
+                                    class="form-control mt-2" required />
                                 <div class="invalid-feedback">
                                     Please enter your password.
+                                </div>
+                                <div class="valid-feedback">
+                                    Looks good!
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between">

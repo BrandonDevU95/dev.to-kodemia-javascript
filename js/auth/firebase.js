@@ -1,7 +1,10 @@
 // Import the functions you need from the SDKs you need
 
-import { createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js';
-import { getAuth } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js';
+import {
+	createUserWithEmailAndPassword,
+	getAuth,
+} from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js';
+
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js';
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -21,12 +24,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-const signinFirebase = async (email, password) => {
+const signupFirebase = async (newUser) => {
 	try {
 		const userCredentials = await createUserWithEmailAndPassword(
 			auth,
-			email,
-			password
+			newUser.email,
+			newUser.password
 		);
 		return userCredentials;
 	} catch (error) {
@@ -34,4 +37,4 @@ const signinFirebase = async (email, password) => {
 	}
 };
 
-export { signinFirebase };
+export { signupFirebase };

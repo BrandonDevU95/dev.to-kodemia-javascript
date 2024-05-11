@@ -24,7 +24,7 @@
                         <h1 class="fs-2 fw-bold mt-4">Join the DEV Community</h1>
                         <p>DEV Community is a community of 1,448,555 amazing developers</p>
                     </div>
-                    <div class="d-grid gap-2_5 mb-3 pb-3">
+                    <div class="d-grid gap-2_5">
                         <button name="button" type="submit"
                             class="btn btn-lg d-flex align-items-center border bg-transparent btn-login-social p-2_5">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -35,7 +35,7 @@
                             </svg>
 
                             <span class="w-100 flex fw-medium fs-6 justify-center items-center self-center">
-                                Continue with Apple
+                                Sign up with Apple
                             </span>
                         </button>
                         <button name="button" type="submit"
@@ -51,7 +51,7 @@
                             </svg>
 
                             <span class="w-100 flex fw-medium fs-6 justify-center items-center self-center">
-                                Continue with Facebook
+                                Sign up with Facebook
                             </span>
                         </button>
                         <button name="button" type="submit"
@@ -71,7 +71,7 @@
                             </svg>
 
                             <span class="w-100 flex fw-medium fs-6 justify-center items-center self-center">
-                                Continue with Forem
+                                Sign up with Forem
                             </span>
                         </button>
                         <button name="button" type="submit"
@@ -84,7 +84,7 @@
                             </svg>
 
                             <span class="w-100 flex fw-medium fs-6 justify-center items-center self-center">
-                                Continue with GitHub
+                                Sign up with GitHub
                             </span>
                         </button>
                         <button name="button" type="submit"
@@ -104,67 +104,36 @@
                             </svg>
 
                             <span class="w-100 flex fw-medium fs-6 justify-center items-center self-center">
-                                Continue with Twitter (x)
+                                Sign up with Twitter (x)
                             </span>
                         </button>
+                        <a href="./formSignup.html" class="text-decoration-none d-grid">
+                            <button name="button" type="submit"
+                                class="btn btn-lg d-flex align-items-center border bg-transparent btn-login-social p-2_5">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    role="img" aria-hidden="true" class="crayons-icon crayons-icon--default">
+                                    <path
+                                        d="M3 3h18a1 1 0 011 1v16a1 1 0 01-1 1H3a1 1 0 01-1-1V4a1 1 0 011-1zm9.06 8.683L5.648 6.238 4.353 7.762l7.72 6.555 7.581-6.56-1.308-1.513-6.285 5.439h-.001z">
+                                    </path>
+                                </svg>
+
+                                <span class="w-100 flex fw-medium fs-6 justify-center items-center self-center">
+                                    Sign up with Email
+                                </span>
+                            </button>
+                        </a>
                     </div>
-                    <div class="position-relative text-center">
-                        <hr class="my-4">
-                        </hr>
-                        <div class="position-absolute top-50 start-50 translate-middle px-3 bg-white fs-6">OR</div>
-                    </div>
-                    <div>
-                        <form class="needs-validation" id="login-form" novalidate>
-                            <div class="form-group pb-3">
-                                <label for="username" class="fw-medium text-dark">Username</label>
-                                <input type="text" name="username" minlength="6" value="kevinryan"
-                                    class="form-control mt-2" required />
-                                <div class="invalid-feedback">
-                                    Please enter a valid username.
-                                </div>
-                                <div class="valid-feedback">
-                                    Looks good!
-                                </div>
-                            </div>
-                            <div class="form-group pb-3">
-                                <label for="password" class="fw-medium text-dark">Password</label>
-                                <input type="password" name="password" minlength="6" value="kev02937@"
-                                    class="form-control mt-2" required />
-                                <div class="invalid-feedback">
-                                    Please enter your password.
-                                </div>
-                                <div class="valid-feedback">
-                                    Looks good!
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" checked
-                                        id="remember">
-                                    <label class="form-check-label" for="remember">
-                                        Remember me
-                                    </label>
-                                </div>
-                                <a href="#" class="text-decoration-none">Forgot password?</a>
-                            </div>
-                            <div class="d-grid pt-3">
-                                <button class="btn btn-primary btn-lg-login fs-6 fw-bold" id="login-btn"
-                                    type="button">Log In</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="fst-italic text-secondary mt-4 px-7 text-center">
-                        <p class="m-0">By signing in, you are agreeing to our <span class="text-primary">privacy policy,
+                    <div class="fst-italic text-secondary mt-4 px-7 text-center fs-6">
+                        <p class="m-0">By signing up, you are agreeing to our <span class="text-primary">privacy policy,
                                 terms of
                                 use</span> and <span class="text-primary">code
                                 of conduct.</span>
                         </p>
                     </div>
                     <hr class="my-4">
-                    </hr>
                     <div class="text-center">
-                        <p>New to DEV Community? <a class="text-decoration-none" href="./signup.html"><span
-                                    class="text-primary">Create account.</span></a></p>
+                        <p>Already have an account? <a href="./login.html"><span class="text-primary">Log in.</span></a>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -173,7 +142,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-    <script src="../../js/login.js" type="module"></script>
+    <script src="../../js/auth/signup.js" type="module"></script>
 </body>
 
 </html>

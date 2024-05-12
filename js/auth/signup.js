@@ -29,6 +29,7 @@ btnSignup.addEventListener('click', async () => {
 	const userRecord = await signUpFirebase(newUser);
 	if (!userRecord) return;
 
+	//TODO: Refactorizar modal en una funcion independiente
 	const signUpModal = document.querySelector('#signupModal');
 	const modal = bootstrap.Modal.getInstance(signUpModal);
 	modal.hide();

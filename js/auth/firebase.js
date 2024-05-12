@@ -6,6 +6,7 @@ import {
 	onAuthStateChanged,
 	signInWithEmailAndPassword,
 	signOut,
+	updateProfile,
 } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js';
 
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js';
@@ -95,10 +96,29 @@ const signOutFirebase = async () => {
 	}
 };
 
-const authState = () => {
+const updateProfileFirebase = async (data) => {
 	onAuthStateChanged(auth, (user) => {
-		console.log(user);
+		if (user) {
+			try {
+				// Usuario autenticado, actualiza el perfil
+				updateProfile(user, {
+					...data,
+				});
+				showToast('Profile updated', 'success');
+			} catch (error) {
+				console.log(error);
+				showToast('Something went wrong', 'error');
+			}
+		} else {
+			// Usuario no autenticado
+			showToast('You need to be logged in', 'warning');
+		}
 	});
 };
 
-export { signUpFirebase, authState, signOutFirebase, signInFirebase };
+export {
+	signUpFirebase,
+	signOutFirebase,
+	signInFirebase,
+	updateProfileFirebase,
+};

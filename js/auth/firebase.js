@@ -3,6 +3,9 @@
 import {
 	createUserWithEmailAndPassword,
 	getAuth,
+	onAuthStateChanged,
+	signInWithEmailAndPassword,
+	signOut,
 } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js';
 
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js';
@@ -25,12 +28,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-const signupFirebase = async (newUser) => {
+const signupFirebase = async (user) => {
 	try {
 		const userCredentials = await createUserWithEmailAndPassword(
 			auth,
-			newUser.email,
-			newUser.password
+			user.email,
+			user.password
 		);
 		return userCredentials;
 	} catch (error) {
@@ -54,4 +57,48 @@ const signupFirebase = async (newUser) => {
 	}
 };
 
-export { signupFirebase };
+const signInFirebase = async (user) => {
+	try {
+		const userCredentials = await signInWithEmailAndPassword(
+			auth,
+			user.email,
+			user.password
+		);
+		return userCredentials;
+	} catch (error) {
+		switch (error.code) {
+			case 'auth/user-not-found':
+				showToast('User not found', 'warning');
+				break;
+			case 'auth/wrong-password':
+				showToast('Wrong password', 'warning');
+				break;
+			case 'auth/missing-email':
+				showToast('Email is required', 'warning');
+				break;
+			case 'auth/invalid-login-credentials':
+				showToast('Invalid credentials', 'warning');
+				break;
+			default:
+				showToast('Something went wrong', 'error');
+				break;
+		}
+	}
+};
+
+const signOutFirebase = async () => {
+	try {
+		await signOut(auth);
+		showToast('Goodbye!', 'success', '../../index.html');
+	} catch (error) {
+		showToast('Something went wrong', 'error');
+	}
+};
+
+const authState = () => {
+	onAuthStateChanged(auth, (user) => {
+		console.log(user);
+	});
+};
+
+export { signupFirebase, authState, signOutFirebase, signInFirebase };

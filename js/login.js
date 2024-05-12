@@ -1,10 +1,13 @@
 import {
-	login,
 	decodeToken,
+	getToken,
+	login,
 	setToken,
 	setUserData,
-	getToken,
 } from '../js/api/usersAPI.js';
+
+import { showToast } from '../js/components/toast.js';
+import { signInFirebase } from '../js/auth/firebase.js';
 
 if (getToken()) {
 	window.location.href = '../views/home.html';
@@ -32,11 +35,19 @@ loginBtn.addEventListener('click', async (event) => {
 		}
 	});
 
-	const { token } = await login(userObject);
-	setToken(token);
-	const user = decodeToken(token);
-	setUserData(user);
-	form[0].classList.remove('was-validated');
-	form[0].reset();
-	window.location.href = '../views/home.html';
+	const userRecord = await signInFirebase(userObject);
+	if (!userRecord) return;
+	//TOOD: Set token in local storage
+	showToast(
+		`Welcome ${userRecord.user.email}!`,
+		'success',
+		'../views/home.html'
+	);
+	// const { token } = await login(userObject);
+	// setToken(token);
+	// const user = decodeToken(token);
+	// setUserData(user);
+	// form[0].classList.remove('was-validated');
+	// form[0].reset();
+	// window.location.href = '../views/home.html';
 });

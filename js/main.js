@@ -8,11 +8,12 @@ import {
 	printTrendingPosts,
 } from '../js/components/posts.js';
 
+import { auth } from './auth/firebase.js';
 import { getToken } from './api/usersAPI.js';
 
-if (getToken()) {
-	window.location.href = '../views/home.html';
-}
+auth.onAuthStateChanged((user) => {
+	if (user) window.location.href = '../views/home.html';
+});
 
 const search = document.getElementById('input-search');
 let timeoutSearch;

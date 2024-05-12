@@ -27,11 +27,12 @@ import {
 	toggleClass,
 } from '../js/components/posts.js';
 
+import { auth } from './auth/firebase.js';
 import { reloadBookmarks } from '../js/components/bookmark.js';
 
-if (!getToken()) {
-	window.location.href = '../index.html';
-}
+auth.onAuthStateChanged((user) => {
+	if (!user) window.location.href = '../index.html';
+});
 
 const { user } = getUserData();
 

@@ -121,4 +121,5 @@ export {
 	signOutFirebase,
 	signInFirebase,
 	updateProfileFirebase,
+	auth,
 };

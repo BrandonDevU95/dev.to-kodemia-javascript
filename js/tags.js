@@ -1,4 +1,3 @@
-import { getToken, getUserData } from './api/usersAPI.js';
 import {
 	loadAvatar,
 	loadInfoUser,
@@ -7,12 +6,14 @@ import {
 } from './components/users.js';
 import { printCategories, printPost, printTags } from './components/posts.js';
 
+import { auth } from './firebase/auth.js';
 import { getAllPostByTag } from './api/postsAPI.js';
+import { getUserData } from './api/usersAPI.js';
 import { reloadBookmarks } from './components/bookmark.js';
 
-if (!getToken()) {
-	window.location.href = '../views/auth/login.html';
-}
+auth.onAuthStateChanged((user) => {
+	if (!user) window.location.href = '../views/auth/login.html';
+});
 
 const { user } = getUserData();
 

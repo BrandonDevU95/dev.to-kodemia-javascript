@@ -1,7 +1,6 @@
 import { deletePost, verifyPostUser } from '../js/api/postsAPI.js';
 import {
 	getAvatarByUsername,
-	getToken,
 	getUserData,
 	logout,
 } from '../js/api/usersAPI.js';
@@ -11,20 +10,19 @@ import {
 	printCardUser,
 } from '../js/components/users.js';
 
+import { auth } from './firebase/auth.js';
 import { printDetailsPost } from '../js/components/posts.js';
 import { reloadBookmarks } from '../js/components/bookmark.js';
+
+auth.onAuthStateChanged((user) => {
+	if (!user) window.location.href = '../index.html';
+});
 
 const url = window.location.href;
 const btnLogout = document.getElementById('logout');
 const avatar = document.getElementById('avatar-image');
 const params = new URLSearchParams(new URL(url).search);
-
 const id = params.get('id');
-
-if (!getToken()) {
-	window.location.href = `../index.html`;
-}
-
 const { user } = getUserData();
 
 btnLogout.addEventListener('click', () => {

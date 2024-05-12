@@ -1,10 +1,10 @@
-import { getToken } from '../js/api/usersAPI.js';
-import { showToast } from '../js/components/toast.js';
-import { signInFirebase } from '../js/firebase/auth.js';
+import { auth, signInFirebase } from '../js/firebase/auth.js';
 
-if (getToken()) {
-	window.location.href = '../views/home.html';
-}
+import { showToast } from '../js/components/toast.js';
+
+auth.onAuthStateChanged((user) => {
+	if (user) window.location.href = '../views/home.html';
+});
 
 const loginBtn = document.getElementById('login-btn');
 

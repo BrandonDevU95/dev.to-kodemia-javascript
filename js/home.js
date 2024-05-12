@@ -8,7 +8,6 @@ import {
 } from '../js/api/postsAPI.js';
 import {
 	createUsersDB,
-	getToken,
 	getUserData,
 	logout,
 	verifyUsersDB,

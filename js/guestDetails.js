@@ -1,9 +1,9 @@
-import { getToken } from '../js/api/usersAPI.js';
+import { auth } from './firebase/auth.js';
 import { printDetailsPost } from '../js/components/posts.js';
 
-if (getToken()) {
-	window.location.href = '../index.html';
-}
+auth.onAuthStateChanged((user) => {
+	if (user) window.location.href = '../index.html';
+});
 
 const url = window.location.href;
 const params = new URLSearchParams(new URL(url).search);

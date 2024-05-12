@@ -1,17 +1,15 @@
 import { getBookmarkByUser, printNoPosts } from '../components/bookmark.js';
-import {
-	getToken,
-	getUserByUsername,
-	getUserData,
-	logout,
-} from '../api/usersAPI.js';
+import { getUserByUsername, getUserData, logout } from '../api/usersAPI.js';
 import { loadInfoUser, notificatiosnRandom } from '../components/users.js';
 
+import { auth } from '../firebase/auth.js';
 import { getPostsByUsername } from '../api/postsAPI.js';
 import { printPost } from '../components/posts.js';
 import { reloadBookmarks } from '../components/bookmark.js';
 
-if (!getToken()) window.location.href = '../../index.html';
+auth.onAuthStateChanged((user) => {
+	if (!user) window.location.href = '../../index.html';
+});
 
 const btnLogout = document.getElementById('logout');
 const avatar = document.querySelectorAll('#avatar-image');

@@ -1,9 +1,6 @@
-import {
-	getNameByUsername,
-	getToken,
-	getUserData,
-} from '../js/api/usersAPI.js';
+import { getNameByUsername, getUserData } from '../js/api/usersAPI.js';
 
+import { auth } from './firebase/auth.js';
 import { createPost } from '../js/api/postsAPI.js';
 
 const image = document.getElementById('input-cover-image');
@@ -20,9 +17,9 @@ const tipTags = document.getElementById('writting-post-tags');
 const tipDescription = document.getElementById('writting-post-description');
 const tipFooter = document.getElementById('publishing-tips');
 
-if (!getToken()) {
-	window.location.href = '../index.html';
-}
+auth.onAuthStateChanged((user) => {
+	if (!user) window.location.href = '../index.html';
+});
 
 title.addEventListener('click', () => {
 	tipTitle.classList.remove('d-none');

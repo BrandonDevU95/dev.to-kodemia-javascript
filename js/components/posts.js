@@ -8,10 +8,14 @@ import {
 	getPostsMoreReactions,
 } from '../api/postsAPI.js';
 
+import { auth } from '../firebase/auth.js';
 import { getAvatarByUsername } from '../api/usersAPI.js';
-import { getToken } from '../api/usersAPI.js';
 
-const token = getToken();
+let token;
+
+auth.onAuthStateChanged((user) => {
+	if (user) token = true;
+});
 
 const createTag = (tag) => {
 	const tagElement = document.createElement('div');

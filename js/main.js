@@ -9,7 +9,6 @@ import {
 } from '../js/components/posts.js';
 
 import { auth } from './firebase/auth.js';
-import { getToken } from './api/usersAPI.js';
 
 auth.onAuthStateChanged((user) => {
 	if (user) window.location.href = '../views/home.html';

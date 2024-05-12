@@ -97,10 +97,6 @@ const setToken = (token) => {
 	localStorage.setItem(TOKEN, token);
 };
 
-const getToken = () => {
-	return localStorage.getItem(TOKEN);
-};
-
 const setUserData = (user) => {
 	localStorage.setItem(USER, JSON.stringify(user));
 };
@@ -118,7 +114,6 @@ const decodeToken = (token) => {
 export {
 	login,
 	logout,
-	getToken,
 	setToken,
 	createUser,
 	setUserData,

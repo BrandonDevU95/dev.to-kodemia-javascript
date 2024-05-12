@@ -1,6 +1,6 @@
 import { getPostById, updatePost } from './api/postsAPI.js';
 
-import { getToken } from './api/usersAPI.js';
+import { auth } from './firebase/auth.js';
 
 const url = window.location.href;
 const params = new URLSearchParams(new URL(url).search);
@@ -20,9 +20,9 @@ const tipTags = document.getElementById('writting-post-tags');
 const tipDescription = document.getElementById('writting-post-description');
 const tipFooter = document.getElementById('publishing-tips');
 
-if (!getToken()) {
-	window.location.href = '../index.html';
-}
+auth.onAuthStateChanged((user) => {
+	if (!user) window.location.href = '../index.html';
+});
 
 const originalPost = await getPostById(id);
 

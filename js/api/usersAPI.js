@@ -73,10 +73,6 @@ const getAllAvatarUsers = async () => {
 	return avatars;
 };
 
-const setUserData = (user) => {
-	localStorage.setItem(USER, JSON.stringify(user));
-};
-
 const getUserData = () => {
 	return JSON.parse(localStorage.getItem(USER));
 };
@@ -89,7 +85,6 @@ const decodeToken = (token) => {
 
 export {
 	createUser,
-	setUserData,
 	getUserData,
 	decodeToken,
 	createUsersDB,

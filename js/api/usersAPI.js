@@ -73,21 +73,6 @@ const getAllAvatarUsers = async () => {
 	return avatars;
 };
 
-const login = async (userObject) => {
-	let response = await fetch(AUTH_BASE_URL, {
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		method: 'POST',
-		body: JSON.stringify({
-			username: userObject.username,
-			password: userObject.password,
-		}),
-	});
-	let data = await response.json();
-	return data;
-};
-
 const logout = () => {
 	localStorage.removeItem(TOKEN);
 	localStorage.removeItem(USER);
@@ -112,7 +97,6 @@ const decodeToken = (token) => {
 };
 
 export {
-	login,
 	logout,
 	setToken,
 	createUser,

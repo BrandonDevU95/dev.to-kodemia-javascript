@@ -33,7 +33,23 @@ const signupFirebase = async (newUser) => {
 		);
 		return userCredentials;
 	} catch (error) {
-		return error;
+		switch (error.code) {
+			case 'auth/email-already-in-use':
+				alert('El correo ya está en uso');
+				break;
+			case 'auth/invalid-email':
+				alert('El correo no es válido');
+				break;
+			case 'auth/weak-password':
+				alert('La contraseña es débil');
+				break;
+			case 'auth/operation-not-allowed':
+				alert('Operación no permitida');
+				break;
+			default:
+				alert('Error al crear el usuario');
+				break;
+		}
 	}
 };
 

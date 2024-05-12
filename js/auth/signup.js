@@ -2,7 +2,7 @@ import { signupFirebase } from './firebase.js';
 
 const btnSignup = document.getElementById('btn-signup');
 
-btnSignup.addEventListener('click', async (event) => {
+btnSignup.addEventListener('click', async () => {
 	const fields = document.querySelectorAll('#signup-form input');
 	const form = document.querySelectorAll('.needs-validation');
 	let newUser = {};
@@ -26,5 +26,10 @@ btnSignup.addEventListener('click', async (event) => {
 	}
 
 	const userRecord = await signupFirebase(newUser);
-	console.log(userRecord);
+	if (!userRecord) return;
+
+	const signUpModal = document.querySelector('#signupModal');
+	const modal = bootstrap.Modal.getInstance(signUpModal);
+	modal.hide();
+	window.location.href = '../../views/home.html';
 });

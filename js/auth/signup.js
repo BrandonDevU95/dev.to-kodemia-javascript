@@ -1,3 +1,4 @@
+import { showToast } from '../components/toast.js';
 import { signupFirebase } from './firebase.js';
 
 const btnSignup = document.getElementById('btn-signup');
@@ -31,5 +32,9 @@ btnSignup.addEventListener('click', async () => {
 	const signUpModal = document.querySelector('#signupModal');
 	const modal = bootstrap.Modal.getInstance(signUpModal);
 	modal.hide();
-	window.location.href = '../../views/home.html';
+	showToast(
+		'Usuario registrado correctamente',
+		'success',
+		'../../views/home.html'
+	);
 });

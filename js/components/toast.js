@@ -1,49 +1,38 @@
-// Crear elementos
-const body = document.querySelector('body');
+//Usar liner gradiente para todos los colores
 
-const createToast = (message) => {
-	const toastContainer = document.createElement('div');
-	toastContainer.classList.add(
-		'toast-container',
-		'position-fixed',
-		'bottom-0',
-		'end-0',
-		'p-3'
-	);
-
-	const toast = document.createElement('div');
-	toast.classList.add('toast', 'align-items-center');
-	toast.setAttribute('id', 'toasty');
-	toast.setAttribute('role', 'alert');
-	toast.setAttribute('aria-live', 'assertive');
-	toast.setAttribute('aria-atomic', 'true');
-
-	const toastContent = document.createElement('div');
-	toastContent.classList.add('d-flex');
-
-	const toastBody = document.createElement('div');
-	toastBody.classList.add('toast-body');
-	toastBody.textContent = message;
-
-	const closeButton = document.createElement('button');
-	closeButton.setAttribute('type', 'button');
-	closeButton.classList.add('btn-close', 'me-2', 'm-auto');
-	closeButton.setAttribute('data-bs-dismiss', 'toast');
-	closeButton.setAttribute('aria-label', 'Close');
-
-	// Construir estructura del toast
-	toastContent.appendChild(toastBody);
-	toastContent.appendChild(closeButton);
-	toast.appendChild(toastContent);
-	toastContainer.appendChild(toast);
-
-	return toastContainer;
-};
-
-const showToast = (message) => {
-	const toast = createToast(message);
-	const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toast);
-	toastBootstrap.show();
+const showToast = (text, type, location) => {
+	let background = '';
+	switch (type) {
+		case 'success':
+			background = 'linear-gradient(to right, #00b09b, #96c93d)';
+			break;
+		case 'error':
+			background = 'linear-gradient(to right, #ff416c, #ff4b2b)';
+			break;
+		case 'warning':
+			background = 'linear-gradient(to right, #f8b500, #f78e00)';
+			break;
+		case 'info':
+			background = 'linear-gradient(to right, #00b09b, #96c93d)';
+			break;
+		default:
+			background = 'linear-gradient(to right, #00b09b, #96c93d)';
+			break;
+	}
+	//agregar al callback una reidreccion a la pagina de home con window.location.href = '../../views/home.html';
+	Toastify({
+		text,
+		close: true,
+		gravity: 'top',
+		position: 'right',
+		stopOnFocus: true,
+		style: {
+			background,
+		},
+		callback: () => {
+			if (location) window.location.href = location;
+		},
+	}).showToast();
 };
 
 export { showToast };

@@ -6,6 +6,7 @@ import {
 } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js';
 
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js';
+import { showToast } from '../components/toast.js';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -35,19 +36,19 @@ const signupFirebase = async (newUser) => {
 	} catch (error) {
 		switch (error.code) {
 			case 'auth/email-already-in-use':
-				alert('El correo ya está en uso');
+				showToast('El correo ya está en uso', 'error');
 				break;
 			case 'auth/invalid-email':
-				alert('El correo no es válido');
+				showToast('El correo no es válido', 'error');
 				break;
 			case 'auth/weak-password':
-				alert('La contraseña es débil');
+				showToast('La contraseña es muy débil', 'error');
 				break;
 			case 'auth/operation-not-allowed':
-				alert('Operación no permitida');
+				showToast('Operación no permitida', 'error');
 				break;
 			default:
-				alert('Error al crear el usuario');
+				showToast('Error al registrar el usuario', 'error');
 				break;
 		}
 	}

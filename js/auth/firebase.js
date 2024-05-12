@@ -28,7 +28,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-const signupFirebase = async (user) => {
+const signUpFirebase = async (user) => {
 	try {
 		const userCredentials = await createUserWithEmailAndPassword(
 			auth,
@@ -101,4 +101,4 @@ const authState = () => {
 	});
 };
 
-export { signupFirebase, authState, signOutFirebase, signInFirebase };
+export { signUpFirebase, authState, signOutFirebase, signInFirebase };

@@ -1,5 +1,5 @@
 import { showToast } from '../components/toast.js';
-import { signupFirebase } from './firebase.js';
+import { signUpFirebase } from './firebase.js';
 
 const btnSignup = document.getElementById('btn-signup');
 
@@ -26,7 +26,7 @@ btnSignup.addEventListener('click', async () => {
 		delete newUser.confirmPassword;
 	}
 
-	const userRecord = await signupFirebase(newUser);
+	const userRecord = await signUpFirebase(newUser);
 	if (!userRecord) return;
 
 	const signUpModal = document.querySelector('#signupModal');

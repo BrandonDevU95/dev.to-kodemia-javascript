@@ -1,6 +1,6 @@
 import { getToken } from '../js/api/usersAPI.js';
 import { showToast } from '../js/components/toast.js';
-import { signInFirebase } from '../js/auth/firebase.js';
+import { signInFirebase } from '../js/firebase/auth.js';
 
 if (getToken()) {
 	window.location.href = '../views/home.html';

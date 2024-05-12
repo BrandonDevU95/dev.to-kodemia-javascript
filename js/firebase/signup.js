@@ -1,5 +1,5 @@
 import { showToast } from '../components/toast.js';
-import { signUpFirebase } from './firebase.js';
+import { signUpFirebase } from './auth.js';
 
 const btnSignup = document.getElementById('btn-signup');
 

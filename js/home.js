@@ -27,7 +27,7 @@ import {
 	toggleClass,
 } from '../js/components/posts.js';
 
-import { auth } from './auth/firebase.js';
+import { auth } from './firebase/auth.js';
 import { reloadBookmarks } from '../js/components/bookmark.js';
 
 auth.onAuthStateChanged((user) => {

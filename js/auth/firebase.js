@@ -36,19 +36,19 @@ const signupFirebase = async (newUser) => {
 	} catch (error) {
 		switch (error.code) {
 			case 'auth/email-already-in-use':
-				showToast('El correo ya está en uso', 'error');
+				showToast('Email alredy in use', 'error');
 				break;
 			case 'auth/invalid-email':
-				showToast('El correo no es válido', 'error');
+				showToast('Invalid Email', 'error');
 				break;
 			case 'auth/weak-password':
-				showToast('La contraseña es muy débil', 'error');
+				showToast('Password is too weak', 'error');
 				break;
 			case 'auth/operation-not-allowed':
-				showToast('Operación no permitida', 'error');
+				showToast('Operation not allowed', 'error');
 				break;
 			default:
-				showToast('Error al registrar el usuario', 'error');
+				showToast('Something went wrong', 'error');
 				break;
 		}
 	}

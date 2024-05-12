@@ -33,7 +33,7 @@ btnSignup.addEventListener('click', async () => {
 	const modal = bootstrap.Modal.getInstance(signUpModal);
 	modal.hide();
 	showToast(
-		'Usuario registrado correctamente',
+		`Welcome ${userRecord.user.email}!`,
 		'success',
 		'../../views/home.html'
 	);

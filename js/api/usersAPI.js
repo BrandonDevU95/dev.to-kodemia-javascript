@@ -73,11 +73,6 @@ const getAllAvatarUsers = async () => {
 	return avatars;
 };
 
-const logout = () => {
-	localStorage.removeItem(TOKEN);
-	localStorage.removeItem(USER);
-};
-
 const setToken = (token) => {
 	localStorage.setItem(TOKEN, token);
 };
@@ -97,7 +92,6 @@ const decodeToken = (token) => {
 };
 
 export {
-	logout,
 	setToken,
 	createUser,
 	setUserData,

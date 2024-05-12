@@ -1,3 +1,4 @@
+import { auth, signOutFirebase } from './firebase/auth.js';
 import {
 	loadAvatar,
 	loadInfoUser,
@@ -6,7 +7,6 @@ import {
 } from './components/users.js';
 import { printCategories, printPost, printTags } from './components/posts.js';
 
-import { auth } from './firebase/auth.js';
 import { getAllPostByTag } from './api/postsAPI.js';
 import { getUserData } from './api/usersAPI.js';
 import { reloadBookmarks } from './components/bookmark.js';
@@ -26,8 +26,7 @@ const tagTitle = document.querySelectorAll('#tag-title');
 const posts = await getAllPostByTag(tag);
 
 btnLogout.addEventListener('click', () => {
-	logout();
-	window.location.href = '../index.html';
+	signOutFirebase();
 });
 
 tagTitle.forEach((title) => {

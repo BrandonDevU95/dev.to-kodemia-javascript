@@ -1,3 +1,4 @@
+import { auth, signOutFirebase } from './firebase/auth.js';
 import {
 	createPostsDB,
 	getAllPost,
@@ -9,7 +10,6 @@ import {
 import {
 	createUsersDB,
 	getUserData,
-	logout,
 	verifyUsersDB,
 } from '../js/api/usersAPI.js';
 import {
@@ -26,7 +26,6 @@ import {
 	toggleClass,
 } from '../js/components/posts.js';
 
-import { auth } from './firebase/auth.js';
 import { reloadBookmarks } from '../js/components/bookmark.js';
 
 auth.onAuthStateChanged((user) => {
@@ -123,8 +122,7 @@ search.addEventListener('keyup', async (e) => {
 });
 
 btnLogout.addEventListener('click', () => {
-	logout();
-	window.location.href = '../index.html';
+	signOutFirebase();
 });
 
 //crea una funcion anonima autoejecutable para cargar la DB

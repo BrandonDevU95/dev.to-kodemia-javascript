@@ -1,16 +1,12 @@
+import { auth, signOutFirebase } from './firebase/auth.js';
 import { deletePost, verifyPostUser } from '../js/api/postsAPI.js';
-import {
-	getAvatarByUsername,
-	getUserData,
-	logout,
-} from '../js/api/usersAPI.js';
+import { getAvatarByUsername, getUserData } from '../js/api/usersAPI.js';
 import {
 	loadInfoUser,
 	notificatiosnRandom,
 	printCardUser,
 } from '../js/components/users.js';
 
-import { auth } from './firebase/auth.js';
 import { printDetailsPost } from '../js/components/posts.js';
 import { reloadBookmarks } from '../js/components/bookmark.js';
 
@@ -26,8 +22,7 @@ const id = params.get('id');
 const { user } = getUserData();
 
 btnLogout.addEventListener('click', () => {
-	logout();
-	window.location.href = '../index.html';
+	signOutFirebase();
 });
 
 //Crear dos botones editar y eliminar e incertar en el wrapperId

@@ -1,8 +1,8 @@
+import { auth, signOutFirebase } from '../firebase/auth.js';
 import { getBookmarkByUser, printNoPosts } from '../components/bookmark.js';
-import { getUserByUsername, getUserData, logout } from '../api/usersAPI.js';
+import { getUserByUsername, getUserData } from '../api/usersAPI.js';
 import { loadInfoUser, notificatiosnRandom } from '../components/users.js';
 
-import { auth } from '../firebase/auth.js';
 import { getPostsByUsername } from '../api/postsAPI.js';
 import { printPost } from '../components/posts.js';
 import { reloadBookmarks } from '../components/bookmark.js';
@@ -26,8 +26,7 @@ const { user } = getUserData();
 
 //No hay una funcion de entrada como en home, espera los eventos de los botones
 btnLogout.addEventListener('click', () => {
-	logout();
-	window.location.href = '../../index.html';
+	signOutFirebase();
 });
 
 profile.addEventListener('click', () => {

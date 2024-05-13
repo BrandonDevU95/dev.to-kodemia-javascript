@@ -4,8 +4,6 @@ import { signUpFirebase } from '../firebase/auth.js';
 
 const USERS_BASE_URL =
 	'https://kodemia-devto-default-rtdb.firebaseio.com/users';
-const AUTH_BASE_URL = 'https://fakestoreapi.com/auth/login';
-const TOKEN = 'token';
 const USER = 'user';
 
 const createUsersDB = (users) => {

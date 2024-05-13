@@ -1,17 +1,10 @@
 import { auth, signOutFirebase } from './firebase/auth.js';
 import {
-	createPostsDB,
 	getAllPost,
 	getLastPosts,
 	getPostsByRelevant,
 	getPostsMoreReactions,
-	verifyPostsDB,
 } from '../js/api/postsAPI.js';
-import {
-	createUsersDB,
-	getUserData,
-	verifyUsersDB,
-} from '../js/api/usersAPI.js';
 import {
 	loadAvatar,
 	loadInfoUser,
@@ -28,11 +21,12 @@ import {
 
 import { reloadBookmarks } from '../js/components/bookmark.js';
 
-auth.onAuthStateChanged((user) => {
-	if (!user) window.location.href = '../index.html';
-});
+// auth.onAuthStateChanged((user) => {
+// 	if (!user) window.location.href = '../index.html';
+// 	console.log(user);
+// });
 
-const { user } = getUserData();
+// const { user } = getUserData();
 
 const search = document.getElementById('input-search');
 const relevant = document.getElementById('relevant');
@@ -48,7 +42,7 @@ const loadPage = () => {
 	printTrendingPosts(10, 'trends-list');
 	printCategories('list-categories');
 
-	reloadBookmarks(user, 1500, false);
+	// reloadBookmarks(user, 1500, false);
 };
 
 relevant.addEventListener('click', async () => {
@@ -66,7 +60,7 @@ relevant.addEventListener('click', async () => {
 		'posts-lists',
 		getPostsByRelevant
 	);
-	reloadBookmarks(user, 1000, false);
+	// reloadBookmarks(user, 1000, false);
 });
 
 latest.addEventListener('click', async () => {
@@ -83,7 +77,7 @@ latest.addEventListener('click', async () => {
 		'posts-lists',
 		() => getLastPosts(3)
 	);
-	reloadBookmarks(user, 1000, false);
+	// reloadBookmarks(user, 1000, false);
 });
 
 top.addEventListener('click', async () => {
@@ -101,7 +95,7 @@ top.addEventListener('click', async () => {
 		() => getPostsMoreReactions(3)
 	);
 
-	reloadBookmarks(user, 1000, false);
+	// reloadBookmarks(user, 1000, false);
 });
 
 search.addEventListener('keyup', async (e) => {
@@ -117,7 +111,7 @@ search.addEventListener('keyup', async (e) => {
 		);
 
 		await printPost(result, 'posts-lists');
-		reloadBookmarks(user, 1000, false);
+		// reloadBookmarks(user, 1000, false);
 	}, 500);
 });
 
@@ -125,14 +119,9 @@ btnLogout.addEventListener('click', () => {
 	signOutFirebase();
 });
 
-//crea una funcion anonima autoejecutable para cargar la DB
 (async () => {
-	const posts = await verifyPostsDB();
-	const users = await verifyUsersDB();
-	if (!posts) createPostsDB();
-	if (!users) createUsersDB();
 	loadPage();
-	loadAvatar(user, 'avatar-image');
-	loadInfoUser(user);
+	// loadAvatar(user, 'avatar-image');
+	// loadInfoUser(user);
 	notificatiosnRandom();
 })();

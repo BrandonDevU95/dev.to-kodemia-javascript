@@ -1,5 +1,3 @@
-import { createPostsDB, getAllPost, verifyPostsDB } from './api/postsAPI.js';
-import { createUsersDB, verifyUsersDB } from './api/usersAPI.js';
 import {
 	printCategories,
 	printLastPosts,
@@ -9,10 +7,14 @@ import {
 } from '../js/components/posts.js';
 
 import { auth } from './firebase/auth.js';
+import { checkDB } from './seedDB.js';
+import { getAllPost } from './api/postsAPI.js';
 
-auth.onAuthStateChanged((user) => {
-	if (user) window.location.href = '../views/home.html';
-});
+// auth.onAuthStateChanged((user) => {
+// 	if (user) window.location.href = '../views/home.html';
+// });
+
+await checkDB();
 
 const search = document.getElementById('input-search');
 let timeoutSearch;
@@ -40,11 +42,8 @@ search.addEventListener('keyup', async (e) => {
 		await printPost(result, 'posts-lists');
 	}, 500);
 });
+
 //crea una funcion anonima autoejecutable para cargar la DB
 (async () => {
-	const posts = await verifyPostsDB();
-	const users = await verifyUsersDB();
-	if (!posts) createPostsDB();
-	if (!users) createUsersDB();
 	loadPage();
 })();

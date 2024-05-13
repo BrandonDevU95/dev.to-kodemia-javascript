@@ -10,4 +10,13 @@ import { showToast } from '../components/toast.js';
 
 const database = getDatabase(app);
 
-export { database };
+const insertUserRecord = async (uid, user) => {
+	try {
+		await set(ref(database, `users/${uid}`), user);
+		showToast('User record created successfully', 'success');
+	} catch (error) {
+		showToast('Error creating user record', 'error');
+	}
+};
+
+export { insertUserRecord, database };

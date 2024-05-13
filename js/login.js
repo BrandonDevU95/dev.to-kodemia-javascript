@@ -3,7 +3,7 @@ import { auth, signInFirebase } from '../js/firebase/auth.js';
 import { showToast } from '../js/components/toast.js';
 
 auth.onAuthStateChanged((user) => {
-	if (user) window.location.href = '../views/home.html';
+	if (user) window.location.href = '../home.html';
 });
 
 const loginBtn = document.getElementById('login-btn');
@@ -30,9 +30,5 @@ loginBtn.addEventListener('click', async (event) => {
 
 	const userRecord = await signInFirebase(userObject);
 	if (!userRecord) return;
-	showToast(
-		`Welcome ${userRecord.user.email}!`,
-		'success',
-		'../views/home.html'
-	);
+	showToast(`Welcome ${userRecord.user.email}!`, 'success', '../home.html');
 });

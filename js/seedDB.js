@@ -1,3 +1,6 @@
+import { createPostsDB, verifyPostsDB } from './api/postsAPI.js';
+import { createUsersDB, verifyUsersDB } from './api/usersAPI.js';
+
 const posts = [
 	{
 		titulo: 'Cómo mejorar el rendimiento de tu sitio web con técnicas de optimización avanzadas',
@@ -444,4 +447,11 @@ const users = [
 	},
 ];
 
-export { posts, users };
+const checkDB = async () => {
+	const flagPosts = await verifyPostsDB();
+	const flagUsers = await verifyUsersDB();
+	if (!flagPosts) createPostsDB(posts, users);
+	if (!flagUsers) createUsersDB(users);
+};
+
+export { checkDB };

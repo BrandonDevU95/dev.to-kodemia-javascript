@@ -1,4 +1,6 @@
-import { users } from '../seedDB.js';
+import { insertUserRecord } from '../firebase/database.js';
+import { showToast } from '../components/toast.js';
+import { signUpFirebase } from '../firebase/auth.js';
 
 const USERS_BASE_URL =
 	'https://kodemia-devto-default-rtdb.firebaseio.com/users';
@@ -6,11 +8,13 @@ const AUTH_BASE_URL = 'https://fakestoreapi.com/auth/login';
 const TOKEN = 'token';
 const USER = 'user';
 
-const createUsersDB = () => {
+const createUsersDB = (users) => {
 	users.forEach(async (user) => {
-		await createUser(user);
+		const userRecord = await signUpFirebase(user);
+		if (!userRecord) return;
+		insertUserRecord(userRecord.user.uid, user);
 	});
-	console.log('Users DB Success');
+	showToast('Users DB created successfully', 'success');
 };
 
 const verifyUsersDB = async () => {
@@ -73,6 +77,7 @@ const getAllAvatarUsers = async () => {
 	return avatars;
 };
 
+// {"sub":3,"user":"kevinryan","iat":1715551420}
 const getUserData = () => {
 	return JSON.parse(localStorage.getItem(USER));
 };

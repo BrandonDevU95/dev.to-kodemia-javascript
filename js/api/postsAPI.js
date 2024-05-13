@@ -1,10 +1,11 @@
-import { posts, users } from '../seedDB.js';
+import { showToast } from '../components/toast.js';
 
 const POSTS_BASE_URL =
 	'https://kodemia-devto-default-rtdb.firebaseio.com/posts';
 
-const createPostsDB = () => {
+const createPostsDB = (posts, users) => {
 	posts.forEach(async (post) => {
+		//Selecciona un usuario random para asignarle el post
 		const user = users[Math.floor(Math.random() * users.length)];
 		const postUser = {
 			...post,
@@ -15,7 +16,7 @@ const createPostsDB = () => {
 		};
 		await createPost(postUser);
 	});
-	console.log('Posts DB Success');
+	showToast('Posts DB created successfully', 'success');
 };
 
 const verifyPostsDB = async () => {

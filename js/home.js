@@ -1,4 +1,8 @@
-import { auth, signOutFirebase } from './firebase/auth.js';
+import {
+	auth,
+	signOutFirebase,
+	updateProfileFirebase,
+} from './firebase/auth.js';
 import {
 	getAllPost,
 	getLastPosts,
@@ -21,10 +25,19 @@ import {
 
 import { reloadBookmarks } from '../js/components/bookmark.js';
 
-// auth.onAuthStateChanged((user) => {
-// 	if (!user) window.location.href = '../index.html';
-// 	console.log(user);
-// });
+auth.onAuthStateChanged((user) => {
+	if (!user) window.location.href = '../index.html';
+	console.log(user);
+	//No agrega capos personalizados
+	// updateProfileFirebase({
+	// 	role: 'user',
+	// 	about: 'I am a user of the platform',
+	// 	address: 'Street 123, City, Country',
+	// 	displayName: 'Brandon Vargas',
+	// 	photoURL: 'https://i.ibb.co/7zvZwvF/avatar.jpg',
+	// 	phoneNumber: '+11234567890',
+	// });
+});
 
 // const { user } = getUserData();
 
@@ -34,6 +47,11 @@ const latest = document.getElementById('latest');
 const top = document.getElementById('top');
 const btnLogout = document.getElementById('logout');
 let timeoutSearch;
+
+//13-05-24 3:16pm
+//Lo que sigue es cargar el avatar del usuario y la informacion del usuario
+//Puedes ver si se puede mover la fucion al AuthStateChange
+//Puedes agregar el username directo en el displayName y el avatar en el photoURL
 
 const loadPage = () => {
 	printPost(null, 'posts-lists');
@@ -121,7 +139,7 @@ btnLogout.addEventListener('click', () => {
 
 (async () => {
 	loadPage();
-	// loadAvatar(user, 'avatar-image');
+	// loadAvatar(tepUser, 'avatar-image');
 	// loadInfoUser(user);
 	notificatiosnRandom();
 })();
